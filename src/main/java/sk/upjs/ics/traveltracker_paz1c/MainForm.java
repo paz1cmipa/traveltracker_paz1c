@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.traveltracker_paz1c;
 
-/**
- *
- * @author Pandita
- */
 public class MainForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainForm
-     */
+  
     public MainForm() {
         initComponents();
+        pridatComboBox.addItem("Kultúrne podujatia");
+        pridatComboBox.addItem("Pamiatky a zaujímavosti");
+        pridatComboBox.addItem("Turistika");
+        pridatComboBox.addItem("Viacdňový výlet");
     }
 
     /**
@@ -27,21 +20,84 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        najblizsieUdalostiLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        najblizsieUdalostiList = new javax.swing.JList();
+        travelTrackerLabel = new javax.swing.JLabel();
+        pridatComboBox = new javax.swing.JComboBox();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        najblizsieUdalostiLabel.setText("Najbližšie udalosti:");
+
+        jScrollPane1.setViewportView(najblizsieUdalostiList);
+
+        travelTrackerLabel.setText("Travel Tracker");
+
+        pridatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pridať" }));
+        pridatComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(najblizsieUdalostiLabel)
+                                .addGap(54, 54, 54)
+                                .addComponent(pridatComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(travelTrackerLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(travelTrackerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(najblizsieUdalostiLabel)
+                    .addComponent(pridatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pridatComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatComboBoxActionPerformed
+        String vyber = (String) pridatComboBox.getSelectedItem();
+        if ("Kultúrne podujatia".equals(vyber)){
+            PridatKulturnePodujatieForm kulturnePodujatie = new PridatKulturnePodujatieForm(this, true);
+            kulturnePodujatie.setVisible(true);
+        }
+        if ("Pamiatky a zaujímavosti".equals(vyber)){
+            PridatPamiatkaForm pamiatka = new PridatPamiatkaForm(this,true);
+            pamiatka.setVisible(true);
+        }
+        if ("Turistika".equals(vyber)){
+            PridatTuristikaForm turistika = new PridatTuristikaForm(this, true);
+            turistika.setVisible(true);
+            
+        }
+        if ("Viacdňový výlet".equals(vyber)){
+            PridatViacdnovyVyletForm viacdnovyVylet = new PridatViacdnovyVyletForm(this, true);
+            viacdnovyVylet.setVisible(true);
+          
+        }
+    }//GEN-LAST:event_pridatComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +135,10 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel najblizsieUdalostiLabel;
+    private javax.swing.JList najblizsieUdalostiList;
+    private javax.swing.JComboBox pridatComboBox;
+    private javax.swing.JLabel travelTrackerLabel;
     // End of variables declaration//GEN-END:variables
 }
