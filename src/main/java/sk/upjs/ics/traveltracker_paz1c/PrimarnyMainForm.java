@@ -1,9 +1,9 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
-public class MainForm extends javax.swing.JFrame {
+public class PrimarnyMainForm extends javax.swing.JFrame {
 
   
-    public MainForm() {
+    public PrimarnyMainForm() {
         initComponents();
         pridatComboBox.addItem("Kultúrne podujatia");
         pridatComboBox.addItem("Pamiatky a zaujímavosti");
@@ -80,7 +80,8 @@ public class MainForm extends javax.swing.JFrame {
 
     private void pridatComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatComboBoxActionPerformed
         String vyber = (String) pridatComboBox.getSelectedItem();
-        if ("Kultúrne podujatia".equals(vyber)){
+        SekundaryMainForm sekundaryMainForm = new SekundaryMainForm((this), true, vyber);
+        /*if ("Kultúrne podujatia".equals(vyber)){
             KulturnePodujatieForm kulturnePodujatie = new KulturnePodujatieForm(this, true);
             kulturnePodujatie.setVisible(true);
         }
@@ -97,7 +98,7 @@ public class MainForm extends javax.swing.JFrame {
             ViacdnovyVyletForm viacdnovyVylet = new ViacdnovyVyletForm(this, true);
             viacdnovyVylet.setVisible(true);
           
-        }
+        }*/
     }//GEN-LAST:event_pridatComboBoxActionPerformed
 
     /**
@@ -117,20 +118,21 @@ public class MainForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrimarnyMainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrimarnyMainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrimarnyMainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrimarnyMainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainForm().setVisible(true);
+                new PrimarnyMainForm().setVisible(true);
             }
         });
     }
