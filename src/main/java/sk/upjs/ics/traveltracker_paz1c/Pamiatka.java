@@ -9,9 +9,19 @@ public class Pamiatka {
     private String mesto;
     private String pamiatka;
     private Date datum;
-    private String otvaracieHodiny_vstupne;
+    private String otvaracieHodiny;
+    private int vstupne;
     private String podrobnosti;
     private int hodnotenie;
+    private boolean navstivene;
+
+    public boolean isNavstivene() {
+        return navstivene;
+    }
+
+    public void setNavstivene(boolean navstivene) {
+        this.navstivene = navstivene;
+    }
 
     public int getHodnotenie() {
         return hodnotenie;
@@ -61,13 +71,22 @@ public class Pamiatka {
         this.datum = datum;
     }
 
-    public String getOtvaracieHodiny_vstupne() {
-        return otvaracieHodiny_vstupne;
+    public String getOtvaracieHodiny() {
+        return otvaracieHodiny;
     }
 
-    public void setOtvaracieHodiny_vstupne(String otvaracieHodiny_vstupne) {
-        this.otvaracieHodiny_vstupne = otvaracieHodiny_vstupne;
+    public void setOtvaracieHodiny(String otvaracieHodiny) {
+        this.otvaracieHodiny = otvaracieHodiny;
     }
+
+    public int getVstupne() {
+        return vstupne;
+    }
+
+    public void setVstupne(int vstupne) {
+        this.vstupne = vstupne;
+    }
+    
 
     public String getPodrobnosti() {
         return podrobnosti;

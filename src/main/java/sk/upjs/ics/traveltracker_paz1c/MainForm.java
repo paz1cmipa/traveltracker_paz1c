@@ -9,6 +9,7 @@ public class MainForm extends javax.swing.JFrame {
         pridatComboBox.addItem("Pamiatky a zaujímavosti");
         pridatComboBox.addItem("Turistika");
         pridatComboBox.addItem("Viacdňový výlet");
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -80,20 +81,20 @@ public class MainForm extends javax.swing.JFrame {
     private void pridatComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatComboBoxActionPerformed
         String vyber = (String) pridatComboBox.getSelectedItem();
         if ("Kultúrne podujatia".equals(vyber)){
-            PridatKulturnePodujatieForm kulturnePodujatie = new PridatKulturnePodujatieForm(this, true);
+            KulturnePodujatieForm kulturnePodujatie = new KulturnePodujatieForm(this, true);
             kulturnePodujatie.setVisible(true);
         }
         if ("Pamiatky a zaujímavosti".equals(vyber)){
-            PridatPamiatkaForm pamiatka = new PridatPamiatkaForm(this,true);
+            PamiatkaForm pamiatka = new PamiatkaForm(this,true);
             pamiatka.setVisible(true);
         }
         if ("Turistika".equals(vyber)){
-            PridatTuristikaForm turistika = new PridatTuristikaForm(this, true);
+            TuristikaForm turistika = new TuristikaForm(this, true);
             turistika.setVisible(true);
             
         }
         if ("Viacdňový výlet".equals(vyber)){
-            PridatViacdnovyVyletForm viacdnovyVylet = new PridatViacdnovyVyletForm(this, true);
+            ViacdnovyVyletForm viacdnovyVylet = new ViacdnovyVyletForm(this, true);
             viacdnovyVylet.setVisible(true);
           
         }

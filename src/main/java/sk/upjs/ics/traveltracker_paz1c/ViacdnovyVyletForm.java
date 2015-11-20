@@ -9,12 +9,12 @@ package sk.upjs.ics.traveltracker_paz1c;
  *
  * @author Pandita
  */
-public class PridatTuristikaForm extends javax.swing.JDialog {
+public class ViacdnovyVyletForm extends javax.swing.JDialog {
 
     /**
-     * Creates new form PridatTuristikaForm
+     * Creates new form PridatViacdnovyVyletForm
      */
-    public PridatTuristikaForm(java.awt.Frame parent, boolean modal) {
+    public ViacdnovyVyletForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -61,20 +61,21 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PridatTuristikaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViacdnovyVyletForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PridatTuristikaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViacdnovyVyletForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PridatTuristikaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViacdnovyVyletForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PridatTuristikaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViacdnovyVyletForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PridatTuristikaForm dialog = new PridatTuristikaForm(new javax.swing.JFrame(), true);
+                ViacdnovyVyletForm dialog = new ViacdnovyVyletForm(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

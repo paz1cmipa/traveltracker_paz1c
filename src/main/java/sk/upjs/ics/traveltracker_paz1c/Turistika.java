@@ -12,6 +12,15 @@ public class Turistika {
     private String trasa;
     private String poznamky;
     private int hodnotenie;
+    private boolean prejdene; //navstivene
+
+    public boolean isPrejdene() {
+        return prejdene;
+    }
+
+    public void setPrejdene(boolean prejdene) {
+        this.prejdene = prejdene;
+    }
 
     public int getId() {
         return id;

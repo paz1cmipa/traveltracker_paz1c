@@ -6,11 +6,38 @@ public class ViacdnovyVylet {
     
     private String krajina;
     private String mesto;
-    private Date odchod;
-    private Date prichod;
+    private Date datumOdchod;
+    private Date datumPrichod;
     private int hodnotenie;
     private String poznamky;
     private String program;
+    private String ubytovanie;
+    private String typ;
+    private boolean navstivene;
+
+    public boolean isNavstivene() {
+        return navstivene;
+    }
+
+    public void setNavstivene(boolean navstivene) {
+        this.navstivene = navstivene;
+    }
+
+    public String getTyp() {
+        return typ;
+    }
+
+    public void setTyp(String typ) {
+        this.typ = typ;
+    }
+
+    public String getUbytovanie() {
+        return ubytovanie;
+    }
+
+    public void setUbytovanie(String ubytovanie) {
+        this.ubytovanie = ubytovanie;
+    }
 
     public String getKrajina() {
         return krajina;
@@ -28,20 +55,20 @@ public class ViacdnovyVylet {
         this.mesto = mesto;
     }
 
-    public Date getOdchod() {
-        return odchod;
+    public Date getDatumOdchod() {
+        return datumOdchod;
     }
 
-    public void setOdchod(Date odchod) {
-        this.odchod = odchod;
+    public void setDatumOdchod(Date datumOdchod) {
+        this.datumOdchod = datumOdchod;
     }
 
-    public Date getPrichod() {
-        return prichod;
+    public Date getDatumPrichod() {
+        return datumPrichod;
     }
 
-    public void setPrichod(Date prichod) {
-        this.prichod = prichod;
+    public void setDatumPrichod(Date datumPrichod) {
+        this.datumPrichod = datumPrichod;
     }
 
     public int getHodnotenie() {

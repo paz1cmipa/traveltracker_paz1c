@@ -1,5 +1,6 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class KulturnePodujatie {
@@ -7,14 +8,31 @@ public class KulturnePodujatie {
     private int id;
     private String krajina;
     private String mesto;
-    private String lokacia; //nejaka koncertna hala, miesto kde to presne je
+    private String lokalizacia; //nejaka koncertna hala, miesto kde to presne je
     private String nazov;
     private Date datum;
     private int vstupne;
-    private String zaciatok;
+    private Time casZaciatku;
     private String typ;
     private int hodnotenie;
     private String poznamky;
+    private boolean navstivene;
+    
+        public Time getCasZaciatku() {
+        return casZaciatku;
+    }
+
+    public void setCasZaciatku(Time casZaciatku) {
+        this.casZaciatku = casZaciatku;
+    }
+
+    public boolean isNavstivene() {
+        return navstivene;
+    }
+
+    public void setNavstivene(boolean navstivene) {
+        this.navstivene = navstivene;
+    }
 
     public int getId() {
         return id;
@@ -40,12 +58,12 @@ public class KulturnePodujatie {
         this.mesto = mesto;
     }
 
-    public String getLokacia() {
-        return lokacia;
+    public String getLokalizacia() {
+        return lokalizacia;
     }
 
-    public void setLokacia(String lokacia) {
-        this.lokacia = lokacia;
+    public void setLokalizacia(String lokalizacia) {
+        this.lokalizacia = lokalizacia;
     }
 
     public String getNazov() {
@@ -72,13 +90,6 @@ public class KulturnePodujatie {
         this.vstupne = vstupne;
     }
 
-    public String getZaciatok() {
-        return zaciatok;
-    }
-
-    public void setZaciatok(String zaciatok) {
-        this.zaciatok = zaciatok;
-    }
 
     public String getTyp() {
         return typ;
