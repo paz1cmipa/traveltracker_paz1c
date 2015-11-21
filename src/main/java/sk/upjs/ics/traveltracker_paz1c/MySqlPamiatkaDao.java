@@ -28,5 +28,10 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
     public List<Pamiatka> Hladat(String s) {
        return null; 
     }
+
+    @Override
+    public void pridatPodrobnosti(Pamiatka pamiatka) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

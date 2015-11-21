@@ -4,7 +4,7 @@ public enum PamiatkaDaoFactory {
     
      INSTANCE;
     
-    public PamiatkaDao getVyletDao(){
+    public PamiatkaDao getPamiatkaDao(){
         return new MySqlPamiatkaDao();
     }
     

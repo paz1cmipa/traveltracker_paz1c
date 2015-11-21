@@ -4,7 +4,7 @@ public enum ViacdnovyVyletDaoFactory {
     
      INSTANCE;
     
-    public ViacdnovyVyletDao getVyletDao(){
+    public ViacdnovyVyletDao getViacdnovyVyletDao(){
         return new MySqlViacdnovyVyletDao();
     }
     

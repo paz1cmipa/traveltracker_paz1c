@@ -4,7 +4,7 @@ public enum TuristikaDaoFactory {
     
     INSTANCE;
     
-    public TuristikaDao getVyletDao(){
+    public TuristikaDao getTuristikaDao(){
         return new MySqlTuristikaDao();
     }
     
