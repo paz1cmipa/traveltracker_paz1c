@@ -4,7 +4,7 @@ public enum KulturnePodujatieDaoFactory {
    
      INSTANCE;
     
-    public KulturnePodujatieDao getVyletDao(){
+    public KulturnePodujatieDao getKulturnePodujatieDao(){
         return new MySqlKulturnePodujatieDao();
     }
     

@@ -32,13 +32,35 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="krajinaComboBox" pref="136" max="32767" attributes="0"/>
-                  <Component id="mestoTextField" max="32767" attributes="0"/>
                   <Component id="nazovTextField" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="krajinaComboBox" pref="136" max="32767" attributes="0"/>
+                                  <Component id="mestoTextField" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="datumLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="navstiveneCheckBox" min="-2" max="-2" attributes="0"/>
+                              <Component id="okButton" min="-2" pref="107" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="podrobnostiButton" pref="107" max="32767" attributes="0"/>
+                          <Component id="datumDatePicker" alignment="1" max="32767" attributes="0"/>
+                          <Component id="typTextField" alignment="1" max="32767" attributes="0"/>
+                          <Component id="stornoButton" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jXDatePicker1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,19 +71,32 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nazovLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nazovTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jXDatePicker1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="krajinaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="krajinaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="datumDatePicker" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="datumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="mestoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="mestoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="typTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="184" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="podrobnostiButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="navstiveneCheckBox" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="stornoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="okButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,7 +128,48 @@
     </Component>
     <Component class="javax.swing.JTextField" name="nazovTextField">
     </Component>
-    <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePicker1">
+    <Component class="org.jdesktop.swingx.JXDatePicker" name="datumDatePicker">
+    </Component>
+    <Component class="javax.swing.JLabel" name="datumLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="D&#xe1;tum:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Typ:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="typTextField">
+    </Component>
+    <Component class="javax.swing.JButton" name="stornoButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Storno"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stornoButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="okButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="OK"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="podrobnostiButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Podrobnosti..."/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="podrobnostiButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="navstiveneCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nav&#x161;t&#xed;ven&#xe9;"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

@@ -28,5 +28,10 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
     public List<KulturnePodujatie> Hladat(String s) {
         return null;
     }
+
+    @Override
+    public void pridatPodrobnosti(KulturnePodujatie kulturnePodujatie) {
+        
+    }
     
 }
