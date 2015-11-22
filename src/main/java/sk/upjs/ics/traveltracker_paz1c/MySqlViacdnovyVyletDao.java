@@ -70,7 +70,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
     }
     @Override
     public List<ViacdnovyVylet> dajVsetky() {
-       String sql="Select * from viacDni";     
+       String sql="Select * from viacDni V join viacDniInfo I on V.id=I.id";     
         BeanPropertyRowMapper<ViacdnovyVylet> mapper= BeanPropertyRowMapper.newInstance(ViacdnovyVylet.class);     
         return  jdbcTemplete.query(sql,mapper);
     }
