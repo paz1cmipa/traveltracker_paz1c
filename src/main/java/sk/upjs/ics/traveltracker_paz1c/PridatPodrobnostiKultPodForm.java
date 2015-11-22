@@ -6,6 +6,12 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -163,14 +169,24 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
         kulturnePodujatie.setVstupne(Integer.parseInt(vstupneTextField.getText()));
-        long cas = Long.parseLong(zacinaTextField.getText());
-        Time zaciatok = null;
-        zaciatok.setTime(cas);
-        kulturnePodujatie.setCasZaciatku(zaciatok);
+        //long cas = Long.parseLong(zacinaTextField.getText());
+       // Time zaciatok = null;
+       // zaciatok.setTime(cas);
+       // 
+       // String str = "08:03:10 pm";
+        DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+       Date date = null;
+         try {
+             date=formatter.parse(zacinaTextField.getText());
+         } catch (ParseException ex) {
+             Logger.getLogger(PridatPodrobnostiKultPodForm.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        Time cas= new Time(date.getTime());
+        kulturnePodujatie.setCasZaciatku(cas);
         kulturnePodujatie.setLokalizacia(miestoTextField.getText());
         kulturnePodujatie.setPoznamky(poznamkyTextField.getText());
         kulturnePodujatie.setNavstivene(navstiveneCheckBox.isSelected());
-        kulturnePodujatie.setHodnotenie(Integer.parseInt((String)hodnotenieComboBox.getSelectedItem()));
+        kulturnePodujatie.setHodnotenie((int) hodnotenieComboBox.getSelectedItem());
         
         kulturnePodujatieDao.pridatPodrobnosti(kulturnePodujatie);
         setVisible(false);

@@ -1,9 +1,11 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.Date;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 
 public class ViacdnovyVylet {
     
+    private int id;
     private String krajina;
     private String mesto;
     private Date datumOdchod;
@@ -15,6 +17,16 @@ public class ViacdnovyVylet {
     private String typ;
     private boolean navstivene;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+    
     public boolean isNavstivene() {
         return navstivene;
     }
@@ -94,6 +106,8 @@ public class ViacdnovyVylet {
     public void setProgram(String program) {
         this.program = program;
     }
+
+    
     
     
 }

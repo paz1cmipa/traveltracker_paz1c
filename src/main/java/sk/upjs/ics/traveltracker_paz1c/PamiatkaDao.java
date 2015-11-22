@@ -8,6 +8,7 @@ public interface PamiatkaDao {
     public void pridatPodrobnosti(Pamiatka pamiatka);
     public void odstranit (Pamiatka pamiatka);
     public void Upravit (Pamiatka pamiatka);
+    public void UpravitPodrobnosti (Pamiatka pamiatka);
     public List<Pamiatka> dajVsetky();
     public List<Pamiatka> Hladat(String s);
     
