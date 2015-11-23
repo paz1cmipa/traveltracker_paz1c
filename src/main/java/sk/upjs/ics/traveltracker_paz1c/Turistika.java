@@ -3,6 +3,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.Date;
 
 public class Turistika {
+
     
     private int id;
     private String krajina;

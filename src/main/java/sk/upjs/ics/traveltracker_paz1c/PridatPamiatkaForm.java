@@ -3,6 +3,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatPamiatkaForm extends javax.swing.JDialog {
     
@@ -14,6 +15,7 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         krajinaComboBox.setEditable(true);
         krajinaComboBox.addActionListener(krajinaComboBox);
+        AutoCompleteDecorator.decorate(krajinaComboBox);
         List<String> zoznamKrajin = dajVsetkyKrajiny();
         String krajina;
         krajinaComboBox.addItem(" ");
