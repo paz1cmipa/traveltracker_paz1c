@@ -1,12 +1,19 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 public class MySqlPamiatkaDao implements PamiatkaDao{
     
+     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
         private JdbcTemplate jdbcTemplete;
         public MySqlPamiatkaDao(){
         MysqlDataSource dataSource= new MysqlDataSource();
@@ -15,21 +22,39 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
         dataSource.setPassword("TravelTracker");
         
         jdbcTemplete= new JdbcTemplate(dataSource);
+         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(this.jdbcTemplete);
       }
 
     @Override
     public void pridat(Pamiatka pamiatka) {
-        String sql="Insert into pamiatka values(?,?,?,?,?)";
+    /*    String sql="Insert into pamiatka values(?,?,?,?,?)";
         jdbcTemplete.update(sql, null, 
                 pamiatka.getKrajina(),
                 pamiatka.getMesto(),
                 pamiatka.getPamiatka(),
-                pamiatka.getDatum());
+                pamiatka.getDatum());*/
+      Map<String, Object> pridatHodnoty = new HashMap<String, Object>();
+        pridatHodnoty.put("id", pamiatka.getId());
+        pridatHodnoty.put("krajina",  pamiatka.getKrajina());
+        pridatHodnoty.put("mesto",  pamiatka.getMesto());
+        pridatHodnoty.put("pamiatka_zaujimavost",  pamiatka.getPamiatka());
+        pridatHodnoty.put("datum", pamiatka.getDatum());
+        
+        String sql = "INSERT INTO pamiatka VALUES(:id, :krajina, :mesto, :pamiatka_zaujimavost, :datum)";
+        
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(pridatHodnoty), keyHolder);
+        int id = keyHolder.getKey().intValue();
+        pamiatka.setId(id);
+        
+        pridatPodrobnosti(pamiatka);
         
     }
 
     @Override
     public void odstranit(Pamiatka pamiatka) {
+         String sql1="Delete from pamiatkaInfo where id=? ";
+         jdbcTemplete.update(sql1, pamiatka.getId());
          String sql="Delete from pamiatka where id=? ";
          jdbcTemplete.update(sql, pamiatka.getId());
         
@@ -53,6 +78,19 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
     }
     @Override
     public void UpravitPodrobnosti(Pamiatka pamiatka) {
+             String sql="UPDATE pamiatkaInfo SET"
+                + "'krajina' = ?," +
+                  "'mesto'= ?," +
+                  "'pamiatka_zaujimavost'= ? ," +
+                  "'datum'=? "
+                + "where 'id'=?;";
+        jdbcTemplete.update(sql,
+                pamiatka.getVstupne(),
+                pamiatka.getOtvaracieHodiny(),
+                pamiatka.getHodnotenie(),
+                pamiatka.isNavstivene(),
+                pamiatka.getPodrobnosti(),
+                pamiatka.getId());
        
     }
 
@@ -70,7 +108,15 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
 
     @Override
     public void pridatPodrobnosti(Pamiatka pamiatka) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+             String sql="Insert into pamiatkaInfo values(?,?,?,?,?,?)";
+               jdbcTemplete.update(sql, 
+                pamiatka.getId(),
+                pamiatka.getVstupne(),
+                pamiatka.getOtvaracieHodiny(),
+                pamiatka.getHodnotenie(),
+                pamiatka.isNavstivene(),
+                pamiatka.getPodrobnosti());
+       
     }
     
 }

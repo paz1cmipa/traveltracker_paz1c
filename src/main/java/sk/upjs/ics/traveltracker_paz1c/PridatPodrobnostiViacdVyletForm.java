@@ -3,7 +3,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
-
+    ViacdnovyVylet vylet=new ViacdnovyVylet();
     ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
     
     public PridatPodrobnostiViacdVyletForm(javax.swing.JDialog parent, boolean modal) {
@@ -18,6 +18,19 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
         }
     }
 
+    PridatPodrobnostiViacdVyletForm(javax.swing.JDialog parent, boolean modal, ViacdnovyVylet vylet) {
+        super(parent, modal);
+        initComponents();
+        hodnotenieComboBox.setEditable(true);
+        hodnotenieComboBox.addActionListener(hodnotenieComboBox);
+        AutoCompleteDecorator.decorate(hodnotenieComboBox);
+        hodnotenieComboBox.addItem(" ");
+        for(int i=1; i<6; i++){
+            hodnotenieComboBox.addItem(i);
+        }
+        this.vylet=vylet;
+    }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -26,13 +39,13 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
         okButton = new javax.swing.JButton();
         stornoButton = new javax.swing.JButton();
         programLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        programList = new javax.swing.JList();
         hodnotenieLabel = new javax.swing.JLabel();
         hodnotenieComboBox = new javax.swing.JComboBox();
         navstivenieCheckBox = new javax.swing.JCheckBox();
         poznamkyLabel = new javax.swing.JLabel();
         poznamkyTextField = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ProgramTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,13 +65,15 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
 
         programLabel.setText("Program:");
 
-        jScrollPane1.setViewportView(programList);
-
         hodnotenieLabel.setText("Hodnotenie:");
 
         navstivenieCheckBox.setText("Navštívené");
 
         poznamkyLabel.setText("Poznámky:");
+
+        ProgramTextArea.setColumns(20);
+        ProgramTextArea.setRows(5);
+        jScrollPane2.setViewportView(ProgramTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,16 +91,17 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
                             .addComponent(poznamkyLabel))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stornoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(navstivenieCheckBox)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(programLabel)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(poznamkyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(stornoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(navstivenieCheckBox)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(programLabel)
+                                    .addComponent(poznamkyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 11, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -94,8 +110,8 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(programLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(poznamkyLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(poznamkyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,12 +137,14 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        ViacdnovyVylet vylet = new ViacdnovyVylet();
-        vylet.setProgram(programList.toString()); //vytiahnut cely zoznam a dat to do Stringu;
+   
+        vylet.setProgram(ProgramTextArea.toString());//zmena lebo do listu sa nedalo pisat ppri spusteni //vytiahnut cely zoznam a dat to do Stringu;
                                                   // jednotlive body oddelit urcenym delimiterom;
         vylet.setPoznamky(poznamkyTextField.getText());
-        vylet.setHodnotenie(Integer.parseInt((String)hodnotenieComboBox.getSelectedItem()));
+        vylet.setHodnotenie((int)hodnotenieComboBox.getSelectedItem());
         vylet.setNavstivene(navstivenieCheckBox.isSelected());
+        vyletDao.pridat(vylet);
+        this.setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
     /**
@@ -172,15 +190,15 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea ProgramTextArea;
     private javax.swing.JComboBox hodnotenieComboBox;
     private javax.swing.JLabel hodnotenieLabel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JCheckBox navstivenieCheckBox;
     private javax.swing.JButton okButton;
     private javax.swing.JLabel poznamkyLabel;
     private javax.swing.JTextField poznamkyTextField;
     private javax.swing.JLabel programLabel;
-    private javax.swing.JList programList;
     private javax.swing.JButton stornoButton;
     // End of variables declaration//GEN-END:variables
 }

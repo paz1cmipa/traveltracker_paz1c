@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
 
      KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
-     
+     KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
     public PridatPodrobnostiKultPodForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -31,6 +31,21 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
         for (int i=1; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
+    }
+
+    PridatPodrobnostiKultPodForm(javax.swing.JDialog parent, boolean modal, KulturnePodujatie kulturnePodujatie) {
+       super(parent, modal);
+       initComponents();
+       setLocationRelativeTo(null);
+        hodnotenieComboBox.setEditable(true);               
+        hodnotenieComboBox.addActionListener(hodnotenieComboBox);
+        hodnotenieComboBox.addItem(" ");
+        for (int i=1; i<6; i++){
+            hodnotenieComboBox.addItem(i);
+        }
+       this.kulturnePodujatie=kulturnePodujatie;
+       
+       
     }
 
     /**
@@ -167,7 +182,7 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
+
         kulturnePodujatie.setVstupne(Integer.parseInt(vstupneTextField.getText()));
         //long cas = Long.parseLong(zacinaTextField.getText());
        // Time zaciatok = null;
@@ -188,7 +203,7 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
         kulturnePodujatie.setNavstivene(navstiveneCheckBox.isSelected());
         kulturnePodujatie.setHodnotenie((int) hodnotenieComboBox.getSelectedItem());
         
-        kulturnePodujatieDao.pridatPodrobnosti(kulturnePodujatie);
+        kulturnePodujatieDao.pridat(kulturnePodujatie);
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 

@@ -6,7 +6,7 @@ import java.util.Locale;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
-    
+     ViacdnovyVylet vylet = new ViacdnovyVylet();
     ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
    
     public PridatViacdnovyVyletForm(java.awt.Frame parent, boolean modal) {
@@ -191,7 +191,7 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        ViacdnovyVylet vylet = new ViacdnovyVylet();
+       
         vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());
@@ -205,7 +205,15 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void podrobnostiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podrobnostiButtonActionPerformed
-        PridatPodrobnostiViacdVyletForm podrobnostiViacVylet = new PridatPodrobnostiViacdVyletForm(this, true);
+        vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
+        vylet.setDatumOdchod(odchodDatePicker.getDate());
+        vylet.setDatumPrichod(prichodDatePicker.getDate());
+        vylet.setMesto(mestoTextField.getText());
+        vylet.setUbytovanie(ubytovanieTextField.getText());
+        vylet.setTyp((String)typComboBox.getSelectedItem());
+        vylet.setNavstivene(navstivenieCheckBox.isSelected());
+        setVisible(false);
+        PridatPodrobnostiViacdVyletForm podrobnostiViacVylet = new PridatPodrobnostiViacdVyletForm(this, true,vylet);
         podrobnostiViacVylet.setVisible(true);
     }//GEN-LAST:event_podrobnostiButtonActionPerformed
 

@@ -1,12 +1,20 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
       private JdbcTemplate jdbcTemplete;
+       private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
       
       public MySqlKulturnePodujatieDao(){
         MysqlDataSource dataSource= new MysqlDataSource();
@@ -15,24 +23,54 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
         dataSource.setPassword("TravelTracker");
         
         jdbcTemplete= new JdbcTemplate(dataSource);
+        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(this.jdbcTemplete);
       }
      
     @Override
     public void pridat(KulturnePodujatie kulturnePodujatie) {
-        String sql="Insert into podujatie values(?,?,?,?,?,?)";
+      /* String sql="Insert into podujatie values(?,?,?,?,?,?)";
+      //  KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplete.update(sql, null, 
                 kulturnePodujatie.getKrajina(),
                 kulturnePodujatie.getMesto(),
                 kulturnePodujatie.getTyp(),
                 kulturnePodujatie.getNazov(),
                 kulturnePodujatie.getDatum());
+       // int id= keyholder.getKey().intValue();
+      //  kulturnePodujatie.setId(id);
         
+     //  String sql1="Insert into podujatiaInfo values(?,?,?,?,?,?,?)";
+      // jdbcTemplete.update(sql1,kulturnePodujatie.getId(),null,null,null,
+       // kulturnePodujatie.isNavstivene(),null,null);
+       //Pouzitie keyHolder ale nefunguje*/
+       Map<String, Object> pridatHodnoty = new HashMap<String, Object>();
+        pridatHodnoty.put("id", kulturnePodujatie.getId());
+        pridatHodnoty.put("krajina", kulturnePodujatie.getKrajina());
+        pridatHodnoty.put("mesto", kulturnePodujatie.getMesto());
+        pridatHodnoty.put("typ", kulturnePodujatie.getTyp());
+        pridatHodnoty.put("nazov", kulturnePodujatie.getNazov());
+        pridatHodnoty.put("datum", kulturnePodujatie.getDatum());
+        
+        String sql = "INSERT INTO podujatie VALUES(:id, :krajina, :mesto, :typ, :nazov, :datum)";
+        
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(pridatHodnoty), keyHolder);
+        int id = keyHolder.getKey().intValue();
+        kulturnePodujatie.setId(id);
+        
+        pridatPodrobnosti(kulturnePodujatie);
+        
+        //String sql1="Insert into podujatiaInfo values(?,?,?,?,?,?,?)";
+      //jdbcTemplete.update(sql1,kulturnePodujatie.getId(),null,null,null,
+     // kulturnePodujatie.isNavstivene(),null,null);
     }
 
     @Override
     public void odstranit(KulturnePodujatie kulturnePodujatie) {
+        String sql1="Delete from podujatiaInfo where id=? ";
+        jdbcTemplete.update(sql1, kulturnePodujatie.getId());
         String sql="Delete from podujatie where id=? ";
-         jdbcTemplete.update(sql, kulturnePodujatie.getId());
+        jdbcTemplete.update(sql, kulturnePodujatie.getId());
         
     }
 
@@ -54,10 +92,13 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
                 kulturnePodujatie.getId());
         
         
+ 
+        
+        
     }
      @Override
     public void upravitPodrobnosti(KulturnePodujatie kulturnePodujatie){
-            /* String sql="UPDATE podujatie SET"
+            String sql="UPDATE podujatie SET"
                 + "'vstupne' = ?," +
                   "'casZaciatku'= ?," +
                   "'hodnotenie'= ? ," +
@@ -72,7 +113,7 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
                 kulturnePodujatie.isNavstivene(),
                 kulturnePodujatie.getLokalizacia(),
                 kulturnePodujatie.getPoznamky(),
-                kulturnePodujatie.getId());*/
+                kulturnePodujatie.getId());
     
     }
 
@@ -90,7 +131,7 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
 
     @Override
     public void pridatPodrobnosti(KulturnePodujatie kulturnePodujatie) {
-       /* String sql="Insert into podujatiaInfo values(?,?,?,?,?,?,?)";
+        String sql="Insert into podujatiaInfo values(?,?,?,?,?,?,?)";
         jdbcTemplete.update(sql, 
                 kulturnePodujatie.getId(),
                 kulturnePodujatie.getVstupne(),
@@ -98,7 +139,7 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
                 kulturnePodujatie.getHodnotenie(),
                 kulturnePodujatie.isNavstivene(),
                 kulturnePodujatie.getLokalizacia(),
-                kulturnePodujatie.getPoznamky());*/
+                kulturnePodujatie.getPoznamky());
     }
     
 }

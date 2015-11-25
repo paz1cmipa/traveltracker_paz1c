@@ -163,10 +163,11 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
                         .addComponent(hodnotenieLabel)
                         .addComponent(hodnotenieComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prejdeneCheckBox)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(stornoButton)
-                    .addComponent(okButton))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(prejdeneCheckBox)
+                        .addComponent(okButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -194,7 +195,7 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
         tura.setCiel(cielTextField.getText());
         tura.setKrajina((String)krajinaComboBox.getSelectedItem());
         tura.setDatum(datumDatePicker.getDate());
-        tura.setHodnotenie(Integer.parseInt((String)hodnotenieComboBox.getSelectedItem()));
+        tura.setHodnotenie((int)hodnotenieComboBox.getSelectedItem());
         tura.setTrasa(trasaTextField.getText());
         tura.setTyp((String)typComboBox.getSelectedItem());
         tura.setPrejdene(prejdeneCheckBox.isSelected());

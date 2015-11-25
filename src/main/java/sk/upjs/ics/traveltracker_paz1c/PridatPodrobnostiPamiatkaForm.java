@@ -3,7 +3,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 
 
 public class PridatPodrobnostiPamiatkaForm extends javax.swing.JDialog {
-    
+    Pamiatka pamiatka=new Pamiatka();
     PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
    
     public PridatPodrobnostiPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
@@ -16,6 +16,19 @@ public class PridatPodrobnostiPamiatkaForm extends javax.swing.JDialog {
         for(int i=1; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
+    }
+
+    PridatPodrobnostiPamiatkaForm(javax.swing.JDialog parent, boolean modal, Pamiatka pamiatka) {
+         super(parent, modal);
+        initComponents();
+        setLocationRelativeTo(null);
+        hodnotenieComboBox.setEditable(true);
+        hodnotenieComboBox.addActionListener(hodnotenieComboBox);
+        hodnotenieComboBox.addItem(" ");
+        for(int i=1; i<6; i++){
+            hodnotenieComboBox.addItem(i);
+        }
+        this.pamiatka=pamiatka;
     }
 
    
@@ -133,14 +146,14 @@ public class PridatPodrobnostiPamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        Pamiatka pamiatka = new Pamiatka();
+
         pamiatka.setVstupne(Integer.parseInt(vstupneTextField.getText()));
         pamiatka.setOtvaracieHodiny(otvaracieHodinyTextField.getText());
         pamiatka.setPodrobnosti(poznamkyTextField.getText());
-        pamiatka.setHodnotenie(Integer.parseInt((String)hodnotenieComboBox.getSelectedItem()));
+        pamiatka.setHodnotenie((int)hodnotenieComboBox.getSelectedItem());
         pamiatka.setNavstivene(navstiveneCheckBox.isSelected());
         
-        pamiatkaDao.pridatPodrobnosti(pamiatka);
+        pamiatkaDao.pridat(pamiatka);
         setVisible(false);
         
     }//GEN-LAST:event_okButtonActionPerformed

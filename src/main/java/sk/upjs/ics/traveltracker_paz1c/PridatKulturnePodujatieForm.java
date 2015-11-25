@@ -8,7 +8,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
     
     KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
-
+    KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
    
     public PridatKulturnePodujatieForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -153,7 +153,7 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-       KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
+       
        kulturnePodujatie.setNazov(nazovTextField.getText());
        kulturnePodujatie.setKrajina((String) krajinaComboBox.getSelectedItem());
        kulturnePodujatie.setMesto(mestoTextField.getText());
@@ -166,7 +166,15 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void podrobnostiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podrobnostiButtonActionPerformed
-        PridatPodrobnostiKultPodForm pridatPodrobnosti = new PridatPodrobnostiKultPodForm(this, true);
+
+       kulturnePodujatie.setNazov(nazovTextField.getText());
+       kulturnePodujatie.setKrajina((String) krajinaComboBox.getSelectedItem());
+       kulturnePodujatie.setMesto(mestoTextField.getText());
+       kulturnePodujatie.setDatum(datumDatePicker.getDate());
+       kulturnePodujatie.setTyp(typTextField.getText());
+       kulturnePodujatie.setNavstivene(navstiveneCheckBox.isSelected());
+       this.setVisible(false);
+        PridatPodrobnostiKultPodForm pridatPodrobnosti = new PridatPodrobnostiKultPodForm(this, true,kulturnePodujatie);
         pridatPodrobnosti.setVisible(true);
     }//GEN-LAST:event_podrobnostiButtonActionPerformed
 
