@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author Pandita
  */
 public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
-
+     
      KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
      KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
     public PridatPodrobnostiKultPodForm(javax.swing.JDialog parent, boolean modal) {
@@ -179,6 +179,7 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
 
     private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
         this.setVisible(false);
+        kulturnePodujatieDao.pridat(kulturnePodujatie);
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed

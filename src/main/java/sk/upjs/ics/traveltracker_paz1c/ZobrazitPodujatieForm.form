@@ -37,59 +37,73 @@
                       <Component id="NavstiveneCheckBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Component id="OkButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="UpravitButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="MestoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="KrajinaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="NazovLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="DatumLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                                  <Component id="VstupneLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="ZobrazenyDatumLabel" min="-2" pref="159" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="ZobrazenyNazovLabel" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
-                                          <Component id="ZobrazeneMestolabel" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
-                                          <Component id="ZobrazenakrajinaLabel" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="casZaciatkuLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="HodnotenieLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ZobrazenePoznamkyLabel" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="ZobrazenyCasLabel" min="-2" pref="146" max="-2" attributes="0"/>
+                              <Component id="ZobrazeneVstupneLabel" min="-2" pref="161" max="-2" attributes="0"/>
+                              <Component id="ZobrazeneMiestoLabel" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="PoznamkyLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="MiestoLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="casZaciatkuLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="HodnotenieLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ZobrazeneHodnotenieLabel" min="-2" pref="161" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="MiestoLabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="PoznamkyLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="ZobrazenePoznamkyLabel" min="-2" pref="161" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="MestoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="KrajinaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="NazovLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="DatumLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="ZobrazenyDatumLabel" min="-2" pref="159" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="ZobrazenyNazovLabel" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                                      <Component id="ZobrazeneMestolabel" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                                      <Component id="ZobrazenakrajinaLabel" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="TypLabel" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="VstupneLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="ZobrazenyTypLabel" min="-2" pref="161" max="-2" attributes="0"/>
-                          <Component id="ZobrazenyCasLabel" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="ZobrazeneMiestoLabel" min="-2" pref="161" max="-2" attributes="0"/>
-                          <Component id="ZobrazeneVstupneLabel" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                          <Component id="ZobrazeneHodnotenieLabel" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace pref="151" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -118,7 +132,7 @@
                           <Component id="DatumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ZobrazenyDatumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazeneHodnotenieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazenyTypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -133,7 +147,7 @@
                   <Component id="HodnotenieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ZobrazenePoznamkyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="PoznamkyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ZobrazenyTypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazeneHodnotenieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">

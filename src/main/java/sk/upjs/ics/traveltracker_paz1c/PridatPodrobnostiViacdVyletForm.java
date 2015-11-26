@@ -5,7 +5,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
     ViacdnovyVylet vylet=new ViacdnovyVylet();
     ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
-    
+   
     public PridatPodrobnostiViacdVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -134,6 +134,7 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
 
     private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
         setVisible(false);
+        vyletDao.pridat(vylet);
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed

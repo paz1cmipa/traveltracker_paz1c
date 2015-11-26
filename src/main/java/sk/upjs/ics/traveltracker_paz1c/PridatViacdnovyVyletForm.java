@@ -8,7 +8,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
      ViacdnovyVylet vylet = new ViacdnovyVylet();
     ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
-   
+    private boolean boliPodrobnosti=false;
     public PridatViacdnovyVyletForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -105,8 +105,8 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(odchodLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(odchodDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(odchodDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(prichodLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(prichodDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -130,8 +130,8 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(krajinaLabel)
                                         .addGap(8, 8, 8)
-                                        .addComponent(krajinaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(krajinaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(mestoLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(mestoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -191,7 +191,7 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-       
+       if(!boliPodrobnosti){
         vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());
@@ -201,6 +201,8 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
         vylet.setNavstivene(navstivenieCheckBox.isSelected());
         
         vyletDao.pridat(vylet);
+       }
+       boliPodrobnosti=true;
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
@@ -212,7 +214,7 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
         vylet.setUbytovanie(ubytovanieTextField.getText());
         vylet.setTyp((String)typComboBox.getSelectedItem());
         vylet.setNavstivene(navstivenieCheckBox.isSelected());
-        setVisible(false);
+        boliPodrobnosti=true;
         PridatPodrobnostiViacdVyletForm podrobnostiViacVylet = new PridatPodrobnostiViacdVyletForm(this, true,vylet);
         podrobnostiViacVylet.setVisible(true);
     }//GEN-LAST:event_podrobnostiButtonActionPerformed

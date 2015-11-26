@@ -8,7 +8,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 public class PridatPamiatkaForm extends javax.swing.JDialog {
     Pamiatka pamiatka = new Pamiatka();
     PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
-
+    boolean boliPOdrobnosti=false;
     public PridatPamiatkaForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -177,14 +177,15 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_krajinaComboBoxActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-       
+       if(!boliPOdrobnosti){
        pamiatka.setPamiatka(pamiatkaTextField.getText());
        pamiatka.setKrajina((String) krajinaComboBox.getSelectedItem());
        pamiatka.setMesto(mestoTextField.getText());
        pamiatka.setDatum(datumDatePicker.getDate());
        pamiatka.setNavstivene(navstiveneCheckBox.isSelected());
        
-       pamiatkaDao.pridat(pamiatka);
+       pamiatkaDao.pridat(pamiatka);}
+       boliPOdrobnosti=false;
        setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
@@ -194,7 +195,7 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
        pamiatka.setMesto(mestoTextField.getText());
        pamiatka.setDatum(datumDatePicker.getDate());
        pamiatka.setNavstivene(navstiveneCheckBox.isSelected());
-       setVisible(false);
+       boliPOdrobnosti=true;
        PridatPodrobnostiPamiatkaForm pridatPodrobnosti = new PridatPodrobnostiPamiatkaForm(this, true,pamiatka);
        pridatPodrobnosti.setVisible(true);
     }//GEN-LAST:event_podrobnostiButtonActionPerformed

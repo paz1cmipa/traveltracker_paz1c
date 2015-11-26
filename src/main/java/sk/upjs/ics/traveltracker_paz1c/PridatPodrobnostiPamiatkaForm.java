@@ -143,6 +143,7 @@ public class PridatPodrobnostiPamiatkaForm extends javax.swing.JDialog {
 
     private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
         setVisible(false);
+        pamiatkaDao.pridat(pamiatka);
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
