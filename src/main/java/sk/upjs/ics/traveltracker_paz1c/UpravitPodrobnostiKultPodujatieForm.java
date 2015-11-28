@@ -10,35 +10,33 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
-     
-     KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
-     KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
-    public PridatPodrobnostiKultPodForm(javax.swing.JDialog parent, boolean modal) {
+public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
+    
+   KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+   KulturnePodujatie podujatie=new KulturnePodujatie();
+    public UpravitPodrobnostiKultPodujatieForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
-        hodnotenieComboBox.setEditable(true);               
-        hodnotenieComboBox.addActionListener(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for (int i=1; i<6; i++){
-            hodnotenieComboBox.addItem(i);
-        }
     }
 
-    PridatPodrobnostiKultPodForm(javax.swing.JDialog parent, boolean modal, KulturnePodujatie kulturnePodujatie) {
-       super(parent, modal);
-       initComponents();
-       setLocationRelativeTo(null);
+    UpravitPodrobnostiKultPodujatieForm(UpravitKultPodujatieForm parent, boolean modal, KulturnePodujatie kulturnePodujatie) {
+        super(parent, modal);
+        initComponents();  
+        this.podujatie=kulturnePodujatie;
+         setLocationRelativeTo(null);
         hodnotenieComboBox.setEditable(true);               
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
         hodnotenieComboBox.addItem(" ");
         for (int i=1; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
-       this.kulturnePodujatie=kulturnePodujatie;
-       
-       
+        
+        vstupneTextField.setText(Integer.toString(podujatie.getVstupne()));
+        //zacinaTextField.setText - doriesit cas
+        miestoTextField.setText(podujatie.getLokalizacia());
+        poznamkyTextField.setText(podujatie.getPoznamky());
+        hodnotenieComboBox.setSelectedItem(podujatie.getHodnotenie());
+        navstiveneCheckBox.setSelected(podujatie.isNavstivene());
     }
 
     /**
@@ -53,15 +51,15 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
         vstupneLabel = new javax.swing.JLabel();
         vstupneTextField = new javax.swing.JTextField();
         eurLabel = new javax.swing.JLabel();
-        miestoLabel = new javax.swing.JLabel();
-        miestoTextField = new javax.swing.JTextField();
         zacinaLabel = new javax.swing.JLabel();
         zacinaTextField = new javax.swing.JTextField();
+        miestoLabel = new javax.swing.JLabel();
+        miestoTextField = new javax.swing.JTextField();
+        poznamkyLabel = new javax.swing.JLabel();
+        poznamkyTextField = new javax.swing.JTextField();
         hodnotenieLabel = new javax.swing.JLabel();
         hodnotenieComboBox = new javax.swing.JComboBox();
         navstiveneCheckBox = new javax.swing.JCheckBox();
-        poznamkyLabel = new javax.swing.JLabel();
-        poznamkyTextField = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
         stornoButton = new javax.swing.JButton();
 
@@ -71,17 +69,17 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
 
         eurLabel.setText("eur;");
 
+        zacinaLabel.setText("Začína o:");
+
         miestoLabel.setText("Miesto:");
 
-        zacinaLabel.setText("Začína o:");
+        poznamkyLabel.setText("Poznámky:");
 
         hodnotenieLabel.setText("Hodnotenie:");
 
         navstiveneCheckBox.setText("Navštívené");
 
-        poznamkyLabel.setText("Poznámky:");
-
-        okButton.setText("OK");
+        okButton.setText("Upraviť");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
@@ -101,43 +99,45 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(vstupneLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vstupneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vstupneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(eurLabel)
-                        .addGap(14, 14, 14)
+                        .addGap(26, 26, 26)
                         .addComponent(zacinaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(miestoLabel)
-                        .addGap(21, 21, 21)
-                        .addComponent(miestoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(miestoTextField))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(poznamkyLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(poznamkyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(poznamkyTextField))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(hodnotenieLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(hodnotenieComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(okButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hodnotenieComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(navstiveneCheckBox)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(okButton)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(navstiveneCheckBox)
-                            .addComponent(stornoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(stornoButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vstupneLabel)
                     .addComponent(vstupneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,25 +145,22 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
                     .addComponent(zacinaLabel)
                     .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(miestoLabel)
-                    .addComponent(miestoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(poznamkyLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(poznamkyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(miestoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(poznamkyLabel)
+                    .addComponent(poznamkyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hodnotenieLabel)
                     .addComponent(hodnotenieComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(navstiveneCheckBox))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stornoButton)
-                    .addComponent(okButton))
+                    .addComponent(okButton)
+                    .addComponent(stornoButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -171,18 +168,11 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
-        this.setVisible(false);
-        kulturnePodujatieDao.pridat(kulturnePodujatie);
+       setVisible(false);
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-
-        kulturnePodujatie.setVstupne(Integer.parseInt(vstupneTextField.getText()));
-        //long cas = Long.parseLong(zacinaTextField.getText());
-       // Time zaciatok = null;
-       // zaciatok.setTime(cas);
-       // 
-       // String str = "08:03:10 pm";
+        podujatie.setVstupne(Integer.parseInt(vstupneTextField.getText()));
         DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
        Date date = null;
          try {
@@ -191,18 +181,17 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
              Logger.getLogger(PridatPodrobnostiKultPodForm.class.getName()).log(Level.SEVERE, null, ex);
          }
         Time cas= new Time(date.getTime());
-        kulturnePodujatie.setCasZaciatku(cas);
-        kulturnePodujatie.setLokalizacia(miestoTextField.getText());
-        kulturnePodujatie.setPoznamky(poznamkyTextField.getText());
-        kulturnePodujatie.setNavstivene(navstiveneCheckBox.isSelected());
-        kulturnePodujatie.setHodnotenie((int) hodnotenieComboBox.getSelectedItem());
+        podujatie.setCasZaciatku(cas);
+        podujatie.setLokalizacia(miestoTextField.getText());
+        podujatie.setPoznamky(poznamkyTextField.getText());
+        podujatie.setNavstivene(navstiveneCheckBox.isSelected());
+        podujatie.setHodnotenie((int) hodnotenieComboBox.getSelectedItem());
         
-        kulturnePodujatieDao.pridat(kulturnePodujatie);
+        kulturnePodujatieDao.upravitPodrobnosti(podujatie);
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
     /**
-     * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -219,20 +208,21 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PridatPodrobnostiKultPodForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpravitPodrobnostiKultPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PridatPodrobnostiKultPodForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpravitPodrobnostiKultPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PridatPodrobnostiKultPodForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpravitPodrobnostiKultPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PridatPodrobnostiKultPodForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpravitPodrobnostiKultPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PridatPodrobnostiKultPodForm dialog = new PridatPodrobnostiKultPodForm(new javax.swing.JDialog(), true);
+                UpravitPodrobnostiKultPodujatieForm dialog = new UpravitPodrobnostiKultPodujatieForm(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

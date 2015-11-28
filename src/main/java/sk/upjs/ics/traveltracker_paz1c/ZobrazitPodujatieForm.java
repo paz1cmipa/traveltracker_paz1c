@@ -273,7 +273,7 @@ public class ZobrazitPodujatieForm extends javax.swing.JFrame {
     }//GEN-LAST:event_OkButtonActionPerformed
 
     private void UpravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpravitButtonActionPerformed
-       UpravitPodujatieForm kultura=new UpravitPodujatieForm(this, true,kulturnePodujatie);
+       UpravitKultPodujatieForm kultura=new UpravitKultPodujatieForm(this, true,kulturnePodujatie);
        kultura.setVisible(true);
     }//GEN-LAST:event_UpravitButtonActionPerformed
 

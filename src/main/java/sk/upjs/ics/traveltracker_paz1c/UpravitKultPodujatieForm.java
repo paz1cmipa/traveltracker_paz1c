@@ -1,30 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sk.upjs.ics.traveltracker_paz1c;
 
-/**
- *
- * @author Robert Link
- */
-public class UpravitPodujatieForm extends javax.swing.JDialog {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+
+
+public class UpravitKultPodujatieForm extends javax.swing.JDialog {
     KulturnePodujatie kulturnePodujatie=new KulturnePodujatie();
     KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
 
     
-    public UpravitPodujatieForm(java.awt.Frame parent, boolean modal) {
+    public UpravitKultPodujatieForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         setLocationRelativeTo(null);
     }
-  public UpravitPodujatieForm(java.awt.Frame parent, boolean modal,KulturnePodujatie podujatie) {
+  public UpravitKultPodujatieForm(java.awt.Frame parent, boolean modal,KulturnePodujatie podujatie) {
         super(parent, modal);
         initComponents();
+         setLocationRelativeTo(null);
         
         kulturnePodujatie=podujatie;
         
-        KrajinaTextField.setText(kulturnePodujatie.getKrajina());
+         krajinaComboBox.setEditable(true);
+        krajinaComboBox.addActionListener(krajinaComboBox);
+        AutoCompleteDecorator.decorate(krajinaComboBox);
+        List<String> zoznamKrajin = dajVsetkyKrajiny();
+        String krajina;
+        krajinaComboBox.addItem(" ");
+        for(int i=0; i<zoznamKrajin.size(); i++){
+            krajina = zoznamKrajin.get(i);
+            krajinaComboBox.addItem(krajina);
+        }
+        
+       // KrajinaTextField.setText(kulturnePodujatie.getKrajina());
+        
+        krajinaComboBox.setSelectedItem(kulturnePodujatie.getKrajina());
         MestoTextField.setText(kulturnePodujatie.getMesto());
         NazovTextField.setText(kulturnePodujatie.getNazov());
         DatumDatePicker.setDate(kulturnePodujatie.getDatum());
@@ -53,8 +66,8 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
         NazovTextField = new javax.swing.JTextField();
         MestoTextField = new javax.swing.JTextField();
         TypTextField = new javax.swing.JTextField();
-        KrajinaTextField = new javax.swing.JTextField();
         podrobnostiButton = new javax.swing.JButton();
+        krajinaComboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,9 +95,9 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
 
         TypLabel.setText("Typ:");
 
-        NavstiveneCheckBox.setText("Navstivene");
+        NavstiveneCheckBox.setText("Navštívené");
 
-        podrobnostiButton.setText("Podrobnosti");
+        podrobnostiButton.setText("Podrobnosti...");
         podrobnostiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 podrobnostiButtonActionPerformed(evt);
@@ -110,9 +123,9 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(KrajinaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                                            .addComponent(MestoTextField))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(MestoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                                            .addComponent(krajinaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(DatumLabelä)
@@ -138,9 +151,9 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(KrajinaLabel)
-                    .addComponent(KrajinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DatumLabelä)
-                    .addComponent(DatumDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DatumDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(krajinaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TypLabel)
@@ -161,13 +174,25 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+          public List<String> dajVsetkyKrajiny(){
+        String[] lokaly = Locale.getISOCountries();
+        List<String> krajiny = new ArrayList<String>();
+        for (String kodKrajiny: lokaly){
+            Locale lokal = new Locale ("",kodKrajiny);
+            krajiny.add(lokal.getDisplayCountry());
+        }
+        
+        return krajiny;
+      }
+    
     private void StornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StornoButtonActionPerformed
         setVisible(false);
     }//GEN-LAST:event_StornoButtonActionPerformed
 
     private void UpravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpravitButtonActionPerformed
        kulturnePodujatie.setNazov(NazovTextField.getText());
-       kulturnePodujatie.setKrajina( KrajinaTextField.getText());
+       kulturnePodujatie.setKrajina((String)krajinaComboBox.getSelectedItem());
+       //kulturnePodujatie.setKrajina( KrajinaTextField.getText());
        kulturnePodujatie.setMesto(MestoTextField.getText());
        kulturnePodujatie.setDatum(DatumDatePicker.getDate());
        kulturnePodujatie.setTyp(TypTextField.getText());
@@ -179,7 +204,7 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_UpravitButtonActionPerformed
 
     private void podrobnostiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podrobnostiButtonActionPerformed
-       UpravitPodrobnostiPodujatieForm podrobnosti=new UpravitPodrobnostiPodujatieForm(this, true,kulturnePodujatie);
+      UpravitPodrobnostiKultPodujatieForm podrobnosti=new UpravitPodrobnostiKultPodujatieForm(this, true,kulturnePodujatie);
       podrobnosti.setVisible(true);
     }//GEN-LAST:event_podrobnostiButtonActionPerformed
 
@@ -200,20 +225,21 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpravitPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpravitKultPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpravitPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpravitKultPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpravitPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpravitKultPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpravitPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpravitKultPodujatieForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                UpravitPodujatieForm dialog = new UpravitPodujatieForm(new javax.swing.JFrame(), true);
+                UpravitKultPodujatieForm dialog = new UpravitKultPodujatieForm(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -229,7 +255,6 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
     private org.jdesktop.swingx.JXDatePicker DatumDatePicker;
     private javax.swing.JLabel DatumLabelä;
     private javax.swing.JLabel KrajinaLabel;
-    private javax.swing.JTextField KrajinaTextField;
     private javax.swing.JLabel MestoLabel;
     private javax.swing.JTextField MestoTextField;
     private javax.swing.JCheckBox NavstiveneCheckBox;
@@ -238,6 +263,7 @@ public class UpravitPodujatieForm extends javax.swing.JDialog {
     private javax.swing.JLabel TypLabel;
     private javax.swing.JTextField TypTextField;
     private javax.swing.JButton UpravitButton;
+    private javax.swing.JComboBox krajinaComboBox;
     private javax.swing.JLabel nazovLabel;
     private javax.swing.JButton podrobnostiButton;
     // End of variables declaration//GEN-END:variables

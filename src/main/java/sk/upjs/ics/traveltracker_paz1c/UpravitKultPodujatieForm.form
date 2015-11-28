@@ -39,9 +39,9 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="KrajinaTextField" pref="123" max="32767" attributes="0"/>
-                                          <Component id="MestoTextField" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="MestoTextField" pref="123" max="32767" attributes="0"/>
+                                          <Component id="krajinaComboBox" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -80,9 +80,9 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="KrajinaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="KrajinaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DatumLabelä" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DatumDatePicker" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="krajinaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -150,7 +150,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="NavstiveneCheckBox">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Navstivene"/>
+        <Property name="text" type="java.lang.String" value="Nav&#x161;t&#xed;ven&#xe9;"/>
       </Properties>
     </Component>
     <Component class="org.jdesktop.swingx.JXDatePicker" name="DatumDatePicker">
@@ -161,15 +161,20 @@
     </Component>
     <Component class="javax.swing.JTextField" name="TypTextField">
     </Component>
-    <Component class="javax.swing.JTextField" name="KrajinaTextField">
-    </Component>
     <Component class="javax.swing.JButton" name="podrobnostiButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Podrobnosti"/>
+        <Property name="text" type="java.lang.String" value="Podrobnosti..."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="podrobnostiButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="krajinaComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
