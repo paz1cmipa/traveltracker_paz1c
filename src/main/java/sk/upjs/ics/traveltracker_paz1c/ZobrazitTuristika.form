@@ -23,24 +23,91 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
-              <Component id="okButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="upravitButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="109" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="KrajinaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="CielLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="DatumLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="TypLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ZobrazKrajinalabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazCielLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazDatumLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazTypLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="PrejdeneCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="okButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="upravitButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="PoznámkyLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="ZobrazPoznámkylabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="HodnotenieLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="ZobrazHodnotenieLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="TrasaLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="ZobrazTrasaLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="251" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="KrajinaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazKrajinalabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TrasaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazTrasaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="CielLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazCielLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="HodnotenieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazHodnotenieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DatumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazDatumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="PoznámkyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazPoznámkylabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="TypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazTypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="PrejdeneCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="okButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="upravitButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,6 +128,81 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="upravitButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="KrajinaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Krajina:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazKrajinalabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="CielLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cie&#x13e;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazCielLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DatumLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="D&#xe1;tum:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazDatumLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TypLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Typ:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazTypLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TrasaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Trasa:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazTrasaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="HodnotenieLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hodnotenie:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazHodnotenieLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="PrejdeneCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prejden&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Pozn&#xe1;mkyLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pozn&#xe1;mky"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazPozn&#xe1;mkylabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

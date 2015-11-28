@@ -1,6 +1,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -103,7 +104,25 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
 
     @Override
     public List<Pamiatka> Hladat(String s) {
-       return null; 
+      List<Pamiatka> vysledok= new ArrayList<>();
+      List<Pamiatka> zaznam= dajVsetky();
+      for(Pamiatka pamiatka: zaznam){
+       if(pamiatka.getKrajina().equals(s)){
+           vysledok.add(pamiatka);
+           continue;
+        }
+       if(pamiatka.getMesto().equals(s)){
+           vysledok.add(pamiatka);
+           continue;
+        }
+       if(pamiatka.getPamiatka().equals(s)){
+             vysledok.add(pamiatka);
+             continue;
+        }
+       
+     
+       }
+      return vysledok;
     }
 
     @Override

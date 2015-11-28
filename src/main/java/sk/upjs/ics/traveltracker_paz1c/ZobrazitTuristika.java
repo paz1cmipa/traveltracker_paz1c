@@ -9,6 +9,34 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
     public ZobrazitTuristika() {
         initComponents();
     }
+     public ZobrazitTuristika(Turistika tura) {
+        initComponents();
+        this.tura=tura;
+        if(this.tura.getKrajina()!=null){
+         ZobrazKrajinalabel.setText(this.tura.getKrajina());
+       }
+        if(this.tura.getCiel()!=null){
+         ZobrazCielLabel.setText(this.tura.getCiel());
+        }
+        if(this.tura.getTyp()!=null){
+            ZobrazTypLabel.setText(this.tura.getTyp());
+        }
+        if(this.tura.getTrasa()!=null){
+          ZobrazTrasaLabel.setText(this.tura.getTrasa());
+         }
+        if(this.tura.getPoznamky()!=null){
+         ZobrazPoznámkylabel.setText(this.tura.getPoznamky());
+        
+        }
+        if(this.tura.getDatum()!=null){
+         ZobrazDatumLabel.setText(this.tura.getDatum().toString());
+        }
+        ZobrazHodnotenieLabel.setText(Integer.toString(this.tura.getHodnotenie()));
+        
+        if(this.tura.isPrejdene()){
+         PrejdeneCheckBox.isSelected();
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -21,6 +49,21 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
 
         okButton = new javax.swing.JButton();
         upravitButton = new javax.swing.JButton();
+        KrajinaLabel = new javax.swing.JLabel();
+        ZobrazKrajinalabel = new javax.swing.JLabel();
+        CielLabel = new javax.swing.JLabel();
+        ZobrazCielLabel = new javax.swing.JLabel();
+        DatumLabel = new javax.swing.JLabel();
+        ZobrazDatumLabel = new javax.swing.JLabel();
+        TypLabel = new javax.swing.JLabel();
+        ZobrazTypLabel = new javax.swing.JLabel();
+        TrasaLabel = new javax.swing.JLabel();
+        ZobrazTrasaLabel = new javax.swing.JLabel();
+        HodnotenieLabel = new javax.swing.JLabel();
+        ZobrazHodnotenieLabel = new javax.swing.JLabel();
+        PrejdeneCheckBox = new javax.swing.JCheckBox();
+        PoznámkyLabel = new javax.swing.JLabel();
+        ZobrazPoznámkylabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,25 +81,108 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
             }
         });
 
+        KrajinaLabel.setText("Krajina:");
+
+        ZobrazKrajinalabel.setText("nepoznačené");
+
+        CielLabel.setText("Cieľ:");
+
+        ZobrazCielLabel.setText("nepoznačené");
+
+        DatumLabel.setText("Dátum:");
+
+        ZobrazDatumLabel.setText("nepoznačené");
+
+        TypLabel.setText("Typ:");
+
+        ZobrazTypLabel.setText("nepoznačené");
+
+        TrasaLabel.setText("Trasa:");
+
+        ZobrazTrasaLabel.setText("nepoznačené");
+
+        HodnotenieLabel.setText("Hodnotenie:");
+
+        ZobrazHodnotenieLabel.setText("nepoznačené");
+
+        PrejdeneCheckBox.setText("Prejdené");
+
+        PoznámkyLabel.setText("Poznámky");
+
+        ZobrazPoznámkylabel.setText("nepoznačené");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(okButton)
-                .addGap(33, 33, 33)
-                .addComponent(upravitButton)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(KrajinaLabel)
+                            .addComponent(CielLabel)
+                            .addComponent(DatumLabel)
+                            .addComponent(TypLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ZobrazKrajinalabel)
+                            .addComponent(ZobrazCielLabel)
+                            .addComponent(ZobrazDatumLabel)
+                            .addComponent(ZobrazTypLabel)))
+                    .addComponent(PrejdeneCheckBox))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(okButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(upravitButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PoznámkyLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(ZobrazPoznámkylabel))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(HodnotenieLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ZobrazHodnotenieLabel))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(TrasaLabel)
+                            .addGap(35, 35, 35)
+                            .addComponent(ZobrazTrasaLabel))))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(251, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(KrajinaLabel)
+                    .addComponent(ZobrazKrajinalabel)
+                    .addComponent(TrasaLabel)
+                    .addComponent(ZobrazTrasaLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CielLabel)
+                    .addComponent(ZobrazCielLabel)
+                    .addComponent(HodnotenieLabel)
+                    .addComponent(ZobrazHodnotenieLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DatumLabel)
+                    .addComponent(ZobrazDatumLabel)
+                    .addComponent(PoznámkyLabel)
+                    .addComponent(ZobrazPoznámkylabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TypLabel)
+                    .addComponent(ZobrazTypLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PrejdeneCheckBox)
                     .addComponent(okButton)
                     .addComponent(upravitButton))
-                .addGap(26, 26, 26))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,6 +233,21 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CielLabel;
+    private javax.swing.JLabel DatumLabel;
+    private javax.swing.JLabel HodnotenieLabel;
+    private javax.swing.JLabel KrajinaLabel;
+    private javax.swing.JLabel PoznámkyLabel;
+    private javax.swing.JCheckBox PrejdeneCheckBox;
+    private javax.swing.JLabel TrasaLabel;
+    private javax.swing.JLabel TypLabel;
+    private javax.swing.JLabel ZobrazCielLabel;
+    private javax.swing.JLabel ZobrazDatumLabel;
+    private javax.swing.JLabel ZobrazHodnotenieLabel;
+    private javax.swing.JLabel ZobrazKrajinalabel;
+    private javax.swing.JLabel ZobrazPoznámkylabel;
+    private javax.swing.JLabel ZobrazTrasaLabel;
+    private javax.swing.JLabel ZobrazTypLabel;
     private javax.swing.JButton okButton;
     private javax.swing.JButton upravitButton;
     // End of variables declaration//GEN-END:variables

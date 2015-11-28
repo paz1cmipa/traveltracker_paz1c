@@ -1,6 +1,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -127,7 +128,33 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
 
     @Override
     public List<ViacdnovyVylet> Hladat(String s) {
-        return null;
+        List<ViacdnovyVylet> vysledok= new ArrayList<>();
+        List<ViacdnovyVylet> zaznam= dajVsetky();
+        for(ViacdnovyVylet vylet:zaznam){
+          if(vylet.getKrajina().equals(s)){
+             vysledok.add(vylet);
+             continue;
+          
+          }
+          if(vylet.getMesto().equals(s)){
+             vysledok.add(vylet);
+             continue;
+           }
+          
+           if(vylet.getTyp().equals(s)){
+             vysledok.add(vylet);
+             continue;
+           }
+           
+            if(vylet.getUbytovanie().equals(s)){
+             vysledok.add(vylet);
+             continue;
+           }
+        
+        
+        }
+        
+        return vysledok;
     }
     
 }

@@ -1,7 +1,9 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -126,7 +128,30 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
 
     @Override
     public List<KulturnePodujatie> Hladat(String s) {
-        return null;
+        List<KulturnePodujatie> vysledok=new ArrayList<>();
+        List<KulturnePodujatie> zaznam= dajVsetky();
+        for (KulturnePodujatie podujatie : zaznam) {
+            if(podujatie.getKrajina().equals(s)){
+              vysledok.add(podujatie);
+              continue;
+              }
+            if(podujatie.getMesto().equals(s)){
+              vysledok.add(podujatie);
+              continue;
+              }
+            if(podujatie.getNazov().equals(s)){
+                 vysledok.add(podujatie);
+                 continue;
+              }
+            if(podujatie.getTyp().equals(s)){
+                vysledok.add(podujatie);
+                continue;
+              }
+            
+            
+        }
+        
+        return vysledok;
     }
 
     @Override

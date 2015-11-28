@@ -9,6 +9,34 @@ public class ZobrazitPamiatkaForm extends javax.swing.JFrame {
     public ZobrazitPamiatkaForm() {
         initComponents();
     }
+     public ZobrazitPamiatkaForm(Pamiatka pamiatka) {
+        initComponents();  
+        this.pamiatka=pamiatka;
+        if(this.pamiatka.getKrajina()!=null){
+         ZobrazKrajinaLabel.setText(this.pamiatka.getKrajina());
+       }
+        if(this.pamiatka.getMesto()!=null){
+         ZobrazMestoLabel.setText(this.pamiatka.getMesto());
+        }
+        if(this.pamiatka.getPamiatka()!=null){
+            ZobrazPamiatkaLabel.setText(this.pamiatka.getPamiatka());
+        }
+        if(this.pamiatka.getOtvaracieHodiny()!=null){
+          ZobrazHodinyLabel.setText(this.pamiatka.getOtvaracieHodiny());
+         }
+        if(this.pamiatka.getPodrobnosti()!=null){
+         ZobrazPoznámkyLabel.setText(this.pamiatka.getPodrobnosti());
+        
+        }
+        if(this.pamiatka.getDatum()!=null){
+         ZobrazDatumlabel.setText(this.pamiatka.getDatum().toString());
+        }
+        ZobrazHodnotenieLabel.setText(Integer.toString(this.pamiatka.getHodnotenie()));
+        ZobrazVstupneLabel.setText(Integer.toString(this.pamiatka.getVstupne()));
+        if(this.pamiatka.isNavstivene()){
+         NavštívenéCheckBox.isSelected();
+        }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -21,6 +49,23 @@ public class ZobrazitPamiatkaForm extends javax.swing.JFrame {
 
         okButton = new javax.swing.JButton();
         upravitButton = new javax.swing.JButton();
+        MestoLabel = new javax.swing.JLabel();
+        ZobrazMestoLabel = new javax.swing.JLabel();
+        KrajinaLabel = new javax.swing.JLabel();
+        ZobrazKrajinaLabel = new javax.swing.JLabel();
+        pamiatkaLabel = new javax.swing.JLabel();
+        ZobrazPamiatkaLabel = new javax.swing.JLabel();
+        datumLabel = new javax.swing.JLabel();
+        ZobrazDatumlabel = new javax.swing.JLabel();
+        hodinyLabel = new javax.swing.JLabel();
+        ZobrazHodinyLabel = new javax.swing.JLabel();
+        VstupneLabel = new javax.swing.JLabel();
+        ZobrazVstupneLabel = new javax.swing.JLabel();
+        HodnotenieLabel = new javax.swing.JLabel();
+        ZobrazHodnotenieLabel = new javax.swing.JLabel();
+        PoznámkyiLabel = new javax.swing.JLabel();
+        ZobrazPoznámkyLabel = new javax.swing.JLabel();
+        NavštívenéCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,25 +83,133 @@ public class ZobrazitPamiatkaForm extends javax.swing.JFrame {
             }
         });
 
+        MestoLabel.setText("Mesto:");
+
+        ZobrazMestoLabel.setText("nepoznačené");
+
+        KrajinaLabel.setText("Krajina:");
+
+        ZobrazKrajinaLabel.setText("nepoznačené");
+
+        pamiatkaLabel.setText("Pamiatka:");
+
+        ZobrazPamiatkaLabel.setText("nepoznačené");
+
+        datumLabel.setText("Dátum:");
+
+        ZobrazDatumlabel.setText("nepoznačené");
+
+        hodinyLabel.setText("Otváracie hodiny:");
+
+        ZobrazHodinyLabel.setText("nepoznačené");
+
+        VstupneLabel.setText("Vstupné:");
+
+        ZobrazVstupneLabel.setText("nepoznačené");
+
+        HodnotenieLabel.setText("Hodnotenie:");
+
+        ZobrazHodnotenieLabel.setText("nepoznačené");
+
+        PoznámkyiLabel.setText("Poznámky:");
+
+        ZobrazPoznámkyLabel.setText("nepoznačené");
+
+        NavštívenéCheckBox.setText("Navštívené");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(okButton)
-                .addGap(27, 27, 27)
-                .addComponent(upravitButton)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pamiatkaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                .addGap(70, 70, 70))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(KrajinaLabel)
+                                    .addComponent(MestoLabel))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ZobrazPamiatkaLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(datumLabel)
+                                .addGap(41, 41, 41)
+                                .addComponent(ZobrazDatumlabel))
+                            .addComponent(ZobrazMestoLabel)
+                            .addComponent(ZobrazKrajinaLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PoznámkyiLabel)
+                        .addGap(52, 52, 52)
+                        .addComponent(ZobrazPoznámkyLabel))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(HodnotenieLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ZobrazHodnotenieLabel))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(hodinyLabel)
+                                .addComponent(VstupneLabel))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(ZobrazHodinyLabel)
+                                .addComponent(ZobrazVstupneLabel)))))
+                .addGap(33, 33, 33))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(NavštívenéCheckBox))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(okButton)
+                        .addGap(26, 26, 26)
+                        .addComponent(upravitButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(255, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(KrajinaLabel)
+                    .addComponent(ZobrazKrajinaLabel)
+                    .addComponent(hodinyLabel)
+                    .addComponent(ZobrazHodinyLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ZobrazMestoLabel)
+                    .addComponent(MestoLabel)
+                    .addComponent(VstupneLabel)
+                    .addComponent(ZobrazVstupneLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ZobrazPamiatkaLabel)
+                    .addComponent(HodnotenieLabel)
+                    .addComponent(ZobrazHodnotenieLabel)
+                    .addComponent(pamiatkaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datumLabel)
+                    .addComponent(ZobrazDatumlabel)
+                    .addComponent(PoznámkyiLabel)
+                    .addComponent(ZobrazPoznámkyLabel))
+                .addGap(29, 29, 29)
+                .addComponent(NavštívenéCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(okButton)
                     .addComponent(upravitButton))
-                .addGap(22, 22, 22))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,7 +260,24 @@ public class ZobrazitPamiatkaForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel HodnotenieLabel;
+    private javax.swing.JLabel KrajinaLabel;
+    private javax.swing.JLabel MestoLabel;
+    private javax.swing.JCheckBox NavštívenéCheckBox;
+    private javax.swing.JLabel PoznámkyiLabel;
+    private javax.swing.JLabel VstupneLabel;
+    private javax.swing.JLabel ZobrazDatumlabel;
+    private javax.swing.JLabel ZobrazHodinyLabel;
+    private javax.swing.JLabel ZobrazHodnotenieLabel;
+    private javax.swing.JLabel ZobrazKrajinaLabel;
+    private javax.swing.JLabel ZobrazMestoLabel;
+    private javax.swing.JLabel ZobrazPamiatkaLabel;
+    private javax.swing.JLabel ZobrazPoznámkyLabel;
+    private javax.swing.JLabel ZobrazVstupneLabel;
+    private javax.swing.JLabel datumLabel;
+    private javax.swing.JLabel hodinyLabel;
     private javax.swing.JButton okButton;
+    private javax.swing.JLabel pamiatkaLabel;
     private javax.swing.JButton upravitButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,24 +23,107 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-              <Component id="okButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="upravitButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="139" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="UbytovanieLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="Krajinalabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="MestoLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="DatumodLabel" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="doLabel" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ZobrazKrajinaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazMestolabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazOdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazDolabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazUbytovnieLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                      <Component id="okButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="upravitButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="PoznámkzLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ProgramLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TypLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="Hodnotenielabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ZobrazTypLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazProgramLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazPoznamkyLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazHodnotenieLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="NavstiveneCheckBox" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="246" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Krajinalabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazKrajinaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Hodnotenielabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazHodnotenieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="MestoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazMestolabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="PoznámkzLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazPoznamkyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DatumodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazOdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ProgramLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazProgramLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="doLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazDolabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazTypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="UbytovanieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ZobrazUbytovnieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="NavstiveneCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="okButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="upravitButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,6 +143,104 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="upravitButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Krajinalabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Krajina:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazKrajinaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="MestoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mesto:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazMestolabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DatumodLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" Od:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazOdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="doLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Do:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazDolabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="UbytovanieLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ubytovanie:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazUbytovnieLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Hodnotenielabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hodnotenie:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazHodnotenieLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Pozn&#xe1;mkzLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pozn&#xe1;mky:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazPoznamkyLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ProgramLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Program:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazProgramLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TypLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Typ:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazTypLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="NavstiveneCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nav&#x161;t&#xed;ven&#xe9;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NavstiveneCheckBoxActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -1,6 +1,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -73,7 +74,34 @@ public class MySqlTuristikaDao implements TuristikaDao{
 
     @Override
     public List<Turistika> Hladat(String s) {
-        return null;
+         List<Turistika> vysledok= new ArrayList<>();
+         List<Turistika> zaznam= dajVsetky();
+         for(Turistika tura: zaznam){
+             
+         if(tura.getKrajina().equals(s)){
+            vysledok.add(tura);
+            continue;
+         }
+         
+         if(tura.getTrasa().equals(s)){
+            vysledok.add(tura);
+            continue;
+         }
+         
+         if(tura.getCiel().equals(s)){
+            vysledok.add(tura);
+            continue;
+         }
+         
+         if(tura.getTyp().equals(s)){
+            vysledok.add(tura);
+            continue;         
+         }
+         
+         
+         }
+         
+         return vysledok;
     }
     
 }
