@@ -12,12 +12,12 @@ public class UpravitKultPodujatieForm extends javax.swing.JDialog {
     KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
 
     
-    public UpravitKultPodujatieForm(java.awt.Frame parent, boolean modal) {
+    public UpravitKultPodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
          setLocationRelativeTo(null);
     }
-  public UpravitKultPodujatieForm(java.awt.Frame parent, boolean modal,KulturnePodujatie podujatie) {
+  public UpravitKultPodujatieForm(javax.swing.JDialog parent, boolean modal,KulturnePodujatie podujatie) {
         super(parent, modal);
         initComponents();
          setLocationRelativeTo(null);
@@ -239,7 +239,7 @@ public class UpravitKultPodujatieForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                UpravitKultPodujatieForm dialog = new UpravitKultPodujatieForm(new javax.swing.JFrame(), true);
+                UpravitKultPodujatieForm dialog = new UpravitKultPodujatieForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -11,12 +11,12 @@ import java.util.List;
  *
  * @author Robert Link
  */
-public class dajVsetkyTuryForm extends javax.swing.JFrame{
+public class dajVsetkyTuryForm extends javax.swing.JDialog{
   private MySqlTuristikaDao turaDao=new MySqlTuristikaDao();
     private List<Turistika> Tury = turaDao.dajVsetky();
     TuraModel model=new TuraModel();
-    public dajVsetkyTuryForm() {
-  
+    public dajVsetkyTuryForm(javax.swing.JDialog parent, boolean modal) {
+        super (parent, modal);
         initComponents();
            dajVsetkyTable.setModel(model);
         int i = 0;
@@ -40,6 +40,7 @@ public class dajVsetkyTuryForm extends javax.swing.JFrame{
 
         jScrollPane1 = new javax.swing.JScrollPane();
         dajVsetkyTable = new javax.swing.JTable();
+        okButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,20 +62,31 @@ public class dajVsetkyTuryForm extends javax.swing.JFrame{
         });
         jScrollPane1.setViewportView(dajVsetkyTable);
 
+        okButton.setText("OK");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(okButton)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(okButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -89,6 +101,10 @@ public class dajVsetkyTuryForm extends javax.swing.JFrame{
          zobraz.setVisible(true);
         }
     }//GEN-LAST:event_dajVsetkyTableMouseClicked
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_okButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,7 +137,7 @@ public class dajVsetkyTuryForm extends javax.swing.JFrame{
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dajVsetkyTuryForm dialog = new dajVsetkyTuryForm();
+                dajVsetkyTuryForm dialog = new dajVsetkyTuryForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -136,5 +152,6 @@ public class dajVsetkyTuryForm extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable dajVsetkyTable;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

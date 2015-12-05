@@ -80,7 +80,7 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
 
     private void pridatComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatComboBoxActionPerformed
         String vyber = (String) pridatComboBox.getSelectedItem();
-        KulturnePodujatieForm sekundaryMainForm = new KulturnePodujatieForm((this), true, vyber);
+       // KulturnePodujatieForm sekundaryMainForm = new KulturnePodujatieForm((this), true, vyber);
         if ("Kultúrne podujatia".equals(vyber)){
             KulturnePodujatieForm kulturnePodujatie = new KulturnePodujatieForm(this, true);
             kulturnePodujatie.setVisible(true);

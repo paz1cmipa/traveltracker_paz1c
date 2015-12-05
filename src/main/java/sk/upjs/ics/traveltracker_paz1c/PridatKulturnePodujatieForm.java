@@ -10,7 +10,7 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
     KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
     KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
    
-    public PridatKulturnePodujatieForm(java.awt.Frame parent, boolean modal) {
+    public PridatKulturnePodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -225,7 +225,7 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PridatKulturnePodujatieForm dialog = new PridatKulturnePodujatieForm(new javax.swing.JFrame(), true);
+                PridatKulturnePodujatieForm dialog = new PridatKulturnePodujatieForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
