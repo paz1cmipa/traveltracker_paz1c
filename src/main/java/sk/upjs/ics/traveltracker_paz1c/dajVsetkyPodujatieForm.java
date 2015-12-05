@@ -58,6 +58,11 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        dajVsetkyTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dajVsetkyTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(dajVsetkyTable);
 
         okButton.setText("OK");
@@ -89,7 +94,7 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dajVsetkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dajVsetkyTableMouseClicked
-      if(evt.getClickCount() == 2){
+             if(evt.getClickCount() == 2){
         int row=dajVsetkyTable.getSelectedRow();
       
        KulturnePodujatie kulturnePodujatie=model.getPodujatie(row);
@@ -97,7 +102,9 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
        zobraz.setVisible(true);
         
     }
-    }
+    }//GEN-LAST:event_dajVsetkyTableMouseClicked
+
+ 
     
     /**
      * @param args the command line arguments
