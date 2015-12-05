@@ -25,25 +25,19 @@ public class ZobrazitPodujatieForm extends javax.swing.JFrame {
         ZobrazenyNazovLabel.setText(kulturnePodujatie.getNazov());
         }
         
-        if(kulturnePodujatie.getDatum().toString()!=null){
+        if(kulturnePodujatie.getDatum() !=null){
         ZobrazenyDatumLabel.setText(kulturnePodujatie.getDatum().toString());
         }
-        
-        if(Integer.toString(kulturnePodujatie.getHodnotenie())!=null){
+
         ZobrazeneHodnotenieLabel.setText(Integer.toString(kulturnePodujatie.getHodnotenie()));
-        }
-        
+
         if(kulturnePodujatie.getLokalizacia()!=null){
         ZobrazeneMiestoLabel.setText(kulturnePodujatie.getLokalizacia());
         }
-        
-        
-        if(Integer.toString(kulturnePodujatie.getVstupne())!=null){
+
         ZobrazeneVstupneLabel.setText(Integer.toString(kulturnePodujatie.getVstupne()));
-        }
-        
-        
-        if(kulturnePodujatie.getCasZaciatku().toString()!=null){
+
+        if(kulturnePodujatie.getCasZaciatku() !=null){
         ZobrazenyCasLabel.setText(kulturnePodujatie.getCasZaciatku().toString());
         }
         
@@ -55,7 +49,9 @@ public class ZobrazitPodujatieForm extends javax.swing.JFrame {
         if(kulturnePodujatie.getPoznamky()!=null){
         ZobrazenePoznamkyLabel.setText(kulturnePodujatie.getPoznamky());
         }
-        NavstiveneCheckBox.setSelected(kulturnePodujatie.isNavstivene());
+        if(kulturnePodujatie.isNavstivene()){
+        NavstiveneCheckBox.setSelected(true);
+        }
         
      }
 
