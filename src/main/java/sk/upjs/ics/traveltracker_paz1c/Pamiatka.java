@@ -10,7 +10,7 @@ public class Pamiatka {
     private String pamiatka;
     private Date datum;
     private String otvaracieHodiny;
-    private int vstupne;
+    private double vstupne;
     private String podrobnosti;
     private int hodnotenie;
     private boolean navstivene;
@@ -79,11 +79,11 @@ public class Pamiatka {
         this.otvaracieHodiny = otvaracieHodiny;
     }
 
-    public int getVstupne() {
+    public double getVstupne() {
         return vstupne;
     }
 
-    public void setVstupne(int vstupne) {
+    public void setVstupne(double vstupne) {
         this.vstupne = vstupne;
     }
     

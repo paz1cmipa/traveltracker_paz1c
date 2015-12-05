@@ -1,8 +1,10 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
@@ -154,21 +156,52 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
        if(!boliPodrobnost){
+        if(nazovTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie názvu je povinné");
+           return;
+          }
+     
+        if(mestoTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
+           return;
+           }
+     
+         if(datumDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
+            return;
+           }
+         
+         
        kulturnePodujatie.setNazov(nazovTextField.getText());
        kulturnePodujatie.setKrajina((String) krajinaComboBox.getSelectedItem());
        kulturnePodujatie.setMesto(mestoTextField.getText());
        kulturnePodujatie.setDatum(datumDatePicker.getDate());
        kulturnePodujatie.setTyp(typTextField.getText());
        kulturnePodujatie.setNavstivene(navstiveneCheckBox.isSelected());
-       
+ 
        kulturnePodujatieDao.pridat(kulturnePodujatie);
+       
        }
        boliPodrobnost=false;
        this.setVisible(false);
+      
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void podrobnostiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podrobnostiButtonActionPerformed
-
+        if(nazovTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie názvu je povinné");
+           return;
+          }
+     
+        if(mestoTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
+           return;
+           }
+     
+         if(datumDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
+            return;
+           }
        kulturnePodujatie.setNazov(nazovTextField.getText());
        kulturnePodujatie.setKrajina((String) krajinaComboBox.getSelectedItem());
        kulturnePodujatie.setMesto(mestoTextField.getText());
@@ -176,10 +209,14 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
        kulturnePodujatie.setTyp(typTextField.getText());
        kulturnePodujatie.setNavstivene(navstiveneCheckBox.isSelected());
        boliPodrobnost=true;
+     
         PridatPodrobnostiKultPodForm pridatPodrobnosti = new PridatPodrobnostiKultPodForm(this, true,kulturnePodujatie);
         pridatPodrobnosti.setVisible(true);
+   
     }//GEN-LAST:event_podrobnostiButtonActionPerformed
 
+  
+    
        public List<String> dajVsetkyKrajiny()
        {
         String[] lokaly = Locale.getISOCountries();

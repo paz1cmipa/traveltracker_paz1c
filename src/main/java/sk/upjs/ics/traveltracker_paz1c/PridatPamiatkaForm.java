@@ -3,6 +3,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatPamiatkaForm extends javax.swing.JDialog {
@@ -178,6 +179,20 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
        if(!boliPOdrobnosti){
+         if(pamiatkaTextField.getText().trim().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Zadanie pamiatky je povinné");
+             return;
+         }
+         
+         if(mestoTextField.getText().trim().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
+             return;
+         }
+            
+         if(datumDatePicker.getDate()== null){
+             JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
+             return;
+         }
        pamiatka.setPamiatka(pamiatkaTextField.getText());
        pamiatka.setKrajina((String) krajinaComboBox.getSelectedItem());
        pamiatka.setMesto(mestoTextField.getText());
@@ -190,6 +205,22 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void podrobnostiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podrobnostiButtonActionPerformed
+      
+         if(pamiatkaTextField.getText().trim().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Zadanie pamiatky je povinné");
+             return;
+         }
+         
+         if(mestoTextField.getText().trim().isEmpty()){
+             JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
+             return;
+         }
+            
+         if(datumDatePicker.getDate()== null){
+             JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
+             return;
+         } 
+        
        pamiatka.setPamiatka(pamiatkaTextField.getText());
        pamiatka.setKrajina((String) krajinaComboBox.getSelectedItem());
        pamiatka.setMesto(mestoTextField.getText());

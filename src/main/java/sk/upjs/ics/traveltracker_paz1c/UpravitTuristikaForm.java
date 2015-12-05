@@ -4,6 +4,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 
@@ -106,6 +107,11 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
         prejdeneCheckBox.setText("Prejdené");
 
         upravitButton.setText("Upraviť");
+        upravitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upravitButtonActionPerformed(evt);
+            }
+        });
 
         stornoButton.setText("Storno");
         stornoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -207,6 +213,31 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
     private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
         setVisible(false);
     }//GEN-LAST:event_stornoButtonActionPerformed
+
+    private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
+          if(cielTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie ciela je povinné");
+           return;
+          }
+     
+     
+         if(datumDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
+            return;
+           }
+                 
+       turistika.setCiel(cielTextField.getText());
+       turistika.setKrajina((String)krajinaComboBox.getSelectedItem());
+       turistika.setTrasa(trasaTextField.getText());
+       turistika.setDatum(datumDatePicker.getDate());
+       turistika.setPrejdene(prejdeneCheckBox.isSelected());
+       turistika.setPoznamky(poznamkyTextField.getText());
+       turistika.setTyp((String)typComboBox.getSelectedItem());
+       turistika.setHodnotenie((int)hodnotenieComboBox.getSelectedItem());
+       
+       turistikaDao.Upravit(turistika);
+       setVisible(false);
+    }//GEN-LAST:event_upravitButtonActionPerformed
 
     /**
      * @param args the command line arguments

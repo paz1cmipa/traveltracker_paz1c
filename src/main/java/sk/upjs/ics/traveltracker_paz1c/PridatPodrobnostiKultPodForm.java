@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
@@ -64,6 +65,7 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
         poznamkyTextField = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
         stornoButton = new javax.swing.JButton();
+        formatCasLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,6 +96,8 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
                 stornoButtonActionPerformed(evt);
             }
         });
+
+        formatCasLabel.setText("(hh:mm:ss)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +136,8 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(navstiveneCheckBox)
                             .addComponent(stornoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(formatCasLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -143,7 +149,8 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
                     .addComponent(vstupneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eurLabel)
                     .addComponent(zacinaLabel)
-                    .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formatCasLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(miestoLabel)
@@ -176,18 +183,22 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-
-        kulturnePodujatie.setVstupne(Integer.parseInt(vstupneTextField.getText()));
+       if(vstupneTextField.getText().isEmpty()){
+            kulturnePodujatie.setVstupne(0.0);
+         } else {
+            kulturnePodujatie.setVstupne(Double.valueOf(vstupneTextField.getText()));
+        }
         //long cas = Long.parseLong(zacinaTextField.getText());
        // Time zaciatok = null;
        // zaciatok.setTime(cas);
        // 
        // String str = "08:03:10 pm";
-        DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+       DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
        Date date = null;
          try {
              date=formatter.parse(zacinaTextField.getText());
          } catch (ParseException ex) {
+             //JOptionPane.showMessageDialog(this, "Čas zadajte vo formate hh:mm:ss.");
              Logger.getLogger(PridatPodrobnostiKultPodForm.class.getName()).log(Level.SEVERE, null, ex);
          }
         Time cas= new Time(date.getTime());
@@ -195,7 +206,9 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
         kulturnePodujatie.setLokalizacia(miestoTextField.getText());
         kulturnePodujatie.setPoznamky(poznamkyTextField.getText());
         kulturnePodujatie.setNavstivene(navstiveneCheckBox.isSelected());
-        kulturnePodujatie.setHodnotenie((int) hodnotenieComboBox.getSelectedItem());
+       
+        kulturnePodujatie.setHodnotenie((int)hodnotenieComboBox.getSelectedItem());
+        
         
         kulturnePodujatieDao.pridat(kulturnePodujatie);
         setVisible(false);
@@ -246,6 +259,7 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel eurLabel;
+    private javax.swing.JLabel formatCasLabel;
     private javax.swing.JComboBox hodnotenieComboBox;
     private javax.swing.JLabel hodnotenieLabel;
     private javax.swing.JLabel miestoLabel;

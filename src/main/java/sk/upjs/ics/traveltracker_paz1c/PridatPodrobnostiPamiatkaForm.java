@@ -147,8 +147,11 @@ public class PridatPodrobnostiPamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-
-        pamiatka.setVstupne(Integer.parseInt(vstupneTextField.getText()));
+        if(vstupneTextField.getText().isEmpty()){        
+         pamiatka.setVstupne(0.0);
+          } else {
+        pamiatka.setVstupne(Double.parseDouble(vstupneTextField.getText()));
+         }
         pamiatka.setOtvaracieHodiny(otvaracieHodinyTextField.getText());
         pamiatka.setPodrobnosti(poznamkyTextField.getText());
         pamiatka.setHodnotenie((int)hodnotenieComboBox.getSelectedItem());

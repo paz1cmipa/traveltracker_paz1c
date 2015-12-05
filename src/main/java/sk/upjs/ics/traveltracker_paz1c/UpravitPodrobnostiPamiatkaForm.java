@@ -24,7 +24,7 @@ public class UpravitPodrobnostiPamiatkaForm extends javax.swing.JDialog {
             hodnotenieComboBox.addItem(i);
         }
         
-        vstupneTextField.setText(Integer.toString(pamiatka.getVstupne()));
+        vstupneTextField.setText(Double.toString(pamiatka.getVstupne()));
         otvaracieHodinyTextField.setText(pamiatka.getOtvaracieHodiny());
         poznamkyTextField.setText(pamiatka.getOtvaracieHodiny());
         hodnotenieComboBox.setSelectedItem(pamiatka.getHodnotenie());
@@ -158,7 +158,11 @@ public class UpravitPodrobnostiPamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-       pamiatka.setVstupne(Integer.parseInt(vstupneTextField.getText()));
+       if(vstupneTextField.getText().isEmpty()){        
+         pamiatka.setVstupne(0.0);
+          } else {
+        pamiatka.setVstupne(Double.parseDouble(vstupneTextField.getText()));
+         }
        pamiatka.setOtvaracieHodiny(otvaracieHodinyTextField.getText());
        pamiatka.setPodrobnosti(poznamkyTextField.getText());
        pamiatka.setNavstivene(navstiveneCheckBox.isSelected());

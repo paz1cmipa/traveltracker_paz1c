@@ -3,6 +3,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatTuristikaForm extends javax.swing.JDialog {
@@ -192,6 +193,18 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         Turistika tura = new Turistika();
+        
+        if(cielTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie ciela je povinné");
+           return;
+          }
+     
+     
+         if(datumDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
+            return;
+           }
+         
         tura.setCiel(cielTextField.getText());
         tura.setKrajina((String)krajinaComboBox.getSelectedItem());
         tura.setDatum(datumDatePicker.getDate());
