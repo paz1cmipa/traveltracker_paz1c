@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sk.upjs.ics.traveltracker_paz1c;
 
-/**
- *
- * @author Robert Link
- */
+
 public class ZobrazitPodujatieForm extends javax.swing.JFrame {
 
     KulturnePodujatie kulturnePodujatie= new KulturnePodujatie();
