@@ -9,7 +9,7 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
      ViacdnovyVylet vylet = new ViacdnovyVylet();
     ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
     private boolean boliPodrobnosti=false;
-    public PridatViacdnovyVyletForm(java.awt.Frame parent, boolean modal) {
+    public PridatViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -249,7 +249,7 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PridatViacdnovyVyletForm dialog = new PridatViacdnovyVyletForm(new javax.swing.JFrame(), true);
+                PridatViacdnovyVyletForm dialog = new PridatViacdnovyVyletForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

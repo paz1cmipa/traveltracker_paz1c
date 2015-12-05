@@ -13,12 +13,12 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
     TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
 
     
-    public UpravitTuristikaForm(java.awt.Frame parent, boolean modal) {
+    public UpravitTuristikaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    UpravitTuristikaForm(ZobrazitTuristika parent, boolean modal, Turistika tura) {
+    UpravitTuristikaForm(javax.swing.JDialog parent, boolean modal, Turistika tura) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -238,7 +238,7 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                UpravitTuristikaForm dialog = new UpravitTuristikaForm(new javax.swing.JFrame(), true);
+                UpravitTuristikaForm dialog = new UpravitTuristikaForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

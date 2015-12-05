@@ -6,12 +6,12 @@ public class UpravitPodrobnostiViacVyletForm extends javax.swing.JDialog {
     ViacdnovyVylet viacdnovyVylet = new ViacdnovyVylet ();
     ViacdnovyVyletDao viacdnovyVyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
    
-    public UpravitPodrobnostiViacVyletForm(java.awt.Frame parent, boolean modal) {
+    public UpravitPodrobnostiViacVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    UpravitPodrobnostiViacVyletForm(UpravitViacdnovyVyeltForm parent, boolean modal, ViacdnovyVylet vylet) {
+    UpravitPodrobnostiViacVyletForm(javax.swing.JDialog parent, boolean modal, ViacdnovyVylet vylet) {
       super(parent, modal);
       initComponents(); 
       viacdnovyVylet = vylet;
@@ -179,7 +179,7 @@ public class UpravitPodrobnostiViacVyletForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                UpravitPodrobnostiViacVyletForm dialog = new UpravitPodrobnostiViacVyletForm(new javax.swing.JFrame(), true);
+                UpravitPodrobnostiViacVyletForm dialog = new UpravitPodrobnostiViacVyletForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -12,12 +12,13 @@ import javax.swing.table.TableModel;
  *
  * @author Robert Link
  */
-public class dajVsetkyVyletForm extends javax.swing.JFrame {
+public class dajVsetkyVyletForm extends javax.swing.JDialog {
 
      private MySqlViacdnovyVyletDao vyletDao=new MySqlViacdnovyVyletDao();
     private List<ViacdnovyVylet> vylety = vyletDao.dajVsetky();
    VyletModel model= new VyletModel();
-    public dajVsetkyVyletForm() {
+    public dajVsetkyVyletForm(javax.swing.JDialog parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         dajVsetkyTable.setModel(model);
         int i = 0;
@@ -42,6 +43,7 @@ public class dajVsetkyVyletForm extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         dajVsetkyTable = new javax.swing.JTable();
+        okButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,6 +65,13 @@ public class dajVsetkyVyletForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(dajVsetkyTable);
 
+        okButton.setText("OK");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,12 +80,18 @@ public class dajVsetkyVyletForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(okButton)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -87,10 +102,14 @@ public class dajVsetkyVyletForm extends javax.swing.JFrame {
         if(evt.getClickCount()==2){
         int cisloRiadka=dajVsetkyTable.getSelectedRow();
         ViacdnovyVylet vylet=model.getVylet(cisloRiadka);
-        ZobrazitViacdnovyVyletForm zobraz= new ZobrazitViacdnovyVyletForm(vylet);
+        ZobrazitViacdnovyVyletForm zobraz= new ZobrazitViacdnovyVyletForm(this,true,vylet);
         zobraz.setVisible(true);
         }
     }//GEN-LAST:event_dajVsetkyTableMouseClicked
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_okButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,7 +141,7 @@ public class dajVsetkyVyletForm extends javax.swing.JFrame {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dajVsetkyVyletForm dialog = new dajVsetkyVyletForm();
+                dajVsetkyVyletForm dialog = new dajVsetkyVyletForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -137,5 +156,6 @@ public class dajVsetkyVyletForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable dajVsetkyTable;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

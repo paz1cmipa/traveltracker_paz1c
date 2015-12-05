@@ -6,12 +6,12 @@ public class UpravitPodrobnostiPamiatkaForm extends javax.swing.JDialog {
     Pamiatka pamiatka = new Pamiatka();
     PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
     
-    public UpravitPodrobnostiPamiatkaForm(java.awt.Frame parent, boolean modal) {
+    public UpravitPodrobnostiPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    UpravitPodrobnostiPamiatkaForm(UpravitPamiatkaForm parent, boolean modal, Pamiatka pamiatkaZaujimavost) {
+    UpravitPodrobnostiPamiatkaForm(javax.swing.JDialog parent, boolean modal, Pamiatka pamiatkaZaujimavost) {
         super(parent, modal);
         initComponents();
         pamiatka = pamiatkaZaujimavost;
@@ -198,7 +198,7 @@ public class UpravitPodrobnostiPamiatkaForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                UpravitPodrobnostiPamiatkaForm dialog = new UpravitPodrobnostiPamiatkaForm(new javax.swing.JFrame(), true);
+                UpravitPodrobnostiPamiatkaForm dialog = new UpravitPodrobnostiPamiatkaForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

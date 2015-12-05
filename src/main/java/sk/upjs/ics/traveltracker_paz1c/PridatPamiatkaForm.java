@@ -9,7 +9,7 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
     Pamiatka pamiatka = new Pamiatka();
     PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
     boolean boliPOdrobnosti=false;
-    public PridatPamiatkaForm(java.awt.Frame parent, boolean modal) {
+    public PridatPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -230,7 +230,7 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PridatPamiatkaForm dialog = new PridatPamiatkaForm(new javax.swing.JFrame(), true);
+                PridatPamiatkaForm dialog = new PridatPamiatkaForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

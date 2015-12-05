@@ -5,11 +5,7 @@
  */
 package sk.upjs.ics.traveltracker_paz1c;
 
-import java.awt.BorderLayout;
-import java.awt.event.MouseAdapter;
 import java.util.List;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 
 /**
  *
@@ -19,6 +15,7 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
     private MySqlKulturnePodujatieDao podujatie=new MySqlKulturnePodujatieDao();
     private List<KulturnePodujatie> podujatia = podujatie.dajVsetky();
     PodujatieModel model=new PodujatieModel();
+
     public dajVsetkyPodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -46,8 +43,9 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         dajVsetkyTable = new javax.swing.JTable();
+        okButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         dajVsetkyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -60,20 +58,21 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        dajVsetkyTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dajVsetkyTableMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(dajVsetkyTable);
+
+        okButton.setText("OK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(okButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -81,6 +80,8 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(okButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -92,12 +93,12 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
         int row=dajVsetkyTable.getSelectedRow();
       
        KulturnePodujatie kulturnePodujatie=model.getPodujatie(row);
-       ZobrazitPodujatieForm zobraz= new ZobrazitPodujatieForm(kulturnePodujatie);
+       ZobrazitPodujatieForm zobraz= new ZobrazitPodujatieForm(this, true,kulturnePodujatie);
        zobraz.setVisible(true);
         
     }
-    }//GEN-LAST:event_dajVsetkyTableMouseClicked
-
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -126,8 +127,8 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
-     java.awt.EventQueue.invokeLater(new Runnable() {
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 dajVsetkyPodujatieForm dialog = new dajVsetkyPodujatieForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -144,5 +145,6 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable dajVsetkyTable;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

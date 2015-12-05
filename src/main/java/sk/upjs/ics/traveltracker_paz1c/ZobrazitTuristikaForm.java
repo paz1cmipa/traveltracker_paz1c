@@ -1,15 +1,24 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sk.upjs.ics.traveltracker_paz1c;
 
-
-public class ZobrazitTuristika extends javax.swing.JFrame {
-
+/**
+ *
+ * @author Robert Link
+ */
+public class ZobrazitTuristikaForm extends javax.swing.JDialog {
     Turistika tura = new Turistika();
     
-    public ZobrazitTuristika() {
+    
+    public ZobrazitTuristikaForm(javax.swing.JDialog parent , boolean modal) {
+        super(parent, modal);
         initComponents();
     }
-     public ZobrazitTuristika(Turistika tura) {
+      public ZobrazitTuristikaForm(javax.swing.JDialog parent , boolean modal,Turistika tura) {
+       super(parent, modal);
         initComponents();
         this.tura=tura;
         if(this.tura.getKrajina()!=null){
@@ -47,8 +56,6 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        okButton = new javax.swing.JButton();
-        upravitButton = new javax.swing.JButton();
         KrajinaLabel = new javax.swing.JLabel();
         ZobrazKrajinalabel = new javax.swing.JLabel();
         CielLabel = new javax.swing.JLabel();
@@ -58,28 +65,16 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
         TypLabel = new javax.swing.JLabel();
         ZobrazTypLabel = new javax.swing.JLabel();
         TrasaLabel = new javax.swing.JLabel();
-        ZobrazTrasaLabel = new javax.swing.JLabel();
         HodnotenieLabel = new javax.swing.JLabel();
+        ZobrazTrasaLabel = new javax.swing.JLabel();
         ZobrazHodnotenieLabel = new javax.swing.JLabel();
-        PrejdeneCheckBox = new javax.swing.JCheckBox();
         PoznámkyLabel = new javax.swing.JLabel();
         ZobrazPoznámkylabel = new javax.swing.JLabel();
+        PrejdeneCheckBox = new javax.swing.JCheckBox();
+        okButton = new javax.swing.JButton();
+        upravitButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        okButton.setText("OK");
-        okButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButtonActionPerformed(evt);
-            }
-        });
-
-        upravitButton.setText("Upraviť");
-        upravitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                upravitButtonActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         KrajinaLabel.setText("Krajina:");
 
@@ -99,24 +94,38 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
 
         TrasaLabel.setText("Trasa:");
 
-        ZobrazTrasaLabel.setText("nepoznačené");
-
         HodnotenieLabel.setText("Hodnotenie:");
 
-        ZobrazHodnotenieLabel.setText("nepoznačené");
+        ZobrazTrasaLabel.setText("nepoznačené");
 
-        PrejdeneCheckBox.setText("Prejdené");
+        ZobrazHodnotenieLabel.setText("nepoznačené");
 
         PoznámkyLabel.setText("Poznámky");
 
         ZobrazPoznámkylabel.setText("nepoznačené");
+
+        PrejdeneCheckBox.setText("Prejdené");
+
+        okButton.setText("OK");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
+
+        upravitButton.setText("Upraviť");
+        upravitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upravitButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,36 +135,33 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
                             .addComponent(TypLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ZobrazKrajinalabel)
                             .addComponent(ZobrazCielLabel)
+                            .addComponent(ZobrazKrajinalabel)
                             .addComponent(ZobrazDatumLabel)
                             .addComponent(ZobrazTypLabel)))
                     .addComponent(PrejdeneCheckBox))
-                .addGap(55, 55, 55)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(okButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(upravitButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PoznámkyLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(ZobrazPoznámkylabel))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(HodnotenieLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ZobrazHodnotenieLabel))
-                        .addGroup(layout.createSequentialGroup()
                             .addComponent(TrasaLabel)
-                            .addGap(35, 35, 35)
-                            .addComponent(ZobrazTrasaLabel))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                            .addComponent(PoznámkyLabel))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ZobrazTrasaLabel)
+                            .addComponent(ZobrazHodnotenieLabel)
+                            .addComponent(ZobrazPoznámkylabel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(okButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(upravitButton)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(KrajinaLabel)
                     .addComponent(ZobrazKrajinalabel)
@@ -163,10 +169,10 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
                     .addComponent(ZobrazTrasaLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CielLabel)
-                    .addComponent(ZobrazCielLabel)
                     .addComponent(HodnotenieLabel)
-                    .addComponent(ZobrazHodnotenieLabel))
+                    .addComponent(ZobrazHodnotenieLabel)
+                    .addComponent(CielLabel)
+                    .addComponent(ZobrazCielLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DatumLabel)
@@ -182,19 +188,19 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
                     .addComponent(PrejdeneCheckBox)
                     .addComponent(okButton)
                     .addComponent(upravitButton))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-      setVisible(false);
+        setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-       UpravitTuristikaForm upravitTuristika = new UpravitTuristikaForm(this, true, tura);
-       upravitTuristika.setVisible(true);
+        UpravitTuristikaForm upravit= new UpravitTuristikaForm(this, true, tura);
+        upravit.setVisible(true);
     }//GEN-LAST:event_upravitButtonActionPerformed
 
     /**
@@ -214,20 +220,28 @@ public class ZobrazitTuristika extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ZobrazitTuristika.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZobrazitTuristikaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ZobrazitTuristika.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZobrazitTuristikaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ZobrazitTuristika.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZobrazitTuristikaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ZobrazitTuristika.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZobrazitTuristikaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ZobrazitTuristika().setVisible(true);
+                ZobrazitTuristikaForm dialog = new ZobrazitTuristikaForm(new javax.swing.JDialog(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

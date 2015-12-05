@@ -97,7 +97,7 @@ public class dajVsetkyTuryForm extends javax.swing.JDialog{
         if(evt.getClickCount()==2){
         int cisloRiadka=dajVsetkyTable.getSelectedRow();
         Turistika tura=model.getTura(cisloRiadka);
-        ZobrazitTuristika zobraz= new ZobrazitTuristika(tura);
+        ZobrazitTuristikaForm zobraz= new ZobrazitTuristikaForm(this,true,tura);
          zobraz.setVisible(true);
         }
     }//GEN-LAST:event_dajVsetkyTableMouseClicked

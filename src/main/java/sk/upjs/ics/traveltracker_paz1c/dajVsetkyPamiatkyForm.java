@@ -12,14 +12,15 @@ import java.util.List;
  *
  * @author Robert Link
  */
-public class dajVsetkyPamiatkyForm extends javax.swing.JFrame{
+public class dajVsetkyPamiatkyForm extends javax.swing.JDialog{
 
     private MySqlPamiatkaDao pamiatkaDao=new MySqlPamiatkaDao();
     private List<Pamiatka> pamiatky = pamiatkaDao.dajVsetky();
     PamiatkaModel model= new PamiatkaModel();
  
     
-    public dajVsetkyPamiatkyForm() {
+    public dajVsetkyPamiatkyForm(javax.swing.JDialog parent, boolean modal) {
+        super (parent, modal);
         initComponents();
        
        dajVsetkyTable.setModel(model);
@@ -79,18 +80,18 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(okButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(okButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okButton)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -102,7 +103,7 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JFrame{
         if(evt.getClickCount()==2){
         int cisloRiadka=dajVsetkyTable.getSelectedRow();
         Pamiatka pamiatka=model.getPamiatka(cisloRiadka);
-       ZobrazitPamiatkaForm zobraz= new ZobrazitPamiatkaForm(pamiatka);
+       ZobrazitPamiatkaForm zobraz= new ZobrazitPamiatkaForm(this,true,pamiatka);
        zobraz.setVisible(true);
         }
     }//GEN-LAST:event_dajVsetkyTableMouseClicked
@@ -141,7 +142,7 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JFrame{
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dajVsetkyPamiatkyForm dialog = new dajVsetkyPamiatkyForm();
+                dajVsetkyPamiatkyForm dialog = new dajVsetkyPamiatkyForm(new javax.swing.JDialog(),true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
