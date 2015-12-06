@@ -55,7 +55,7 @@ public class dajVsetkyVyletForm extends javax.swing.JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Krajina", "Mesto", "Odchod", "Príchod"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         dajVsetkyTable.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -13,7 +13,6 @@ public class PamiatkaForm extends javax.swing.JDialog {
     public PamiatkaForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        refresh();
     }
 
     /**
@@ -206,11 +205,11 @@ public class PamiatkaForm extends javax.swing.JDialog {
         Date datum = ((Date) pamiatkyTable.getValueAt(cislo, 3));
         
         if(krajina == null){
-            JOptionPane.showMessageDialog(this, "Nebola vybraná žiadna pamiatka alebo zaujímavosť!");
+            JOptionPane.showMessageDialog(this, "Nebolo vybrané žiadne podujatie!");
             return null;
         }
         
-         Pamiatka najdenaPamiatka = null;
+             Pamiatka najdenaPamiatka = null;
          for (Pamiatka pamiatka : vsetkyPamiatky){
             if (krajina.equals(pamiatka.getKrajina()) && mesto.equals(pamiatka.getMesto()) 
                     && nazov.equals(pamiatka.getPamiatka()) && datum.equals(pamiatka.getDatum())){

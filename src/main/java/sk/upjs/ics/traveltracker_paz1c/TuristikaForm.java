@@ -1,20 +1,22 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sk.upjs.ics.traveltracker_paz1c;
 
-import java.util.Date;
-import java.util.List;
-import javax.swing.JOptionPane;
-
-
+/**
+ *
+ * @author Pandita
+ */
 public class TuristikaForm extends javax.swing.JDialog {
-    
-    TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
 
-    
+    /**
+     * Creates new form TuristikaForm
+     */
     public TuristikaForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        refresh();
     }
 
     /**
@@ -26,235 +28,22 @@ public class TuristikaForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        turyTable = new javax.swing.JTable();
-        stornoButton = new javax.swing.JButton();
-        pridatButton = new javax.swing.JButton();
-        upravitButton = new javax.swing.JButton();
-        odstranitButton = new javax.swing.JButton();
-        vsetkyButton = new javax.swing.JButton();
-        hladatTextField = new javax.swing.JTextField();
-        hladatButton = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        turyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Krajina", "Cieľ", "Trasa", "Datum"
-            }
-        ));
-        jScrollPane1.setViewportView(turyTable);
-        if (turyTable.getColumnModel().getColumnCount() > 0) {
-            turyTable.getColumnModel().getColumn(0).setMinWidth(50);
-            turyTable.getColumnModel().getColumn(1).setMinWidth(50);
-            turyTable.getColumnModel().getColumn(2).setMinWidth(50);
-            turyTable.getColumnModel().getColumn(3).setMinWidth(50);
-        }
-
-        stornoButton.setText("Storno");
-        stornoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stornoButtonActionPerformed(evt);
-            }
-        });
-
-        pridatButton.setText("Pridať");
-        pridatButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pridatButtonActionPerformed(evt);
-            }
-        });
-
-        upravitButton.setText("Upraviť");
-        upravitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                upravitButtonActionPerformed(evt);
-            }
-        });
-
-        odstranitButton.setText("Odstrániť");
-        odstranitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                odstranitButtonActionPerformed(evt);
-            }
-        });
-
-        vsetkyButton.setText("Zobraz všetky");
-        vsetkyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vsetkyButtonActionPerformed(evt);
-            }
-        });
-
-        hladatButton.setText("Hľadať");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(vsetkyButton)
-                                .addGap(55, 55, 55)
-                                .addComponent(odstranitButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(pridatButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hladatButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(upravitButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(stornoButton)))
-                        .addGap(23, 23, 23))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(stornoButton)
-                            .addComponent(upravitButton)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(hladatButton))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pridatButton)
-                    .addComponent(odstranitButton)
-                    .addComponent(vsetkyButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
-        setVisible(false);
-    }//GEN-LAST:event_stornoButtonActionPerformed
-
-    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
-        PridatTuristikaForm pridat = new PridatTuristikaForm(this, true);
-        pridat.setVisible(true);
-        refresh();
-                
-    }//GEN-LAST:event_pridatButtonActionPerformed
-
-    private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-         List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
-        String krajina = (String) turyTable.getValueAt(turyTable.getSelectedRow(), 0);
-        String ciel = ((String) turyTable.getValueAt(turyTable.getSelectedRow(), 1));
-        String trasa = ((String) turyTable.getValueAt(turyTable.getSelectedRow(), 2));
-        Date datum = ((Date) turyTable.getValueAt(turyTable.getSelectedRow(), 3));
-        
-        for (Turistika tura : vsetkyTury){
-            if (krajina.equals(tura.getKrajina()) && ciel.equals(tura.getCiel()) 
-                    && trasa.equals(tura.getTrasa()) && datum.equals(tura.getDatum())){
-                UpravitTuristikaForm upravit = new UpravitTuristikaForm (this, true, tura);
-                upravit.setVisible(true);
-            }
-            
-        }
-        refresh();
-    }//GEN-LAST:event_upravitButtonActionPerformed
-
-    private void odstranitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitButtonActionPerformed
-        int cisloRiadku = turyTable.getSelectedRow();
-        
-        if(cisloRiadku == -1){
-            JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!");
-        }
-        
-        Turistika tura = najdiTuru(cisloRiadku);
-       
-       if (tura == null){
-           return; 
-       }
-        turistikaDao.odstranit(tura);
-            
-        refresh();
-    }//GEN-LAST:event_odstranitButtonActionPerformed
-
-    private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
-        dajVsetkyTuryForm vsetky = new dajVsetkyTuryForm(this, true);
-        vsetky.setVisible(true);
-    }//GEN-LAST:event_vsetkyButtonActionPerformed
-
-    
-      public Turistika najdiTuru (int cislo){
-          
-          List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
-        String krajina = (String) turyTable.getValueAt(cislo, 0);
-        String ciel = ((String) turyTable.getValueAt(cislo, 1));
-        String trasa = ((String) turyTable.getValueAt(cislo, 2));
-        Date datum = ((Date) turyTable.getValueAt(cislo, 3));
-        
-        if(krajina == null){
-            JOptionPane.showMessageDialog(this, "Nebola vybraná žiadna túra!");
-            return null;
-        }
-        
-       Turistika najdenaTura = null;
-         for (Turistika tura : vsetkyTury){
-            if (krajina.equals(tura.getKrajina()) && ciel.equals(tura.getCiel()) 
-                    && trasa.equals(tura.getTrasa()) && datum.equals(tura.getDatum())){
-                najdenaTura = tura;
-            } // datum NULL v podmienke padne na NUll Pointer Exception!!!
-            
-        }
-          return najdenaTura;
-      }
-    
-    
-       public void refresh(){
-       
-       for(int j=0; j<10; j++){
-           for (int k=0; k<4; k++){
-               turyTable.setValueAt(null, j, k);
-           }
-       }
-        
-        List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
-        int i = 0;
-        for (Turistika tura: vsetkyTury){
-            if (i == 10){
-                break;
-            }
-            turyTable.setValueAt(tura.getKrajina(), i, 0);
-            turyTable.setValueAt(tura.getCiel(), i, 1);
-            turyTable.setValueAt(tura.getTrasa(), i, 2);
-            turyTable.setValueAt(tura.getDatum(), i, 3);
-            i++;
-        }
-      }
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -298,14 +87,5 @@ public class TuristikaForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton hladatButton;
-    private javax.swing.JTextField hladatTextField;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton odstranitButton;
-    private javax.swing.JButton pridatButton;
-    private javax.swing.JButton stornoButton;
-    private javax.swing.JTable turyTable;
-    private javax.swing.JButton upravitButton;
-    private javax.swing.JButton vsetkyButton;
     // End of variables declaration//GEN-END:variables
 }
