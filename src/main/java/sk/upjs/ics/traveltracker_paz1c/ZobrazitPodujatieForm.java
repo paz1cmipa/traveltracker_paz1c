@@ -43,7 +43,7 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
         ZobrazeneMiestoLabel.setText(kulturnePodujatie.getLokalizacia());
         }
 
-        ZobrazeneVstupneLabel.setText(Integer.toString(kulturnePodujatie.getVstupne()));
+        ZobrazeneVstupneLabel.setText(Double.toString(kulturnePodujatie.getVstupne()));
 
         if(kulturnePodujatie.getCasZaciatku() !=null){
         ZobrazenyCasLabel.setText(kulturnePodujatie.getCasZaciatku().toString());

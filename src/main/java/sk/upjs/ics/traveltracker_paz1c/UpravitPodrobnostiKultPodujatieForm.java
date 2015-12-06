@@ -31,7 +31,7 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
             hodnotenieComboBox.addItem(i);
         }
         
-        vstupneTextField.setText(Integer.toString(podujatie.getVstupne()));
+        vstupneTextField.setText(Double.toString(podujatie.getVstupne()));
         //zacinaTextField.setText - doriesit cas
         miestoTextField.setText(podujatie.getLokalizacia());
         poznamkyTextField.setText(podujatie.getPoznamky());
@@ -62,6 +62,7 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
         navstiveneCheckBox = new javax.swing.JCheckBox();
         okButton = new javax.swing.JButton();
         stornoButton = new javax.swing.JButton();
+        formatCasLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -93,13 +94,38 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
             }
         });
 
+        formatCasLabel.setText("(hh:mm:dd)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(miestoLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(miestoTextField))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(poznamkyLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(poznamkyTextField))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(hodnotenieLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(hodnotenieComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(navstiveneCheckBox)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(okButton)))
+                            .addGap(18, 18, 18)
+                            .addComponent(stornoButton)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(vstupneLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -109,29 +135,9 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
                         .addGap(26, 26, 26)
                         .addComponent(zacinaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(miestoLabel)
+                        .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(miestoTextField))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(poznamkyLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(poznamkyTextField))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(hodnotenieLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hodnotenieComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(navstiveneCheckBox)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(okButton)))
-                        .addGap(18, 18, 18)
-                        .addComponent(stornoButton)))
+                        .addComponent(formatCasLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -143,7 +149,8 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
                     .addComponent(vstupneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eurLabel)
                     .addComponent(zacinaLabel)
-                    .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(zacinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formatCasLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(miestoLabel)
@@ -172,7 +179,12 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        podujatie.setVstupne(Integer.parseInt(vstupneTextField.getText()));
+
+         if(vstupneTextField.getText().isEmpty()){
+            podujatie.setVstupne(0.0);
+         } else {
+            podujatie.setVstupne(Double.valueOf(vstupneTextField.getText()));
+        }
         DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
        Date date = null;
          try {
@@ -236,6 +248,7 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel eurLabel;
+    private javax.swing.JLabel formatCasLabel;
     private javax.swing.JComboBox hodnotenieComboBox;
     private javax.swing.JLabel hodnotenieLabel;
     private javax.swing.JLabel miestoLabel;

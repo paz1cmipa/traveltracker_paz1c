@@ -11,7 +11,7 @@ public class KulturnePodujatie {
     private String lokalizacia; //nejaka koncertna hala, miesto kde to presne je
     private String nazov;
     private Date datum;
-    private int vstupne;
+    private double vstupne;
     private Time casZaciatku;
     private String typ;
     private int hodnotenie;
@@ -82,11 +82,11 @@ public class KulturnePodujatie {
         this.datum = datum;
     }
 
-    public int getVstupne() {
+    public double getVstupne() {
         return vstupne;
     }
 
-    public void setVstupne(int vstupne) {
+    public void setVstupne(double vstupne) {
         this.vstupne = vstupne;
     }
 

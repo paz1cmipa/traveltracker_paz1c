@@ -4,6 +4,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 
@@ -190,6 +191,23 @@ public class UpravitKultPodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_StornoButtonActionPerformed
 
     private void UpravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpravitButtonActionPerformed
+         if(NazovTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie názvu je povinné");
+           return;
+          }
+     
+        if(MestoTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
+           return;
+           }
+     
+         if(DatumDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
+            return;
+           }
+        
+        
+        
        kulturnePodujatie.setNazov(NazovTextField.getText());
        kulturnePodujatie.setKrajina((String)krajinaComboBox.getSelectedItem());
        //kulturnePodujatie.setKrajina( KrajinaTextField.getText());

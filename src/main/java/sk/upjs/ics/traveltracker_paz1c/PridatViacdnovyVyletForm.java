@@ -3,6 +3,7 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
@@ -192,6 +193,24 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
        if(!boliPodrobnosti){
+           
+           
+         if(mestoTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
+           return;
+          }
+     
+     
+         if(odchodDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu odchodu je povinný");
+            return;
+           }
+         
+         if(prichodDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu prichodu je povinný");
+            return;
+           }
+         
         vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());
@@ -207,6 +226,22 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void podrobnostiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podrobnostiButtonActionPerformed
+          if(mestoTextField.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
+           return;
+          }
+     
+     
+         if(odchodDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu odchodu je povinný");
+            return;
+           }
+         
+         if(prichodDatePicker.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Výber dátumu prichodu je povinný");
+            return;
+           }
+
         vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());

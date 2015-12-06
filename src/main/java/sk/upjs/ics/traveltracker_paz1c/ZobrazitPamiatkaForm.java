@@ -42,7 +42,7 @@ public class ZobrazitPamiatkaForm extends javax.swing.JDialog {
          ZobrazDatumlabel.setText(this.pamiatka.getDatum().toString());
         }
         ZobrazHodnotenieLabel.setText(Integer.toString(this.pamiatka.getHodnotenie()));
-        ZobrazVstupneLabel.setText(Integer.toString(this.pamiatka.getVstupne()));
+        ZobrazVstupneLabel.setText(Double.toString(this.pamiatka.getVstupne()));
         if(this.pamiatka.isNavstivene()){
          NavštívenéCheckBox.isSelected();
         }
