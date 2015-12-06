@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
 
-/**
- *
- * @author Robert Link
- */
+
 public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
     private MySqlKulturnePodujatieDao podujatie=new MySqlKulturnePodujatieDao();
     private List<KulturnePodujatie> podujatia = podujatie.dajVsetky();
@@ -66,6 +59,11 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
         jScrollPane1.setViewportView(dajVsetkyTable);
 
         okButton.setText("OK");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,6 +101,10 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
         
     }
     }//GEN-LAST:event_dajVsetkyTableMouseClicked
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+       setVisible(false);
+    }//GEN-LAST:event_okButtonActionPerformed
 
  
     

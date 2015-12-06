@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class KulturnePodujatieForm extends javax.swing.JDialog {
     
-     KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+     private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
 
    
     public KulturnePodujatieForm(java.awt.Frame parent, boolean modal) {
@@ -205,9 +205,9 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
-       // dajVsetkyPodujatieForm zobraz = new dajVsetkyPodujatieForm(this, true);
-        //zobraz.setVisible(true); 
-        // prerobit dajVsetkyPodujatieForm na dialogove!!!!
+       dajVsetkyPodujatieForm zobraz = new dajVsetkyPodujatieForm(this, true);
+        zobraz.setVisible(true); 
+        //prerobit dajVsetkyPodujatieForm na dialogove!!!!
     }//GEN-LAST:event_vsetkyButtonActionPerformed
 
     private void hladatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hladatButtonActionPerformed

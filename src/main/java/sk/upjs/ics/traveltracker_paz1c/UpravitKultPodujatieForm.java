@@ -9,8 +9,8 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 
 public class UpravitKultPodujatieForm extends javax.swing.JDialog {
-    KulturnePodujatie kulturnePodujatie=new KulturnePodujatie();
-    KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+   private KulturnePodujatie kulturnePodujatie=new KulturnePodujatie();
+    private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
 
     
     public UpravitKultPodujatieForm(javax.swing.JDialog parent, boolean modal) {

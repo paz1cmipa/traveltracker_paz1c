@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 
 public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
      
-     KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
-     KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
+     private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+     private KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
     public PridatPodrobnostiKultPodForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();

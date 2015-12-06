@@ -10,8 +10,8 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
     
-    ViacdnovyVylet vylet = new ViacdnovyVylet();
-    ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
+    private ViacdnovyVylet vylet = new ViacdnovyVylet();
+    private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
 
     
     public UpravitViacdnovyVyeltForm(javax.swing.JDialog parent, boolean modal) {

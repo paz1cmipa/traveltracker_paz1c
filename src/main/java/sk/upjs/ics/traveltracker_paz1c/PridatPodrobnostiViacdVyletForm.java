@@ -3,8 +3,8 @@ package sk.upjs.ics.traveltracker_paz1c;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
-    ViacdnovyVylet vylet=new ViacdnovyVylet();
-    ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
+    private ViacdnovyVylet vylet=new ViacdnovyVylet();
+    private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
    
     public PridatPodrobnostiViacdVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);

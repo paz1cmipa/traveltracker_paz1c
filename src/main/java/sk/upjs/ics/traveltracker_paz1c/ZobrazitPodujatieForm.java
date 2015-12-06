@@ -10,7 +10,7 @@ package sk.upjs.ics.traveltracker_paz1c;
  * @author Robert Link
  */
 public class ZobrazitPodujatieForm extends javax.swing.JDialog {
-    KulturnePodujatie kulturnePodujatie= new KulturnePodujatie();
+   private KulturnePodujatie kulturnePodujatie= new KulturnePodujatie();
     
     public ZobrazitPodujatieForm(javax.swing.JDialog parent , boolean modal) {
         super(parent, modal);

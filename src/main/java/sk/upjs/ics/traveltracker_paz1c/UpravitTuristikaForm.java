@@ -10,8 +10,8 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class UpravitTuristikaForm extends javax.swing.JDialog {
     
-    Turistika turistika = new Turistika();
-    TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
+   private Turistika turistika = new Turistika();
+   private TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
 
     
     public UpravitTuristikaForm(javax.swing.JDialog parent, boolean modal) {
