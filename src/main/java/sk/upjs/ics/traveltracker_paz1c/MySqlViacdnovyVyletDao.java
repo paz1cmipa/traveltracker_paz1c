@@ -79,7 +79,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
     }
 
     @Override
-    public void Upravit(ViacdnovyVylet viacdnovyVylet) {
+    public void UpravitPodrobnosti(ViacdnovyVylet viacdnovyVylet) {
         String sql="UPDATE viacDni SET"
                 + "'program' = ?," +
                   "'navstivene'= ?," +
@@ -96,7 +96,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
     }
 
     @Override
-    public void UpravitPodrobnosti(ViacdnovyVylet viacdnovyVylet) {
+    public void Upravit(ViacdnovyVylet viacdnovyVylet) {
         String sql="UPDATE viacDniInfo SET"
                 + "'krajina' = ?," +
                   "'datumPrichod'= ?," +

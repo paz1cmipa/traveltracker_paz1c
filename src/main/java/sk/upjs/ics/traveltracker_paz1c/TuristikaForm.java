@@ -146,38 +146,37 @@ public class TuristikaForm extends javax.swing.JDialog {
            }
        }
         
-        List<Turistika> vsetkyTury = kulturnePodujatieDao.dajVsetky();
+        List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
         int i = 0;
-        for (KulturnePodujatie podujatie: podujatia){
+        for (Turistika podujatie: vsetkyTury){
             if (i == 10){
                 break;
             }
-            podujatiaTable.setValueAt(podujatie.getKrajina(), i, 0);
-            podujatiaTable.setValueAt(podujatie.getMesto(), i, 1);
-            podujatiaTable.setValueAt(podujatie.getNazov(), i, 2);
-            podujatiaTable.setValueAt(podujatie.getDatum(), i, 3);
+            turyTable.setValueAt(podujatie.getKrajina(), i, 0);
+            turyTable.setValueAt(podujatie.getCiel(), i, 1);
+            turyTable.setValueAt(podujatie.getDatum(), i,2);
             i++;
         }
       }
       
-      public KulturnePodujatie najdiPodujatie (int cislo){
+      public Turistika najdiTuru (int cislo){
           
-          List<KulturnePodujatie> vsetkyKulturnePodujatia = kulturnePodujatieDao.dajVsetky();
-        String krajina = (String) podujatiaTable.getValueAt(cislo, 0);
-        String Mesto = ((String) podujatiaTable.getValueAt(cislo, 1));
-        String Nazov = ((String) podujatiaTable.getValueAt(cislo, 2));
-        Date Datum = ((Date) podujatiaTable.getValueAt(cislo, 3));
+          List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
+        String krajina = (String) turyTable.getValueAt(cislo, 0);
+        String Ciel = ((String) turyTable.getValueAt(cislo, 1));
+        Date Datum = ((Date) turyTable.getValueAt(cislo, 2));
+
         
         if(krajina == null){
             JOptionPane.showMessageDialog(this, "Nebolo vybrané žiadne podujatie!");
             return null;
         }
         
-        KulturnePodujatie najdenePodujatie = null;
-         for (KulturnePodujatie podujatie : vsetkyKulturnePodujatia){
-            if (krajina.equals(podujatie.getKrajina()) && Mesto.equals(podujatie.getMesto()) 
-                    && Nazov.equals(podujatie.getNazov()) && Datum.equals(podujatie.getDatum())){
-                najdenePodujatie = podujatie;
+        Turistika najdenePodujatie = null;
+         for (Turistika tura : vsetkyTury){
+            if (krajina.equals(tura.getKrajina()) && Ciel.equals(tura.getCiel()) 
+                    &&  Datum.equals(tura.getDatum())){
+                najdenePodujatie = tura;
             } // datum NULL v podmienke padne na NUll Pointer Exception!!!
             
         }
