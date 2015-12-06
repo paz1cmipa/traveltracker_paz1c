@@ -70,8 +70,18 @@ public class TuristikaForm extends javax.swing.JDialog {
         });
 
         upravitButton.setText("Upraviť");
+        upravitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upravitButtonActionPerformed(evt);
+            }
+        });
 
         odstranitButton.setText("Odstrániť");
+        odstranitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                odstranitButtonActionPerformed(evt);
+            }
+        });
 
         vsetkyButton.setText("Zobraziť všetky");
 
@@ -137,6 +147,41 @@ public class TuristikaForm extends javax.swing.JDialog {
         pridat.setVisible(true);
     }//GEN-LAST:event_pridatButtonActionPerformed
 
+    private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
+         List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
+        String krajina = (String) turyTable.getValueAt(turyTable.getSelectedRow(), 0);
+        String ciel = ((String) turyTable.getValueAt(turyTable.getSelectedRow(), 1));
+        Date datum = ((Date) turyTable.getValueAt(turyTable.getSelectedRow(), 2));
+        
+        
+        for (Turistika tura : vsetkyTury){
+            if (krajina.equals(tura.getKrajina()) && ciel.equals(tura.getCiel()) 
+                    && datum.equals(tura.getDatum())){
+                UpravitTuristikaForm upravit = new UpravitTuristikaForm(this, true, tura);
+                upravit.setVisible(true);
+            }
+            
+        }
+        refresh();
+    }//GEN-LAST:event_upravitButtonActionPerformed
+
+    private void odstranitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitButtonActionPerformed
+      int cisloRiadku = turyTable.getSelectedRow();
+        
+        if(cisloRiadku == -1){
+            JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!");
+        }
+        
+        Turistika tura = najdiTuru(cisloRiadku);
+       
+       if (tura == null){
+           return; 
+       }
+        turistikaDao.odstranit(tura);
+            
+        refresh();
+    }//GEN-LAST:event_odstranitButtonActionPerformed
+
     
         public void refresh(){
        
@@ -168,19 +213,19 @@ public class TuristikaForm extends javax.swing.JDialog {
 
         
         if(krajina == null){
-            JOptionPane.showMessageDialog(this, "Nebolo vybrané žiadne podujatie!");
+            JOptionPane.showMessageDialog(this, "Nebola vybraná žiadna túra!");
             return null;
         }
         
-        Turistika najdenePodujatie = null;
+        Turistika najdenaTura = null;
          for (Turistika tura : vsetkyTury){
             if (krajina.equals(tura.getKrajina()) && Ciel.equals(tura.getCiel()) 
                     &&  Datum.equals(tura.getDatum())){
-                najdenePodujatie = tura;
+                najdenaTura = tura;
             } // datum NULL v podmienke padne na NUll Pointer Exception!!!
             
         }
-          return najdenePodujatie;
+          return najdenaTura;
       }
     
     /**
