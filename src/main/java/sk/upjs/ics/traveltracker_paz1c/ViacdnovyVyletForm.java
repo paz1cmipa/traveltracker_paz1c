@@ -1,22 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sk.upjs.ics.traveltracker_paz1c;
 
-/**
- *
- * @author Pandita
- */
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+
 public class ViacdnovyVyletForm extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ViacdnovyVyletForm
-     */
+    private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
+    
     public ViacdnovyVyletForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        refresh();
     }
 
     /**
@@ -28,22 +25,199 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        vyletyTable = new javax.swing.JTable();
+        stornoButton = new javax.swing.JButton();
+        pridatButton = new javax.swing.JButton();
+        upravitButton = new javax.swing.JButton();
+        odstranitButton = new javax.swing.JButton();
+        vsetkyButton = new javax.swing.JButton();
+        hladatTextField = new javax.swing.JTextField();
+        hladatButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        vyletyTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Krajina", "Mesto", "Odchod", "Príchod"
+            }
+        ));
+        jScrollPane1.setViewportView(vyletyTable);
+
+        stornoButton.setText("Storno");
+        stornoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stornoButtonActionPerformed(evt);
+            }
+        });
+
+        pridatButton.setText("Pridať");
+
+        upravitButton.setText("Upraviť");
+        upravitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upravitButtonActionPerformed(evt);
+            }
+        });
+
+        odstranitButton.setText("Odstrániť");
+        odstranitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                odstranitButtonActionPerformed(evt);
+            }
+        });
+
+        vsetkyButton.setText("Zobraziť všetky");
+
+        hladatButton.setText("Hľadať");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(hladatButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(upravitButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(vsetkyButton)
+                                .addGap(51, 51, 51)
+                                .addComponent(odstranitButton)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(stornoButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pridatButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stornoButton)
+                    .addComponent(upravitButton)
+                    .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hladatButton))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pridatButton)
+                    .addComponent(odstranitButton)
+                    .addComponent(vsetkyButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_stornoButtonActionPerformed
+
+    private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
+        List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
+        String krajina = (String) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 0);
+        String mesto = ((String) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 1));
+        Date odchod = ((Date) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 2));
+        Date prichod = ((Date) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 3));
+        
+        for (ViacdnovyVylet vylet : vsetkyVylety){
+            if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto()) 
+                    && odchod.equals(vylet.getDatumOdchod()) && prichod.equals(vylet.getDatumPrichod())){
+                UpravitViacdnovyVyeltForm upravit = new UpravitViacdnovyVyeltForm(this, true, vylet);
+                upravit.setVisible(true);
+            }
+            
+        }
+        refresh();
+    }//GEN-LAST:event_upravitButtonActionPerformed
+
+    private void odstranitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitButtonActionPerformed
+             int cisloRiadku = vyletyTable.getSelectedRow();
+        
+        if(cisloRiadku == -1){
+            JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!");
+        }
+        
+        ViacdnovyVylet vylet = najdiVylet(cisloRiadku);
+       
+       if (vylet == null){
+           return; 
+       }
+        vyletDao.odstranit(vylet);
+            
+        refresh();
+    }//GEN-LAST:event_odstranitButtonActionPerformed
+
+    
+         public void refresh(){
+       
+       for(int j=0; j<10; j++){
+           for (int k=0; k<4; k++){
+               vyletyTable.setValueAt(null, j, k);
+           }
+       }
+        
+       List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
+        int i = 0;
+        for (ViacdnovyVylet vylet: vsetkyVylety){
+            if (i == 10){
+                break;
+            }
+            vyletyTable.setValueAt(vylet.getKrajina(), i, 0);
+            vyletyTable.setValueAt(vylet.getMesto(), i, 1);
+            vyletyTable.setValueAt(vylet.getDatumOdchod(), i, 2);
+            vyletyTable.setValueAt(vylet.getDatumPrichod(), i, 3);
+            i++;
+        }
+      }
+      
+      public ViacdnovyVylet najdiVylet (int cislo){
+          
+        List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
+        String krajina = (String) vyletyTable.getValueAt(cislo, 0);
+        String mesto = ((String) vyletyTable.getValueAt(cislo, 1));
+        Date odchod = ((Date) vyletyTable.getValueAt(cislo, 2));
+        Date prichod = ((Date) vyletyTable.getValueAt(cislo, 3));
+        
+        if(krajina == null){
+            JOptionPane.showMessageDialog(this, "Nebol vybraný žiaden výlet!");
+            return null;
+        }
+        
+        ViacdnovyVylet najdenyVylet = null;
+         for (ViacdnovyVylet vylet : vsetkyVylety){
+            if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto()) 
+                    && odchod.equals(vylet.getDatumOdchod()) && prichod.equals(vylet.getDatumPrichod())){
+                najdenyVylet = vylet;
+            } // datum NULL v podmienke padne na NUll Pointer Exception!!!
+            
+        }
+          return najdenyVylet;
+      }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -87,5 +261,14 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton hladatButton;
+    private javax.swing.JTextField hladatTextField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton odstranitButton;
+    private javax.swing.JButton pridatButton;
+    private javax.swing.JButton stornoButton;
+    private javax.swing.JButton upravitButton;
+    private javax.swing.JButton vsetkyButton;
+    private javax.swing.JTable vyletyTable;
     // End of variables declaration//GEN-END:variables
 }

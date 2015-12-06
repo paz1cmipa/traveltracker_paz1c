@@ -33,8 +33,8 @@ class VyletModel extends AbstractTableModel {
         switch(columnIndex){
             case 0: return "Krajina";
             case 1: return  "Mesto";
-            case 2: return "Datum odchod";
-            case 3: return  "Datum prichod";
+            case 2: return "Odchod";
+            case 3: return  "Príchod";
             default: return "??";
          }
                     
