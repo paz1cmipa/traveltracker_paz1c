@@ -43,12 +43,12 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
          ZobrazProgramLabel.setText(this.viacdnovyVylet.getProgram());
         
         }
-        if(this.viacdnovyVylet.getDatumOdchod()!=null){
-         ZobrazDolabel.setText(this.viacdnovyVylet.getDatumOdchod().toString());
+        if(this.viacdnovyVylet.getDatumPrichod()!=null){
+         ZobrazPrichodlabel.setText(this.viacdnovyVylet.getDatumPrichod().toString());
         }
         
-        if(this.viacdnovyVylet.getDatumPrichod()!=null){
-         ZobrazOdLabel.setText(this.viacdnovyVylet.getDatumPrichod().toString());
+        if(this.viacdnovyVylet.getDatumOdchod()!=null){
+         ZobrazodchodLabel.setText(this.viacdnovyVylet.getDatumOdchod().toString());
         }
         ZobrazHodnotenieLabel.setText(Integer.toString(this.viacdnovyVylet.getHodnotenie()));
         
@@ -67,10 +67,10 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
     private void initComponents() {
 
         ZobrazMestolabel = new javax.swing.JLabel();
-        DatumodLabel = new javax.swing.JLabel();
-        ZobrazOdLabel = new javax.swing.JLabel();
-        doLabel = new javax.swing.JLabel();
-        ZobrazDolabel = new javax.swing.JLabel();
+        DatumodchodLabel = new javax.swing.JLabel();
+        ZobrazodchodLabel = new javax.swing.JLabel();
+        datumPrichodLabel = new javax.swing.JLabel();
+        ZobrazPrichodlabel = new javax.swing.JLabel();
         UbytovanieLabel = new javax.swing.JLabel();
         ZobrazUbytovnieLabel = new javax.swing.JLabel();
         Krajinalabel = new javax.swing.JLabel();
@@ -92,13 +92,13 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
 
         ZobrazMestolabel.setText("nepoznačené");
 
-        DatumodLabel.setText(" Od:");
+        DatumodchodLabel.setText(" Odchod:");
 
-        ZobrazOdLabel.setText("nepoznačené");
+        ZobrazodchodLabel.setText("nepoznačené");
 
-        doLabel.setText("Do:");
+        datumPrichodLabel.setText("Prichod:");
 
-        ZobrazDolabel.setText("nepoznačené");
+        ZobrazPrichodlabel.setText("nepoznačené");
 
         UbytovanieLabel.setText("Ubytovanie:");
 
@@ -160,14 +160,14 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
                                 .addComponent(UbytovanieLabel)
                                 .addComponent(Krajinalabel, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(MestoLabel)
-                            .addComponent(DatumodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(doLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(datumPrichodLabel)
+                            .addComponent(DatumodchodLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ZobrazKrajinaLabel)
                             .addComponent(ZobrazMestolabel)
-                            .addComponent(ZobrazOdLabel)
-                            .addComponent(ZobrazDolabel)
+                            .addComponent(ZobrazodchodLabel)
+                            .addComponent(ZobrazPrichodlabel)
                             .addComponent(ZobrazUbytovnieLabel)))
                     .addComponent(okButton))
                 .addGap(18, 18, 18)
@@ -229,12 +229,12 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
                             .addComponent(ZobrazMestolabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DatumodLabel)
-                            .addComponent(ZobrazOdLabel))
+                            .addComponent(DatumodchodLabel)
+                            .addComponent(ZobrazodchodLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(doLabel)
-                            .addComponent(ZobrazDolabel))
+                            .addComponent(datumPrichodLabel)
+                            .addComponent(ZobrazPrichodlabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(UbytovanieLabel)
@@ -302,7 +302,7 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DatumodLabel;
+    private javax.swing.JLabel DatumodchodLabel;
     private javax.swing.JLabel Hodnotenielabel;
     private javax.swing.JLabel Krajinalabel;
     private javax.swing.JLabel MestoLabel;
@@ -311,16 +311,16 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
     private javax.swing.JLabel ProgramLabel;
     private javax.swing.JLabel TypLabel;
     private javax.swing.JLabel UbytovanieLabel;
-    private javax.swing.JLabel ZobrazDolabel;
     private javax.swing.JLabel ZobrazHodnotenieLabel;
     private javax.swing.JLabel ZobrazKrajinaLabel;
     private javax.swing.JLabel ZobrazMestolabel;
-    private javax.swing.JLabel ZobrazOdLabel;
     private javax.swing.JLabel ZobrazPoznamkyLabel;
+    private javax.swing.JLabel ZobrazPrichodlabel;
     private javax.swing.JLabel ZobrazProgramLabel;
     private javax.swing.JLabel ZobrazTypLabel;
     private javax.swing.JLabel ZobrazUbytovnieLabel;
-    private javax.swing.JLabel doLabel;
+    private javax.swing.JLabel ZobrazodchodLabel;
+    private javax.swing.JLabel datumPrichodLabel;
     private javax.swing.JButton okButton;
     private javax.swing.JButton upravitButton;
     // End of variables declaration//GEN-END:variables

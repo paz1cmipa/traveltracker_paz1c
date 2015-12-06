@@ -33,15 +33,15 @@
                               <Component id="Krajinalabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="MestoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="DatumodLabel" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="doLabel" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="datumPrichodLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="DatumodchodLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ZobrazKrajinaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="ZobrazMestolabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazOdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazDolabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazodchodLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazPrichodlabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="ZobrazUbytovnieLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -123,13 +123,13 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="DatumodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazOdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="DatumodchodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazodchodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="doLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazDolabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="datumPrichodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZobrazPrichodlabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -149,22 +149,22 @@
         <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="DatumodLabel">
+    <Component class="javax.swing.JLabel" name="DatumodchodLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value=" Od:"/>
+        <Property name="text" type="java.lang.String" value=" Odchod:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="ZobrazOdLabel">
+    <Component class="javax.swing.JLabel" name="ZobrazodchodLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="doLabel">
+    <Component class="javax.swing.JLabel" name="datumPrichodLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Do:"/>
+        <Property name="text" type="java.lang.String" value="Prichod:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="ZobrazDolabel">
+    <Component class="javax.swing.JLabel" name="ZobrazPrichodlabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
       </Properties>

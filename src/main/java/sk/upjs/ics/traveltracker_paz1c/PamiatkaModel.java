@@ -13,7 +13,8 @@ import javax.swing.table.AbstractTableModel;
  * @author Robert Link
  */
 public class PamiatkaModel extends AbstractTableModel{
-       private MySqlPamiatkaDao pamiatkaDao=new MySqlPamiatkaDao();
+    
+    private MySqlPamiatkaDao pamiatkaDao=new MySqlPamiatkaDao();
     private List<Pamiatka> pamiatky= pamiatkaDao.dajVsetky();
 
     @Override
@@ -43,7 +44,7 @@ public class PamiatkaModel extends AbstractTableModel{
            switch(columnIndex){
             case 0: return "Krajina";
             case 1: return  "Mesto";
-            case 2: return "Pamiatka_Zaujimavost";
+            case 2: return "Pamiatka";
             case 3: return  "Datum";
             default: return "??";
          }

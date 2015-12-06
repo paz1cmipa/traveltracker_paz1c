@@ -38,13 +38,13 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
          Map<String, Object> pridatHodnoty = new HashMap<String, Object>();
         pridatHodnoty.put("id", viacdnovyVylet.getId());
         pridatHodnoty.put("krajina",viacdnovyVylet.getKrajina());
-        pridatHodnoty.put("datumOdchod",viacdnovyVylet.getDatumOdchod());
         pridatHodnoty.put("datumPrichod",viacdnovyVylet.getDatumPrichod());
+        pridatHodnoty.put("datumOdchod",viacdnovyVylet.getDatumOdchod());
         pridatHodnoty.put("typ", viacdnovyVylet.getTyp());
         pridatHodnoty.put("mesto",viacdnovyVylet.getMesto());
         pridatHodnoty.put("ubytovanie", viacdnovyVylet.getUbytovanie());
         
-        String sql = "INSERT INTO viacDni VALUES(:id, :krajina, :datumOdchod,:datumPrichod, :typ, :mesto, :ubytovanie)";
+        String sql = "INSERT INTO viacDni VALUES(:id, :krajina,:datumPrichod, :datumOdchod, :typ, :mesto, :ubytovanie)";
         
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(pridatHodnoty), keyHolder);
@@ -156,5 +156,5 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
         
         return vysledok;
     }
-    
+
 }

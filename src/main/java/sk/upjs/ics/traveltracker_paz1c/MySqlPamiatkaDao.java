@@ -38,10 +38,10 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
         pridatHodnoty.put("id", pamiatka.getId());
         pridatHodnoty.put("krajina",  pamiatka.getKrajina());
         pridatHodnoty.put("mesto",  pamiatka.getMesto());
-        pridatHodnoty.put("pamiatka_zaujimavost",  pamiatka.getPamiatka());
+        pridatHodnoty.put("pamiatka",  pamiatka.getPamiatka());
         pridatHodnoty.put("datum", pamiatka.getDatum());
         
-        String sql = "INSERT INTO pamiatka VALUES(:id, :krajina, :mesto, :pamiatka_zaujimavost, :datum)";
+        String sql = "INSERT INTO pamiatka VALUES(:id, :krajina, :mesto, :pamiatka, :datum)";
         
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(pridatHodnoty), keyHolder);
@@ -66,7 +66,7 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
          String sql="UPDATE pamiatka SET"
                 + "'krajina' = ?," +
                   "'mesto'= ?," +
-                  "'pamiatka_zaujimavost'= ? ," +
+                  "'pamiatka'= ? ," +
                   "'datum'=? "
                 + "where 'id'=?;";
         jdbcTemplete.update(sql,
@@ -80,10 +80,11 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
     @Override
     public void UpravitPodrobnosti(Pamiatka pamiatka) {
              String sql="UPDATE pamiatkaInfo SET"
-                + "'krajina' = ?," +
-                  "'mesto'= ?," +
-                  "'pamiatka_zaujimavost'= ? ," +
-                  "'datum'=? "
+                + "'vstupne' = ?," +
+                  "'otvaracieHodiny'= ?," +
+                  "'hodnotenie'= ? ," +
+                  "'navstivene'=? "
+                     + "'poznamky'=? "
                 + "where 'id'=?;";
         jdbcTemplete.update(sql,
                 pamiatka.getVstupne(),
@@ -137,5 +138,5 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
                 pamiatka.getPodrobnosti());
        
     }
-    
+
 }
