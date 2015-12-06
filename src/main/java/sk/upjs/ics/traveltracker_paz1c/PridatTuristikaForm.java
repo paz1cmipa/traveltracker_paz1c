@@ -10,7 +10,7 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
         
     TuristikaDao turaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
 
-    public PridatTuristikaForm(java.awt.Frame parent, boolean modal) {
+    public PridatTuristikaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -236,7 +236,7 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PridatTuristikaForm dialog = new PridatTuristikaForm(new javax.swing.JFrame(), true);
+                PridatTuristikaForm dialog = new PridatTuristikaForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

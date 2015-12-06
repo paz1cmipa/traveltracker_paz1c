@@ -231,6 +231,7 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
         List<KulturnePodujatie> podujatia = kulturnePodujatieDao.dajVsetky();
         int i = 0;
         for (KulturnePodujatie podujatie: podujatia){
+            
             if (i == 10){
                 break;
             }
