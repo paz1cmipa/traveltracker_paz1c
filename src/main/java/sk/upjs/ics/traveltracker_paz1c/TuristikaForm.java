@@ -1,19 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sk.upjs.ics.traveltracker_paz1c;
 
-/**
- *
- * @author Pandita
- */
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+
 public class TuristikaForm extends javax.swing.JDialog {
 
-    /**
-     * Creates new form TuristikaForm
-     */
+    private TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
+    
     public TuristikaForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -28,22 +24,166 @@ public class TuristikaForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        turyTable = new javax.swing.JTable();
+        stornoButton = new javax.swing.JButton();
+        pridatButton = new javax.swing.JButton();
+        upravitButton = new javax.swing.JButton();
+        odstranitButton = new javax.swing.JButton();
+        vsetkyButton = new javax.swing.JButton();
+        hladatTextField = new javax.swing.JTextField();
+        hladatButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        turyTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Krajina", "Cieľ", "Dátum"
+            }
+        ));
+        jScrollPane1.setViewportView(turyTable);
+
+        stornoButton.setText("Storno");
+        stornoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stornoButtonActionPerformed(evt);
+            }
+        });
+
+        pridatButton.setText("Pridať");
+        pridatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatButtonActionPerformed(evt);
+            }
+        });
+
+        upravitButton.setText("Upraviť");
+
+        odstranitButton.setText("Odstrániť");
+
+        vsetkyButton.setText("Zobraziť všetky");
+
+        hladatButton.setText("Hľadať");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(vsetkyButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(odstranitButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(pridatButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(hladatButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(upravitButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(stornoButton)))
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stornoButton)
+                    .addComponent(upravitButton)
+                    .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hladatButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pridatButton)
+                    .addComponent(odstranitButton)
+                    .addComponent(vsetkyButton))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_stornoButtonActionPerformed
+
+    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
+        PridatTuristikaForm pridat = new PridatTuristikaForm(this, true);
+        pridat.setVisible(true);
+    }//GEN-LAST:event_pridatButtonActionPerformed
+
+    
+        public void refresh(){
+       
+       for(int j=0; j<10; j++){
+           for (int k=0; k<4; k++){
+               turyTable.setValueAt(null, j, k);
+           }
+       }
+        
+        List<Turistika> vsetkyTury = kulturnePodujatieDao.dajVsetky();
+        int i = 0;
+        for (KulturnePodujatie podujatie: podujatia){
+            if (i == 10){
+                break;
+            }
+            podujatiaTable.setValueAt(podujatie.getKrajina(), i, 0);
+            podujatiaTable.setValueAt(podujatie.getMesto(), i, 1);
+            podujatiaTable.setValueAt(podujatie.getNazov(), i, 2);
+            podujatiaTable.setValueAt(podujatie.getDatum(), i, 3);
+            i++;
+        }
+      }
+      
+      public KulturnePodujatie najdiPodujatie (int cislo){
+          
+          List<KulturnePodujatie> vsetkyKulturnePodujatia = kulturnePodujatieDao.dajVsetky();
+        String krajina = (String) podujatiaTable.getValueAt(cislo, 0);
+        String Mesto = ((String) podujatiaTable.getValueAt(cislo, 1));
+        String Nazov = ((String) podujatiaTable.getValueAt(cislo, 2));
+        Date Datum = ((Date) podujatiaTable.getValueAt(cislo, 3));
+        
+        if(krajina == null){
+            JOptionPane.showMessageDialog(this, "Nebolo vybrané žiadne podujatie!");
+            return null;
+        }
+        
+        KulturnePodujatie najdenePodujatie = null;
+         for (KulturnePodujatie podujatie : vsetkyKulturnePodujatia){
+            if (krajina.equals(podujatie.getKrajina()) && Mesto.equals(podujatie.getMesto()) 
+                    && Nazov.equals(podujatie.getNazov()) && Datum.equals(podujatie.getDatum())){
+                najdenePodujatie = podujatie;
+            } // datum NULL v podmienke padne na NUll Pointer Exception!!!
+            
+        }
+          return najdenePodujatie;
+      }
+    
     /**
      * @param args the command line arguments
      */
@@ -87,5 +227,14 @@ public class TuristikaForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton hladatButton;
+    private javax.swing.JTextField hladatTextField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton odstranitButton;
+    private javax.swing.JButton pridatButton;
+    private javax.swing.JButton stornoButton;
+    private javax.swing.JTable turyTable;
+    private javax.swing.JButton upravitButton;
+    private javax.swing.JButton vsetkyButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,7 +11,7 @@ package sk.upjs.ics.traveltracker_paz1c;
  */
 public class ZobrazitPamiatkaForm extends javax.swing.JDialog {
 
-     Pamiatka pamiatka = new Pamiatka();
+     private Pamiatka pamiatka = new Pamiatka();
      
     public ZobrazitPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);

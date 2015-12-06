@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class KulturnePodujatieForm extends javax.swing.JDialog {
     
-     KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+     private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
 
    
     public KulturnePodujatieForm(java.awt.Frame parent, boolean modal) {

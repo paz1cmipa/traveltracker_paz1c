@@ -7,8 +7,8 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
     private boolean boliPodrobnost=false;
-    KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
-    KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
+    private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+    private KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
    
     public PridatKulturnePodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);

@@ -6,8 +6,8 @@ import java.util.Locale;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatPamiatkaForm extends javax.swing.JDialog {
-    Pamiatka pamiatka = new Pamiatka();
-    PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
+   private Pamiatka pamiatka = new Pamiatka();
+    private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
     boolean boliPOdrobnosti=false;
     public PridatPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);

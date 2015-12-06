@@ -11,7 +11,7 @@ package sk.upjs.ics.traveltracker_paz1c;
  */
 public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
  
-    ViacdnovyVylet viacdnovyVylet = new ViacdnovyVylet();
+    private ViacdnovyVylet viacdnovyVylet = new ViacdnovyVylet();
   
     public ZobrazitViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);

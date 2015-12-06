@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class PamiatkaForm extends javax.swing.JDialog {
     
-    PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
+    private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
 
     public PamiatkaForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

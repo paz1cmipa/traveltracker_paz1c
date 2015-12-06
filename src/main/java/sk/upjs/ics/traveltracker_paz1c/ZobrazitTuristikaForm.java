@@ -10,7 +10,7 @@ package sk.upjs.ics.traveltracker_paz1c;
  * @author Robert Link
  */
 public class ZobrazitTuristikaForm extends javax.swing.JDialog {
-    Turistika tura = new Turistika();
+   private Turistika tura = new Turistika();
     
     
     public ZobrazitTuristikaForm(javax.swing.JDialog parent , boolean modal) {

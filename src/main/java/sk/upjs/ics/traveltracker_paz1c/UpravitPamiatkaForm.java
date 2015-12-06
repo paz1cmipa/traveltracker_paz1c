@@ -10,8 +10,8 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class UpravitPamiatkaForm extends javax.swing.JDialog {
     
-    Pamiatka pamiatkaZaujimavost = new Pamiatka();
-    PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
+   private Pamiatka pamiatkaZaujimavost = new Pamiatka();
+    private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
 
     
     public UpravitPamiatkaForm(javax.swing.JDialog parent, boolean modal) {

@@ -3,8 +3,8 @@ package sk.upjs.ics.traveltracker_paz1c;
 
 public class UpravitPodrobnostiPamiatkaForm extends javax.swing.JDialog {
 
-    Pamiatka pamiatka = new Pamiatka();
-    PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
+    private Pamiatka pamiatka = new Pamiatka();
+    private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
     
     public UpravitPodrobnostiPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);

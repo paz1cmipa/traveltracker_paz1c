@@ -3,8 +3,8 @@ package sk.upjs.ics.traveltracker_paz1c;
 
 public class UpravitPodrobnostiViacVyletForm extends javax.swing.JDialog {
 
-    ViacdnovyVylet viacdnovyVylet = new ViacdnovyVylet ();
-    ViacdnovyVyletDao viacdnovyVyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
+    private ViacdnovyVylet viacdnovyVylet = new ViacdnovyVylet ();
+    private ViacdnovyVyletDao viacdnovyVyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
    
     public UpravitPodrobnostiViacVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
