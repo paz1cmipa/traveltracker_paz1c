@@ -6,6 +6,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
@@ -13,14 +14,16 @@ import javax.swing.table.TableModel;
  *
  * @author Robert Link
  */
-class VyletModel extends AbstractTableModel {
-
-  private MySqlViacdnovyVyletDao vyletDao=new MySqlViacdnovyVyletDao();
-    private List<ViacdnovyVylet> vylety= vyletDao.dajVsetky();
+class VsetkyKultPodujatieModel extends AbstractTableModel {
+    private MySqlKulturnePodujatieDao podujatie=new MySqlKulturnePodujatieDao();
+    private List<KulturnePodujatie> podujatia= podujatie.dajVsetky();
+    public VsetkyKultPodujatieModel() {
+        super();
+    }
 
     @Override
     public int getRowCount() {
-       return vylety.size();
+       return podujatia.size();
     }
 
     @Override
@@ -33,8 +36,8 @@ class VyletModel extends AbstractTableModel {
         switch(columnIndex){
             case 0: return "Krajina";
             case 1: return  "Mesto";
-            case 2: return "Odchod";
-            case 3: return  "Príchod";
+            case 2: return "Nazov";
+            case 3: return  "Datum";
             default: return "??";
          }
                     
@@ -42,19 +45,20 @@ class VyletModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-        ViacdnovyVylet vylet=vylety.get(row);
+        KulturnePodujatie kultPodujatie=podujatia.get(row);
             switch(column){
-            case 0: return vylet.getKrajina();
-            case 1: return vylet.getMesto();
-            case 2: return vylet.getDatumOdchod();
-            case 3: return vylet.getDatumPrichod();
+            case 0: return kultPodujatie.getKrajina();
+            case 1: return kultPodujatie.getMesto();
+            case 2: return kultPodujatie.getNazov();
+            case 3: return kultPodujatie.getDatum();
             default: return "??";
             }
         
     }
-    public ViacdnovyVylet getVylet(int row){
-        return vylety.get(row);
+    public KulturnePodujatie getPodujatie(int row){
+        return podujatia.get(row);
     
         
     }
+    
 }

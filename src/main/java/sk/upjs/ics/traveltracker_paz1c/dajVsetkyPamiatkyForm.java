@@ -16,7 +16,7 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JDialog{
 
     private MySqlPamiatkaDao pamiatkaDao=new MySqlPamiatkaDao();
     private List<Pamiatka> pamiatky = pamiatkaDao.dajVsetky();
-    PamiatkaModel model= new PamiatkaModel();
+    VsetkyPamiatkyModel model= new VsetkyPamiatkyModel();
  
     
     public dajVsetkyPamiatkyForm(javax.swing.JDialog parent, boolean modal) {

@@ -14,7 +14,7 @@ import java.util.List;
 public class dajVsetkyTuryForm extends javax.swing.JDialog{
   private MySqlTuristikaDao turaDao=new MySqlTuristikaDao();
     private List<Turistika> Tury = turaDao.dajVsetky();
-    TuraModel model=new TuraModel();
+    VsetkyTuryModel model=new VsetkyTuryModel();
     public dajVsetkyTuryForm(javax.swing.JDialog parent, boolean modal) {
         super (parent, modal);
         initComponents();

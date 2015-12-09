@@ -16,7 +16,7 @@ public class dajVsetkyVyletForm extends javax.swing.JDialog {
 
      private MySqlViacdnovyVyletDao vyletDao=new MySqlViacdnovyVyletDao();
     private List<ViacdnovyVylet> vylety = vyletDao.dajVsetky();
-   VyletModel model= new VyletModel();
+   VsetkyVyletyModel model= new VsetkyVyletyModel();
     public dajVsetkyVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();

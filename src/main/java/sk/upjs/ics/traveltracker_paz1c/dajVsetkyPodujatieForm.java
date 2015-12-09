@@ -7,7 +7,7 @@ import java.util.List;
 public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
     private MySqlKulturnePodujatieDao podujatie=new MySqlKulturnePodujatieDao();
     private List<KulturnePodujatie> podujatia = podujatie.dajVsetky();
-    PodujatieModel model=new PodujatieModel();
+    VsetkyKultPodujatieModel model=new VsetkyKultPodujatieModel();
 
     public dajVsetkyPodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);

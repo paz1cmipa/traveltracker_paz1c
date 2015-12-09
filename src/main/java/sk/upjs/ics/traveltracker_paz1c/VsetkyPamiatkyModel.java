@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Robert Link
  */
-public class PamiatkaModel extends AbstractTableModel{
+public class VsetkyPamiatkyModel extends AbstractTableModel{
     
     private MySqlPamiatkaDao pamiatkaDao=new MySqlPamiatkaDao();
     private List<Pamiatka> pamiatky= pamiatkaDao.dajVsetky();
