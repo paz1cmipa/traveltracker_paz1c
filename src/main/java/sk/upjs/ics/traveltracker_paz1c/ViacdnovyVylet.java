@@ -7,7 +7,7 @@ public class ViacdnovyVylet {
     
     private int id;
     private String krajina;
-    private String mesto;
+    private String mesto1;
     private Date datumOdchod;
     private Date datumPrichod;
     private int hodnotenie;
@@ -59,12 +59,12 @@ public class ViacdnovyVylet {
         this.krajina = krajina;
     }
 
-    public String getMesto() {
-        return mesto;
+    public String getMesto1() {
+        return mesto1;
     }
 
-    public void setMesto(String mesto) {
-        this.mesto = mesto;
+    public void setMesto1(String mesto1) {
+        this.mesto1 = mesto1;
     }
 
     public Date getDatumOdchod() {

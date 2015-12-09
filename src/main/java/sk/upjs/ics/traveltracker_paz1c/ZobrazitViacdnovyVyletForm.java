@@ -25,8 +25,8 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
        if(this.viacdnovyVylet.getKrajina()!=null){
          ZobrazKrajinaLabel.setText(this.viacdnovyVylet.getKrajina());
        }
-        if(this.viacdnovyVylet.getMesto()!=null){
-         ZobrazMestolabel.setText(this.viacdnovyVylet.getMesto());
+        if(this.viacdnovyVylet.getMesto1()!=null){
+         ZobrazMestolabel.setText(this.viacdnovyVylet.getMesto1());
         }
         if(this.viacdnovyVylet.getTyp()!=null){
             ZobrazTypLabel.setText(this.viacdnovyVylet.getTyp());

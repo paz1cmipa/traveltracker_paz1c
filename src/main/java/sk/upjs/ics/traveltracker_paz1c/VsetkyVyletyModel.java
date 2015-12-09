@@ -45,7 +45,7 @@ class VsetkyVyletyModel extends AbstractTableModel {
         ViacdnovyVylet vylet=vylety.get(row);
             switch(column){
             case 0: return vylet.getKrajina();
-            case 1: return vylet.getMesto();
+            case 1: return vylet.getMesto1();
             case 2: return vylet.getDatumOdchod();
             case 3: return vylet.getDatumPrichod();
             default: return "??";

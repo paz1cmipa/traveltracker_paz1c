@@ -44,7 +44,7 @@ public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
         krajinaComboBox.setSelectedItem(vylet.getKrajina());
         odchodDatePicker.setDate(vylet.getDatumOdchod());
         prichodDatePicker.setDate(vylet.getDatumPrichod());
-        mestoTextField.setText(vylet.getMesto());
+        mestoTextField.setText(vylet.getMesto1());
         ubytovanieTextField.setText(vylet.getUbytovanie());
         typComboBox.setSelectedItem(vylet.getTyp());
         navstiveneCheckBox.setSelected(vylet.isNavstivene());
@@ -239,7 +239,7 @@ public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());
         vylet.setKrajina((String)krajinaComboBox.getSelectedItem());
-        vylet.setMesto(mestoTextField.getText());
+        vylet.setMesto1(mestoTextField.getText());
         vylet.setUbytovanie(ubytovanieTextField.getText());
         vylet.setTyp((String)typComboBox.getSelectedItem());
         vylet.setNavstivene(navstiveneCheckBox.isSelected());

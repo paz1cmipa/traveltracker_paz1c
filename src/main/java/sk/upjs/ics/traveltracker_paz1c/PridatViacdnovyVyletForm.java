@@ -214,7 +214,7 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
         vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());
-        vylet.setMesto(mestoTextField.getText());
+        vylet.setMesto1(mestoTextField.getText());
         vylet.setUbytovanie(ubytovanieTextField.getText());
         vylet.setTyp((String)typComboBox.getSelectedItem());
         vylet.setNavstivene(navstivenieCheckBox.isSelected());
@@ -245,7 +245,7 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
         vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());
-        vylet.setMesto(mestoTextField.getText());
+        vylet.setMesto1(mestoTextField.getText());
         vylet.setUbytovanie(ubytovanieTextField.getText());
         vylet.setTyp((String)typComboBox.getSelectedItem());
         vylet.setNavstivene(navstivenieCheckBox.isSelected());

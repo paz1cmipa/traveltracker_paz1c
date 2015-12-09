@@ -41,7 +41,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
         pridatHodnoty.put("datumPrichod",viacdnovyVylet.getDatumPrichod());
         pridatHodnoty.put("datumOdchod",viacdnovyVylet.getDatumOdchod());
         pridatHodnoty.put("typ", viacdnovyVylet.getTyp());
-        pridatHodnoty.put("mesto",viacdnovyVylet.getMesto());
+        pridatHodnoty.put("mesto",viacdnovyVylet.getMesto1());
         pridatHodnoty.put("ubytovanie", viacdnovyVylet.getUbytovanie());
         
         String sql = "INSERT INTO viacDni VALUES(:id, :krajina,:datumPrichod, :datumOdchod, :typ, :mesto, :ubytovanie)";
@@ -98,20 +98,22 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
 
     @Override
     public void Upravit(ViacdnovyVylet viacdnovyVylet) {
-        String sql="UPDATE viacDniInfo SET"
+      /*  String sql="UPDATE viacDniInfo SET"
                 + "'krajina' = ?," +
                   "'datumPrichod'= ?," +
                   "'datumOdchod'= ? ," +
                   "'typ'=? ,"
                 + "'mesto'=?,"
                 + "'ubytovanie'=?"
-                + "where 'id'=?;";
+                + "where 'id'=?;";*/
+        
+        String sql = "UPDATE viacdni SET krajina = ?, datumPrichod = ?, datumOdchod = ?, typ = ?, mesto1 = ?, ubytovanie = ? WHERE id = ?;";
          jdbcTemplete.update(sql,  
                 viacdnovyVylet.getKrajina(),
                 viacdnovyVylet.getDatumOdchod(),
                 viacdnovyVylet.getDatumOdchod(),
                 viacdnovyVylet.getTyp(),
-                viacdnovyVylet.getMesto(),
+                viacdnovyVylet.getMesto1(),
                 viacdnovyVylet.getUbytovanie(),
                 viacdnovyVylet.getId());
         
@@ -137,7 +139,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
              continue;
           
           }
-          if(vylet.getMesto().equals(s)){
+          if(vylet.getMesto1().equals(s)){
              vysledok.add(vylet);
              continue;
            }

@@ -64,6 +64,11 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         });
 
         pridatButton.setText("Pridať");
+        pridatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatButtonActionPerformed(evt);
+            }
+        });
 
         upravitButton.setText("Upraviť");
         upravitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +85,11 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         });
 
         vsetkyButton.setText("Zobraziť všetky");
+        vsetkyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vsetkyButtonActionPerformed(evt);
+            }
+        });
 
         hladatButton.setText("Hľadať");
 
@@ -143,7 +153,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         Date prichod = ((Date) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 3));
         
         for (ViacdnovyVylet vylet : vsetkyVylety){
-            if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto()) 
+            if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto1()) 
                     && odchod.equals(vylet.getDatumOdchod()) && prichod.equals(vylet.getDatumPrichod())){
                 UpravitViacdnovyVyeltForm upravit = new UpravitViacdnovyVyeltForm(this, true, vylet);
                 upravit.setVisible(true);
@@ -170,6 +180,17 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         refresh();
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
+    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
+        PridatViacdnovyVyletForm pridat = new PridatViacdnovyVyletForm(this, true);
+        pridat.setVisible(true);
+        refresh();
+    }//GEN-LAST:event_pridatButtonActionPerformed
+
+    private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
+       dajVsetkyVyletForm vsetky = new dajVsetkyVyletForm(this, true);
+       vsetky.setVisible(true);
+    }//GEN-LAST:event_vsetkyButtonActionPerformed
+
     
          public void refresh(){
        
@@ -186,7 +207,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
                 break;
             }
             vyletyTable.setValueAt(vylet.getKrajina(), i, 0);
-            vyletyTable.setValueAt(vylet.getMesto(), i, 1);
+            vyletyTable.setValueAt(vylet.getMesto1(), i, 1);
             vyletyTable.setValueAt(vylet.getDatumOdchod(), i, 2);
             vyletyTable.setValueAt(vylet.getDatumPrichod(), i, 3);
             i++;
@@ -208,7 +229,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         
         ViacdnovyVylet najdenyVylet = null;
          for (ViacdnovyVylet vylet : vsetkyVylety){
-            if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto()) 
+            if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto1()) 
                     && odchod.equals(vylet.getDatumOdchod()) && prichod.equals(vylet.getDatumPrichod())){
                 najdenyVylet = vylet;
             } // datum NULL v podmienke padne na NUll Pointer Exception!!!

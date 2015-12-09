@@ -25,7 +25,7 @@ public class dajVsetkyVyletForm extends javax.swing.JDialog {
         for (ViacdnovyVylet vylet: vylety){
         
             dajVsetkyTable.setValueAt(vylet.getKrajina(), i, 0);
-            dajVsetkyTable.setValueAt(vylet.getMesto(), i, 1);
+            dajVsetkyTable.setValueAt(vylet.getMesto1(), i, 1);
             dajVsetkyTable.setValueAt(vylet.getDatumOdchod(), i, 2);
             dajVsetkyTable.setValueAt(vylet.getDatumPrichod(), i, 3);
             
