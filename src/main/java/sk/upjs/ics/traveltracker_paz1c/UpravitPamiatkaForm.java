@@ -43,7 +43,7 @@ public class UpravitPamiatkaForm extends javax.swing.JDialog {
         mestoTextField.setText(pamiatkaZaujimavost.getMesto());
         datumDatePicker.setDate(pamiatkaZaujimavost.getDatum());
         navstiveneCheckBox.setSelected(pamiatkaZaujimavost.isNavstivene());
-        pamiatkaTextField.setText(pamiatkaZaujimavost.getPamiatka());
+        pamiatkaTextField.setText(pamiatkaZaujimavost.getPamiatka_zaujimavost());
     }
     
     
@@ -202,7 +202,7 @@ public class UpravitPamiatkaForm extends javax.swing.JDialog {
         
         
         
-       pamiatkaZaujimavost.setPamiatka(pamiatkaTextField.getText());
+       pamiatkaZaujimavost.setPamiatka_zaujimavost(pamiatkaTextField.getText());
        pamiatkaZaujimavost.setKrajina((String)krajinaComboBox.getSelectedItem());
        pamiatkaZaujimavost.setMesto(mestoTextField.getText());
        pamiatkaZaujimavost.setDatum(datumDatePicker.getDate());

@@ -33,7 +33,7 @@ public class VsetkyPamiatkyModel extends AbstractTableModel{
             switch(column){
             case 0: return pamiatka.getKrajina();
             case 1: return pamiatka.getMesto();
-            case 2: return pamiatka.getPamiatka();
+            case 2: return pamiatka.getPamiatka_zaujimavost();
             case 3: return pamiatka.getDatum();
             default: return "??";
             }

@@ -7,7 +7,7 @@ public class Pamiatka {
     private int id;
     private String krajina;
     private String mesto;
-    private String pamiatka;
+    private String pamiatka_zaujimavost;
     private Date datum;
     private String otvaracieHodiny;
     private double vstupne;
@@ -55,12 +55,12 @@ public class Pamiatka {
         this.mesto = mesto;
     }
 
-    public String getPamiatka() {
-        return pamiatka;
+    public String getPamiatka_zaujimavost() {
+        return pamiatka_zaujimavost;
     }
 
-    public void setPamiatka(String pamiatka) {
-        this.pamiatka = pamiatka;
+    public void setPamiatka_zaujimavost(String pamiatka_zaujimavost) {
+        this.pamiatka_zaujimavost = pamiatka_zaujimavost;
     }
 
     public Date getDatum() {

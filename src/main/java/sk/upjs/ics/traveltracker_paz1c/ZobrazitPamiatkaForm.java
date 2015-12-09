@@ -28,8 +28,8 @@ public class ZobrazitPamiatkaForm extends javax.swing.JDialog {
         if(this.pamiatka.getMesto()!=null){
          ZobrazMestoLabel.setText(this.pamiatka.getMesto());
         }
-        if(this.pamiatka.getPamiatka()!=null){
-            ZobrazPamiatkaLabel.setText(this.pamiatka.getPamiatka());
+        if(this.pamiatka.getPamiatka_zaujimavost()!=null){
+            ZobrazPamiatkaLabel.setText(this.pamiatka.getPamiatka_zaujimavost());
         }
         if(this.pamiatka.getOtvaracieHodiny()!=null){
           ZobrazHodinyLabel.setText(this.pamiatka.getOtvaracieHodiny());

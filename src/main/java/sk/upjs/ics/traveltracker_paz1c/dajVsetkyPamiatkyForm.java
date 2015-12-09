@@ -29,7 +29,7 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JDialog{
         
             dajVsetkyTable.setValueAt(pamiatka.getKrajina(), i, 0);
             dajVsetkyTable.setValueAt(pamiatka.getMesto(), i, 1);
-            dajVsetkyTable.setValueAt(pamiatka.getPamiatka(), i, 2);
+            dajVsetkyTable.setValueAt(pamiatka.getPamiatka_zaujimavost(), i, 2);
             dajVsetkyTable.setValueAt(pamiatka.getDatum(), i, 3);
          i++;
         }

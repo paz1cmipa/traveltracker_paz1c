@@ -38,7 +38,7 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
         pridatHodnoty.put("id", pamiatka.getId());
         pridatHodnoty.put("krajina",  pamiatka.getKrajina());
         pridatHodnoty.put("mesto",  pamiatka.getMesto());
-        pridatHodnoty.put("pamiatka",  pamiatka.getPamiatka());
+        pridatHodnoty.put("pamiatka",  pamiatka.getPamiatka_zaujimavost());
         pridatHodnoty.put("datum", pamiatka.getDatum());
         
         String sql = "INSERT INTO pamiatka VALUES(:id, :krajina, :mesto, :pamiatka, :datum)";
@@ -63,17 +63,18 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
 
     @Override
     public void Upravit(Pamiatka pamiatka) {
-       String sql="UPDATE pamiatka SET"
+      /* String sql="UPDATE pamiatka SET"
                 + "'krajina' = ?," +
                   "'mesto'= ?," +
                   "'pamiatka'= ? ," +
                   "'datum'=? "
-                + "where 'id'=?;";
-   
+                + "where 'id'=?;";*/
+        
+        String sql = "update pamiatka set krajina = ?, mesto = ?, pamiatka_zaujimavost = ?, datum = ? where id = ?;";
         jdbcTemplete.update(sql,
                 pamiatka.getKrajina(),
                 pamiatka.getMesto(),
-                pamiatka.getPamiatka(),
+                pamiatka.getPamiatka_zaujimavost(),
                 pamiatka.getDatum(),
                 pamiatka.getId());
        
@@ -117,7 +118,7 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
            vysledok.add(pamiatka);
            continue;
         }
-       if(pamiatka.getPamiatka().equals(s)){
+       if(pamiatka.getPamiatka_zaujimavost().equals(s)){
              vysledok.add(pamiatka);
              continue;
         }

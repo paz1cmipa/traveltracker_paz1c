@@ -193,7 +193,7 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
              return;
          }
-       pamiatka.setPamiatka(pamiatkaTextField.getText());
+       pamiatka.setPamiatka_zaujimavost(pamiatkaTextField.getText());
        pamiatka.setKrajina((String) krajinaComboBox.getSelectedItem());
        pamiatka.setMesto(mestoTextField.getText());
        pamiatka.setDatum(datumDatePicker.getDate());
@@ -221,7 +221,7 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
              return;
          } 
         
-       pamiatka.setPamiatka(pamiatkaTextField.getText());
+       pamiatka.setPamiatka_zaujimavost(pamiatkaTextField.getText());
        pamiatka.setKrajina((String) krajinaComboBox.getSelectedItem());
        pamiatka.setMesto(mestoTextField.getText());
        pamiatka.setDatum(datumDatePicker.getDate());

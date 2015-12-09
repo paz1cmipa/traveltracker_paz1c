@@ -164,7 +164,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
         
           for (Pamiatka pamiatka : vsetkyPamiatky){
             if (krajina.equals(pamiatka.getKrajina()) && mesto.equals(pamiatka.getMesto()) 
-                    && pamiatkaNazov.equals(pamiatka.getPamiatka()) && datum.equals(pamiatka.getDatum())){
+                    && pamiatkaNazov.equals(pamiatka.getPamiatka_zaujimavost()) && datum.equals(pamiatka.getDatum())){
                 UpravitPamiatkaForm upravit = new UpravitPamiatkaForm(this, true, pamiatka);
                 upravit.setVisible(true);
             }
@@ -199,7 +199,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
     
        public Pamiatka najdiPamiatku (int cislo){
           
-          List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
+        List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
         String krajina = (String) pamiatkyTable.getValueAt(cislo, 0);
         String mesto = ((String) pamiatkyTable.getValueAt(cislo, 1));
         String nazov = ((String) pamiatkyTable.getValueAt(cislo, 2));
@@ -213,7 +213,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
              Pamiatka najdenaPamiatka = null;
          for (Pamiatka pamiatka : vsetkyPamiatky){
             if (krajina.equals(pamiatka.getKrajina()) && mesto.equals(pamiatka.getMesto()) 
-                    && nazov.equals(pamiatka.getPamiatka()) && datum.equals(pamiatka.getDatum())){
+                    && nazov.equals(pamiatka.getPamiatka_zaujimavost()) && datum.equals(pamiatka.getDatum())){
                 najdenaPamiatka = pamiatka;
             } // datum NULL v podmienke padne na NUll Pointer Exception!!!
             
@@ -238,9 +238,10 @@ public class PamiatkaForm extends javax.swing.JDialog {
             }
             pamiatkyTable.setValueAt(pamiatka.getKrajina(), i, 0);
             pamiatkyTable.setValueAt(pamiatka.getMesto(), i, 1);
-            pamiatkyTable.setValueAt(pamiatka.getPamiatka(), i, 2);
+            pamiatkyTable.setValueAt(pamiatka.getPamiatka_zaujimavost(), i, 2);
             pamiatkyTable.setValueAt(pamiatka.getDatum(), i, 3);
             i++;
+            
         }
       }
     
