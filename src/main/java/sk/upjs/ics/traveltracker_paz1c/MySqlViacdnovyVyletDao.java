@@ -80,13 +80,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
 
     @Override
     public void UpravitPodrobnosti(ViacdnovyVylet viacdnovyVylet) {
-       String sql="UPDATE viacDni SET"
-                + "'program' = ?," +
-                  "'navstivene'= ?," +
-                  "'hodnotenie'= ? ," +
-                  "'poznamky'=? ,"
-                + "where 'id'=?;";
-     
+       String sql="update viacDniInfo set program = ?, navstivene= ?, hodnotenie= ?, poznamky=? where id = ?;";
          jdbcTemplete.update(sql,  
                 viacdnovyVylet.getProgram(),         
                  viacdnovyVylet.isNavstivene(),
@@ -107,7 +101,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
                 + "'ubytovanie'=?"
                 + "where 'id'=?;";*/
         
-        String sql = "UPDATE viacdni SET krajina = ?, datumPrichod = ?, datumOdchod = ?, typ = ?, mesto1 = ?, ubytovanie = ? WHERE id = ?;";
+        String sql = "UPDATE viacDni SET krajina = ?, datumPrichod = ?, datumOdchod = ?, typ = ?, mesto1 = ?, ubytovanie = ? WHERE id = ?;";
          jdbcTemplete.update(sql,  
                 viacdnovyVylet.getKrajina(),
                 viacdnovyVylet.getDatumOdchod(),

@@ -81,13 +81,7 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
     }
     @Override
     public void UpravitPodrobnosti(Pamiatka pamiatka) {
-             String sql="UPDATE pamiatkaInfo SET"
-                + "'vstupne' = ?," +
-                  "'otvaracieHodiny'= ?," +
-                  "'hodnotenie'= ? ," +
-                  "'navstivene'=? "
-                     + "'poznamky'=? "
-                + "where 'id'=?;";
+             String sql="update pamiatkaInfo set vstupne=?, otvaracieHodiny=?, hodnotenie=?, navstivene=?, poznamky=? where id = ?;";
         jdbcTemplete.update(sql,
                 pamiatka.getVstupne(),
                 pamiatka.getOtvaracieHodiny(),
@@ -140,5 +134,6 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
                 pamiatka.getPodrobnosti());
        
     }
-
+  
+    
 }

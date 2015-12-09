@@ -94,7 +94,7 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
             }
         });
 
-        formatCasLabel.setText("(hh:mm:dd)");
+        formatCasLabel.setText("(hh:mm:ss)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

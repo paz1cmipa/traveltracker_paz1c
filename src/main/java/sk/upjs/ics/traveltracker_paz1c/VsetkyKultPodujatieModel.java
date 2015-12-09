@@ -7,8 +7,15 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 class VsetkyKultPodujatieModel extends AbstractTableModel {
-    private MySqlKulturnePodujatieDao podujatie=new MySqlKulturnePodujatieDao();
+    private KulturnePodujatieDao podujatie = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
     private List<KulturnePodujatie> podujatia= podujatie.dajVsetky();
+    private static final int POCET_STLPCOV = 4;
+    private static final String[] NAZVY_STLPCOV= {"Krajina","Mesto","Nazov","Datum"};
+    private static final int STLPEC_DATUM = 3;
+    private static final int STLPEC_NAZOV = 2;
+    private static final int STLPEC_MESTO = 1;
+    private static final int STLPEC_KRAJINA = 0;
+    
     public VsetkyKultPodujatieModel() {
         super();
     }
@@ -20,29 +27,25 @@ class VsetkyKultPodujatieModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-       return 4;
+       return POCET_STLPCOV;
     }
+    
     
     @Override
     public String getColumnName(int columnIndex) {
-        switch(columnIndex){
-            case 0: return "Krajina";
-            case 1: return  "Mesto";
-            case 2: return "Nazov";
-            case 3: return  "Datum";
-            default: return "??";
-         }
+     return NAZVY_STLPCOV[columnIndex];
                     
     }
+
 
     @Override
     public Object getValueAt(int row, int column) {
         KulturnePodujatie kultPodujatie=podujatia.get(row);
             switch(column){
-            case 0: return kultPodujatie.getKrajina();
-            case 1: return kultPodujatie.getMesto();
-            case 2: return kultPodujatie.getNazov();
-            case 3: return kultPodujatie.getDatum();
+            case STLPEC_KRAJINA: return kultPodujatie.getKrajina();
+            case STLPEC_MESTO: return kultPodujatie.getMesto();
+            case STLPEC_NAZOV: return kultPodujatie.getNazov();
+            case STLPEC_DATUM: return kultPodujatie.getDatum();
             default: return "??";
             }
         

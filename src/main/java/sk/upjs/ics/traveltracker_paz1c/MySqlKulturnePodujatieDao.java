@@ -102,14 +102,7 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
     }
      @Override
     public void upravitPodrobnosti(KulturnePodujatie kulturnePodujatie){
-            String sql="UPDATE podujatie SET"
-                + "'vstupne' = ?," +
-                  "'casZaciatku'= ?," +
-                  "'hodnotenie'= ? ," +
-                  "'navstivene'=? ," +
-                  "'lokalizacia'=? ,"
-                + "'poznamky'= ? "
-                + "where 'id'=?;";
+            String sql="update podujatiaInfo set vstupne = ?, casZaciatku= ?, hodnotenie= ? , navstivene=? , lokalizacia=? , poznamky= ? where id=?;";
         jdbcTemplete.update(sql,
                 kulturnePodujatie.getVstupne(),
                 kulturnePodujatie.getCasZaciatku(),

@@ -14,9 +14,15 @@ import javax.swing.table.AbstractTableModel;
  */
 public class VsetkyPamiatkyModel extends AbstractTableModel{
     
-    private MySqlPamiatkaDao pamiatkaDao=new MySqlPamiatkaDao();
+    private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
     private List<Pamiatka> pamiatky= pamiatkaDao.dajVsetky();
-
+    private static final String[] NAZVY_STLPCOV= {"Krajina","Mesto","Pamiatka","Datum"};
+    private static final int POCET_STLPCOV = 4;
+    private static final int STLPEC_DATUM = 3;
+    private static final int STLPEC_PAMIATKA = 2;
+    private static final int STLPEC_MESTO = 1;
+    private static final int STLPEC_KRAJINA = 0;
+     
     @Override
     public int getRowCount() {
         return pamiatky.size();
@@ -24,30 +30,26 @@ public class VsetkyPamiatkyModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return POCET_STLPCOV;
     }
+   
 
     @Override
     public Object getValueAt(int row, int column) {
             Pamiatka pamiatka= pamiatky.get(row);
             switch(column){
-            case 0: return pamiatka.getKrajina();
-            case 1: return pamiatka.getMesto();
-            case 2: return pamiatka.getPamiatka_zaujimavost();
-            case 3: return pamiatka.getDatum();
+            case STLPEC_KRAJINA: return pamiatka.getKrajina();
+            case STLPEC_MESTO: return pamiatka.getMesto();
+            case  STLPEC_PAMIATKA: return pamiatka.getPamiatka_zaujimavost();
+            case STLPEC_DATUM: return pamiatka.getDatum();
             default: return "??";
             }
     }
 
+
     @Override
     public String getColumnName(int columnIndex) {
-           switch(columnIndex){
-            case 0: return "Krajina";
-            case 1: return  "Mesto";
-            case 2: return "Pamiatka";
-            case 3: return  "Datum";
-            default: return "??";
-         }
+        return NAZVY_STLPCOV[columnIndex];
     }
     public Pamiatka getPamiatka(int row){
     Pamiatka pamiatka= pamiatky.get(row);

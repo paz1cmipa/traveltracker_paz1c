@@ -12,7 +12,7 @@ import java.util.List;
  * @author Robert Link
  */
 public class dajVsetkyTuryForm extends javax.swing.JDialog{
-  private MySqlTuristikaDao turaDao=new MySqlTuristikaDao();
+  private TuristikaDao turaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
     private List<Turistika> Tury = turaDao.dajVsetky();
     VsetkyTuryModel model=new VsetkyTuryModel();
     public dajVsetkyTuryForm(javax.swing.JDialog parent, boolean modal) {
@@ -44,17 +44,7 @@ public class dajVsetkyTuryForm extends javax.swing.JDialog{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        dajVsetkyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        dajVsetkyTable.setModel(this.model);
         dajVsetkyTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dajVsetkyTableMouseClicked(evt);

@@ -14,7 +14,7 @@ import javax.swing.table.TableModel;
  */
 public class dajVsetkyVyletForm extends javax.swing.JDialog {
 
-     private MySqlViacdnovyVyletDao vyletDao=new MySqlViacdnovyVyletDao();
+    private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
     private List<ViacdnovyVylet> vylety = vyletDao.dajVsetky();
    VsetkyVyletyModel model= new VsetkyVyletyModel();
     public dajVsetkyVyletForm(javax.swing.JDialog parent, boolean modal) {
@@ -48,17 +48,7 @@ public class dajVsetkyVyletForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        dajVsetkyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        dajVsetkyTable.setModel(this.model);
         dajVsetkyTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dajVsetkyTableMouseClicked(evt);

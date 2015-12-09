@@ -173,7 +173,7 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
         String krajina = (String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 0);
         String Mesto = ((String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 1));
         String Nazov = ((String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 2));
-        Date Datum = ((Date) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 3));
+        Date Datum =  (Date) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 3);
         
         for (KulturnePodujatie podujatie : vsetkyKulturnePodujatia){
             if (krajina.equals(podujatie.getKrajina()) && Mesto.equals(podujatie.getMesto()) 

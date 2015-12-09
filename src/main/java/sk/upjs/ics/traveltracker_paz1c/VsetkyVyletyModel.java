@@ -15,43 +15,45 @@ import javax.swing.table.TableModel;
  */
 class VsetkyVyletyModel extends AbstractTableModel {
 
-  private MySqlViacdnovyVyletDao vyletDao=new MySqlViacdnovyVyletDao();
+   private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
     private List<ViacdnovyVylet> vylety= vyletDao.dajVsetky();
-
-    @Override
+    private static final String[] NAZVY_STLPCOV={"Krajina","Mesto","Odchod","Príchod"};
+    private static final int STLPEC_ODCHOD = 3;
+    private static final int STLPEC_PRICHOD = 2;
+    private static final int STLPEC_MESTO = 1;
+    private static final int STLPEC_KRAJINA = 0;  
+    private static final int POCET_STLPCOV = 4;
+  
+  
+  @Override
     public int getRowCount() {
        return vylety.size();
     }
 
     @Override
     public int getColumnCount() {
-       return 4;
+       return POCET_STLPCOV;
     }
+  
     
     @Override
     public String getColumnName(int columnIndex) {
-        switch(columnIndex){
-            case 0: return "Krajina";
-            case 1: return  "Mesto";
-            case 2: return "Odchod";
-            case 3: return  "Príchod";
-            default: return "??";
-         }
-                    
+         return NAZVY_STLPCOV[columnIndex];               
     }
 
     @Override
     public Object getValueAt(int row, int column) {
         ViacdnovyVylet vylet=vylety.get(row);
             switch(column){
-            case 0: return vylet.getKrajina();
-            case 1: return vylet.getMesto1();
-            case 2: return vylet.getDatumOdchod();
-            case 3: return vylet.getDatumPrichod();
+            case STLPEC_KRAJINA: return vylet.getKrajina();
+            case STLPEC_MESTO: return vylet.getMesto1();
+            case STLPEC_PRICHOD: return vylet.getDatumOdchod();
+            case STLPEC_ODCHOD: return vylet.getDatumPrichod();
             default: return "??";
             }
         
     }
+  
     public ViacdnovyVylet getVylet(int row){
         return vylety.get(row);
     

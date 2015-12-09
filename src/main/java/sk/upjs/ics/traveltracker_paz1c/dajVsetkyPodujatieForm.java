@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
-    private MySqlKulturnePodujatieDao podujatie=new MySqlKulturnePodujatieDao();
+     private KulturnePodujatieDao podujatie = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
     private List<KulturnePodujatie> podujatia = podujatie.dajVsetky();
     VsetkyKultPodujatieModel model=new VsetkyKultPodujatieModel();
 
@@ -40,17 +40,7 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        dajVsetkyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        dajVsetkyTable.setModel(this.model);
         dajVsetkyTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dajVsetkyTableMouseClicked(evt);

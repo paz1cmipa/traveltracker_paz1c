@@ -171,6 +171,8 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
             return;
            }
          
+        
+         
          
        kulturnePodujatie.setNazov(nazovTextField.getText());
        kulturnePodujatie.setKrajina((String) krajinaComboBox.getSelectedItem());
