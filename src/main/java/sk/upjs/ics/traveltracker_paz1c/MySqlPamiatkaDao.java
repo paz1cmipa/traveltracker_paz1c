@@ -63,12 +63,13 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
 
     @Override
     public void Upravit(Pamiatka pamiatka) {
-         String sql="UPDATE pamiatka SET"
+       String sql="UPDATE pamiatka SET"
                 + "'krajina' = ?," +
                   "'mesto'= ?," +
                   "'pamiatka'= ? ," +
                   "'datum'=? "
                 + "where 'id'=?;";
+   
         jdbcTemplete.update(sql,
                 pamiatka.getKrajina(),
                 pamiatka.getMesto(),

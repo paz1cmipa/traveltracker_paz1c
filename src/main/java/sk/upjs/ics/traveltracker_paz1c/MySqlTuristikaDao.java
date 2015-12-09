@@ -41,7 +41,7 @@ public class MySqlTuristikaDao implements TuristikaDao{
 
     @Override
     public void Upravit(Turistika tura) {
-        String sql="UPDATE turistika SET"
+      /* String sql="UPDATE turistika SET"
                 + "'krajina' = ?," +
                   "'ciel'= ?," +
                   "'datum'= ? ," +
@@ -50,7 +50,8 @@ public class MySqlTuristikaDao implements TuristikaDao{
                 + "'prejdene'=?"
                 + "'hodnotenie'=?,"
                 + "'poznamky'=? "
-                + "where 'id'=?;";
+                + "where 'id'=?;";*/
+      String sql = "UPDATE turistika SET krajina = ?, ciel = ?, datum = ?, trasa = ?, typ = ?, prejdene = ?, hodnotenie = ?, poznamky = ? WHERE id = ?;";
         jdbcTemplete.update(sql, 
                 tura.getKrajina(),
                 tura.getCiel(),

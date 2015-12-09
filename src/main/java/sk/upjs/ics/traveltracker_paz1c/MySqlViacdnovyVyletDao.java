@@ -80,12 +80,13 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
 
     @Override
     public void UpravitPodrobnosti(ViacdnovyVylet viacdnovyVylet) {
-        String sql="UPDATE viacDni SET"
+       String sql="UPDATE viacDni SET"
                 + "'program' = ?," +
                   "'navstivene'= ?," +
                   "'hodnotenie'= ? ," +
                   "'poznamky'=? ,"
                 + "where 'id'=?;";
+     
          jdbcTemplete.update(sql,  
                 viacdnovyVylet.getProgram(),         
                  viacdnovyVylet.isNavstivene(),

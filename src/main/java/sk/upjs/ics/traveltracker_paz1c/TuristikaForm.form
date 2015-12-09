@@ -158,6 +158,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Zobrazi&#x165; v&#x161;etky"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vsetkyButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="hladatTextField">
     </Component>

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
@@ -10,10 +6,6 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
-/**
- *
- * @author Robert Link
- */
 class VsetkyKultPodujatieModel extends AbstractTableModel {
     private MySqlKulturnePodujatieDao podujatie=new MySqlKulturnePodujatieDao();
     private List<KulturnePodujatie> podujatia= podujatie.dajVsetky();

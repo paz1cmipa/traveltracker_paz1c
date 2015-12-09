@@ -85,6 +85,11 @@ public class TuristikaForm extends javax.swing.JDialog {
         });
 
         vsetkyButton.setText("Zobraziť všetky");
+        vsetkyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vsetkyButtonActionPerformed(evt);
+            }
+        });
 
         hladatButton.setText("Hľadať");
 
@@ -146,6 +151,7 @@ public class TuristikaForm extends javax.swing.JDialog {
     private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
         PridatTuristikaForm pridat = new PridatTuristikaForm(this, true);
         pridat.setVisible(true);
+        refresh();
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
@@ -183,11 +189,17 @@ public class TuristikaForm extends javax.swing.JDialog {
         refresh();
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
+    private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
+        dajVsetkyTuryForm vsetky = new dajVsetkyTuryForm(this, true);
+        vsetky.setVisible(true);
+                
+    }//GEN-LAST:event_vsetkyButtonActionPerformed
+
     
         public void refresh(){
        
        for(int j=0; j<10; j++){
-           for (int k=0; k<4; k++){
+           for (int k=0; k<3; k++){
                turyTable.setValueAt(null, j, k);
            }
        }

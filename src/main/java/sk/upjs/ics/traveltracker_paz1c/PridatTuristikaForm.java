@@ -215,8 +215,8 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
         tura.setPoznamky(poznamkyTextField.getText());
         
         turaDao.pridat(tura);
-        setVisible(false);        
-        
+        setVisible(false);   
+       
     }//GEN-LAST:event_okButtonActionPerformed
 
     /**
