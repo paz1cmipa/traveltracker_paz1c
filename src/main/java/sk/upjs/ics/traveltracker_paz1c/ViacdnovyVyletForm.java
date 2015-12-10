@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class ViacdnovyVyletForm extends javax.swing.JDialog {
 
     private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
-    
+    private VyletyModel model=new VyletyModel();
     public ViacdnovyVyletForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,23 +37,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        vyletyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Krajina", "Mesto", "Odchod", "Príchod"
-            }
-        ));
+        vyletyTable.setModel(this.model);
         vyletyTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 vyletyTableMouseClicked(evt);
@@ -157,7 +141,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
            return;
         }
         
-        List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
+        /*List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
         String krajina = (String) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 0);
         String mesto = ((String) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 1));
         Date odchod = ((Date) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 2));
@@ -165,13 +149,13 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         
         for (ViacdnovyVylet vylet : vsetkyVylety){
             if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto1()) 
-                    && odchod.equals(vylet.getDatumOdchod()) && prichod.equals(vylet.getDatumPrichod())){
-                UpravitViacdnovyVyeltForm upravit = new UpravitViacdnovyVyeltForm(this, true, vylet);
+                    && odchod.equals(vylet.getDatumOdchod()) && prichod.equals(vylet.getDatumPrichod())){*/
+                UpravitViacdnovyVyeltForm upravit = new UpravitViacdnovyVyeltForm(this, true, model.getVylet(vyletyTable.getSelectedRow()));
                 upravit.setVisible(true);
-            }
+            //}
             
-        }
-        refresh();
+       // }
+        model.refresh();
     }//GEN-LAST:event_upravitButtonActionPerformed
 
     private void odstranitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitButtonActionPerformed
@@ -179,22 +163,23 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         
         if(cisloRiadku == -1){
             JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!");
+            return;
         }
-        
-        ViacdnovyVylet vylet = najdiVylet(cisloRiadku);
+        model.odstranVylet(cisloRiadku);
+        //ViacdnovyVylet vylet = najdiVylet(cisloRiadku);
        
-       if (vylet == null){
-           return; 
-       }
-        vyletDao.odstranit(vylet);
+       //if (vylet == null){
+        //   return; 
+       //}
+       // vyletDao.odstranit(vylet);
             
-        refresh();
+        //refresh();
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
         PridatViacdnovyVyletForm pridat = new PridatViacdnovyVyletForm(this, true);
         pridat.setVisible(true);
-        refresh();
+        model.refresh();
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
@@ -204,7 +189,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
 
     private void vyletyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vyletyTableMouseClicked
         if(evt.getClickCount()==2){
-         ZobrazitViacdnovyVyletForm zobraz=new ZobrazitViacdnovyVyletForm(this, true, najdiVylet(vyletyTable.getSelectedRow()));
+         ZobrazitViacdnovyVyletForm zobraz=new ZobrazitViacdnovyVyletForm(this, true, model.getVylet(vyletyTable.getSelectedRow()));
          zobraz.setVisible(true);
         
         }
@@ -233,7 +218,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         }
       }
       
-      public ViacdnovyVylet najdiVylet (int cislo){
+     /* public ViacdnovyVylet najdiVylet (int cislo){
           
         List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
         String krajina = (String) vyletyTable.getValueAt(cislo, 0);
@@ -255,7 +240,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
             
         }
           return najdenyVylet;
-      }
+      }*/
     
     
     /**

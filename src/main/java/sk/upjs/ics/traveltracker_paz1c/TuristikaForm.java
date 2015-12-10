@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class TuristikaForm extends javax.swing.JDialog {
 
     private TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
-    
+    private TuristikaModel model= new TuristikaModel();
     public TuristikaForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,23 +37,7 @@ public class TuristikaForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        turyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Krajina", "Cieľ", "Dátum"
-            }
-        ));
+        turyTable.setModel(this.model);
         turyTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 turyTableMouseClicked(evt);
@@ -156,7 +140,7 @@ public class TuristikaForm extends javax.swing.JDialog {
     private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
         PridatTuristikaForm pridat = new PridatTuristikaForm(this, true);
         pridat.setVisible(true);
-        refresh();
+        model.refresh();
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
@@ -165,7 +149,7 @@ public class TuristikaForm extends javax.swing.JDialog {
            return;
         }
 
-        List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
+      /*  List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
         String krajina = (String) turyTable.getValueAt(turyTable.getSelectedRow(), 0);
         String ciel = ((String) turyTable.getValueAt(turyTable.getSelectedRow(), 1));
         Date datum = ((Date) turyTable.getValueAt(turyTable.getSelectedRow(), 2));
@@ -173,13 +157,13 @@ public class TuristikaForm extends javax.swing.JDialog {
         
         for (Turistika tura : vsetkyTury){
             if (krajina.equals(tura.getKrajina()) && ciel.equals(tura.getCiel()) 
-                    && datum.equals(tura.getDatum())){
-                UpravitTuristikaForm upravit = new UpravitTuristikaForm(this, true, tura);
+                    && datum.equals(tura.getDatum())){*/
+                UpravitTuristikaForm upravit = new UpravitTuristikaForm(this, true, model.getTura(turyTable.getSelectedRow()));
                 upravit.setVisible(true);
-            }
+            //}
             
-        }
-        refresh();
+        //}
+        model.refresh();
     }//GEN-LAST:event_upravitButtonActionPerformed
 
     private void odstranitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitButtonActionPerformed
@@ -187,16 +171,18 @@ public class TuristikaForm extends javax.swing.JDialog {
         
         if(cisloRiadku == -1){
             JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!");
+            return; 
+        
         }
         
-        Turistika tura = najdiTuru(cisloRiadku);
+        //Turistika tura = najdiTuru(cisloRiadku);
        
-       if (tura == null){
-           return; 
-       }
-        turistikaDao.odstranit(tura);
-            
-        refresh();
+       //if (tura == null){
+           //return; 
+      //}
+        //turistikaDao.odstranit(tura);
+        model.odstranTuru(cisloRiadku);
+        //refresh();
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
@@ -207,7 +193,7 @@ public class TuristikaForm extends javax.swing.JDialog {
 
     private void turyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_turyTableMouseClicked
          if(evt.getClickCount()==2){
-         ZobrazitTuristikaForm zobraz=new ZobrazitTuristikaForm(this, true, najdiTuru(turyTable.getSelectedRow()));
+         ZobrazitTuristikaForm zobraz=new ZobrazitTuristikaForm(this, true, model.getTura(turyTable.getSelectedRow()));
          zobraz.setVisible(true);
         
         }
@@ -235,7 +221,7 @@ public class TuristikaForm extends javax.swing.JDialog {
         }
       }
       
-      public Turistika najdiTuru (int cislo){
+     /*public Turistika najdiTuru (int cislo){
           
           List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
         String krajina = (String) turyTable.getValueAt(cislo, 0);
@@ -257,7 +243,7 @@ public class TuristikaForm extends javax.swing.JDialog {
             
         }
           return najdenaTura;
-      }
+      }*/
     
     /**
      * @param args the command line arguments

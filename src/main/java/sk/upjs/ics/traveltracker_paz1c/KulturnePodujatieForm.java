@@ -145,7 +145,7 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
        PridatKulturnePodujatieForm pridat = new PridatKulturnePodujatieForm(this, true);
        pridat.setVisible(true);
        //refresh();
-       model.fireTableDataChanged();
+       model.refresh();
     }//GEN-LAST:event_pridateButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
@@ -165,7 +165,7 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
            //         && Nazov.equals(podujatie.getNazov()) && Datum.equals(podujatie.getDatum())){
         UpravitKultPodujatieForm upravit = new UpravitKultPodujatieForm(this, true, model.getPodujatie(podujatiaTable.getSelectedRow()));
         upravit.setVisible(true);
-        model.fireTableDataChanged();
+        model.refresh();
             //}
             
         //}
@@ -187,9 +187,10 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
        //if (podujatie == null){
            //return; 
      //  }
-        kulturnePodujatieDao.odstranit(model.getPodujatie(cisloRiadku));
+     model.odstranPodujatie(cisloRiadku);
+      //  kulturnePodujatieDao.odstranit(model.getPodujatie(cisloRiadku));
       // model.fireTableRowsDeleted(cisloRiadku, cisloRiadku);
-        model.fireTableDataChanged();
+       // model.fireTableDataChanged();
     // refresh();
     }//GEN-LAST:event_odstranitButtonActionPerformed
 

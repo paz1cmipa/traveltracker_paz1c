@@ -8,8 +8,8 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 class VsetkyKultPodujatieModel extends AbstractTableModel {
-    private KulturnePodujatieDao podujatie = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
-    private List<KulturnePodujatie> podujatia= podujatie.dajVsetky();
+    private KulturnePodujatieDao podujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+    private List<KulturnePodujatie> podujatia= podujatieDao.dajVsetky();
     private static final int POCET_STLPCOV = 4;
     private static final String[] NAZVY_STLPCOV= {"Krajina","Mesto","Nazov","Datum"};
     private static final int STLPEC_DATUM = 3;
@@ -22,11 +22,16 @@ class VsetkyKultPodujatieModel extends AbstractTableModel {
         super();
         POCET_RIADKOV=podujatia.size();
     }
-    
-     /* public VsetkyKultPodujatieModel(int pocetRiadkov) {
+     /* public VsetkyKultPodujatieModel(int PocetRiadkov) {
         super();
-        POCET_RIADKOV=pocetRiadkov;
+        if(PocetRiadkov>podujatia.size()){
+            POCET_RIADKOV=podujatia.size();
+        }else{
+            POCET_RIADKOV=PocetRiadkov;
+        }
     }*/
+    
+
     
     
     @Override
@@ -65,5 +70,16 @@ class VsetkyKultPodujatieModel extends AbstractTableModel {
     
         
     }
+   /* public void odstranPodujatie(int row){
+     podujatieDao.odstranit(podujatia.get(row));
+     refresh();
     
+    }
+
+    public void refresh(){
+    podujatia.clear();
+    podujatia=podujatieDao.dajVsetky();  
+    fireTableDataChanged();
+
+    }*/
 }

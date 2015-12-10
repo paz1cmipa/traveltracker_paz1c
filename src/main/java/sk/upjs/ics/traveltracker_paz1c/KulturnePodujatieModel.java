@@ -58,8 +58,20 @@ public class KulturnePodujatieModel extends AbstractTableModel {
          return podujatia.get(row);
     
      }
+    public void odstranPodujatie(int row){
+     podujatieDao.odstranit(podujatia.get(row));
+     refresh();
     
+    }
 
+    public void refresh(){
+    podujatia.clear();
+    podujatia=podujatieDao.dajVsetky();
+    
+        
+    fireTableDataChanged();
+
+    }
     
     
   

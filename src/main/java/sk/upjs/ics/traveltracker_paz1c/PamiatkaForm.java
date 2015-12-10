@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class PamiatkaForm extends javax.swing.JDialog {
     
     private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
-
+    private PamiatkaModel model=new PamiatkaModel();
     public PamiatkaForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -40,23 +40,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        pamiatkyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Krajina", "Mesto", "Pamiatka", "Dátum"
-            }
-        ));
+        pamiatkyTable.setModel(this.model);
         pamiatkyTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pamiatkyTableMouseClicked(evt);
@@ -157,7 +141,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
     private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
        PridatPamiatkaForm pridat = new PridatPamiatkaForm(this, true);
        pridat.setVisible(true);
-       refresh();
+       model.refresh();
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
@@ -168,7 +152,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
         
 
 
-        List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
+       /* List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
         String krajina = (String) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 0);
         String mesto = ((String) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 1));
         String pamiatkaNazov = ((String) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 2));
@@ -176,13 +160,13 @@ public class PamiatkaForm extends javax.swing.JDialog {
         
           for (Pamiatka pamiatka : vsetkyPamiatky){
             if (krajina.equals(pamiatka.getKrajina()) && mesto.equals(pamiatka.getMesto()) 
-                    && pamiatkaNazov.equals(pamiatka.getPamiatka_zaujimavost()) && datum.equals(pamiatka.getDatum())){
-                UpravitPamiatkaForm upravit = new UpravitPamiatkaForm(this, true, pamiatka);
+                    && pamiatkaNazov.equals(pamiatka.getPamiatka_zaujimavost()) && datum.equals(pamiatka.getDatum())){*/
+                UpravitPamiatkaForm upravit = new UpravitPamiatkaForm(this, true, model.getPamiatka(pamiatkyTable.getSelectedRow()));
                 upravit.setVisible(true);
-            }
+           // }
             
-        }
-        refresh();
+       // }
+       model.refresh();
     }//GEN-LAST:event_upravitButtonActionPerformed
 
     private void odstranitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitButtonActionPerformed
@@ -190,16 +174,17 @@ public class PamiatkaForm extends javax.swing.JDialog {
         
         if(cisloRiadku == -1){
             JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!");
+            return;
         }
         
-        Pamiatka pamiatka = najdiPamiatku(cisloRiadku);
+        //Pamiatka pamiatka = najdiPamiatku(cisloRiadku);
        
-       if (pamiatka == null){
-           return; 
-       }
-        pamiatkaDao.odstranit(pamiatka);
-            
-        refresh();
+      // if (pamiatka == null){
+          // return; 
+       //}
+       // pamiatkaDao.odstranit(pamiatka);
+        model.odstranPamiatka(cisloRiadku);
+        //refresh();
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
@@ -209,7 +194,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
 
     private void pamiatkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pamiatkyTableMouseClicked
         if(evt.getClickCount()==2){
-         ZobrazitPamiatkaForm zobraz=new ZobrazitPamiatkaForm(this, true, najdiPamiatku(pamiatkyTable.getSelectedRow()));
+         ZobrazitPamiatkaForm zobraz=new ZobrazitPamiatkaForm(this, true, model.getPamiatka(pamiatkyTable.getSelectedRow()));
          zobraz.setVisible(true);
         
         }
@@ -217,7 +202,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
 
     
     
-       public Pamiatka najdiPamiatku (int cislo){
+      /* public Pamiatka najdiPamiatku (int cislo){
           
         List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
         String krajina = (String) pamiatkyTable.getValueAt(cislo, 0);
@@ -239,7 +224,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
             
         }
           return najdenaPamiatka;
-      }
+      }*/
     
     
       public void refresh(){
