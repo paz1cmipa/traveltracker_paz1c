@@ -52,27 +52,33 @@
                   <Component id="upravitButton" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="PoznámkzLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ProgramLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TypLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PoznámkzLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ProgramLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TypLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="Hodnotenielabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="Hodnotenielabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="NavstiveneLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ZobrazTypLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazProgramLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazPoznamkyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazHodnotenieLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="ZobrazTypLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ZobrazProgramLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ZobrazPoznamkyLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ZobrazHodnotenieLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ZobrazNavstiveneLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="NavstiveneCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
@@ -103,9 +109,7 @@
                           <Component id="TypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ZobrazTypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="NavstiveneCheckBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="upravitButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="okButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -134,7 +138,11 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="UbytovanieLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZobrazUbytovnieLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="ZobrazUbytovnieLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="NavstiveneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ZobrazNavstiveneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -219,14 +227,6 @@
         <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="NavstiveneCheckBox">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nav&#x161;t&#xed;ven&#xe9;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NavstiveneCheckBoxActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="upravitButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Upravi&#x165;"/>
@@ -257,6 +257,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="NavstiveneLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nav&#x161;t&#xed;ven&#xe9;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazNavstiveneLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nie"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

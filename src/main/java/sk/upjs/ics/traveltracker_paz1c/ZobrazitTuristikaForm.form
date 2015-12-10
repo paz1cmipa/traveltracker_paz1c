@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="KrajinaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -41,7 +41,11 @@
                           <Component id="ZobrazTypLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="PrejdeneCheckBox" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="PrejdeneLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ZobrazPrejdeneLabel" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -98,10 +102,15 @@
                   <Component id="ZobrazTypLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="PrejdeneCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="okButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="upravitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="okButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="upravitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="PrejdeneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ZobrazPrejdeneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
@@ -179,11 +188,6 @@
         <Property name="text" type="java.lang.String" value="nepozna&#x10d;en&#xe9;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="PrejdeneCheckBox">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Prejden&#xe9;"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="okButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="OK"/>
@@ -199,6 +203,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="upravitButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="PrejdeneLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prejden&#xe9;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ZobrazPrejdeneLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nie"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

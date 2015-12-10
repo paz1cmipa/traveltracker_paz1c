@@ -7,9 +7,10 @@ import javax.swing.JOptionPane;
 public class KulturnePodujatieForm extends javax.swing.JDialog {
     
      private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
-
-   
-    public KulturnePodujatieForm(java.awt.Frame parent, boolean modal) {
+     private KulturnePodujatieModel model= new KulturnePodujatieModel();
+     private List<KulturnePodujatie> podujatia=kulturnePodujatieDao.dajVsetky();
+     
+     public KulturnePodujatieForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         refresh();
@@ -34,23 +35,7 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        podujatiaTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Krajina", "Mesto", "Nazov", "Datum"
-            }
-        ));
+        podujatiaTable.setModel(this.model);
         podujatiaTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 podujatiaTableMouseClicked(evt);
@@ -105,53 +90,48 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
                                 .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(hladatButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(vsetkyButton)
-                                .addGap(46, 46, 46)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(upravitButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(odstranitButton))
-                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(stornoButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(pridateButton)))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                                .addGap(33, 33, 33)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(upravitButton)
+                            .addComponent(pridateButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(odstranitButton)
+                            .addComponent(vsetkyButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pridateButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(stornoButton)
-                        .addComponent(hladatButton)
-                        .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(upravitButton)
-                            .addComponent(odstranitButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vsetkyButton)
-                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hladatButton)
+                    .addComponent(hladatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pridateButton)
+                    .addComponent(odstranitButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vsetkyButton)
+                    .addComponent(stornoButton)
+                    .addComponent(upravitButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -168,7 +148,11 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_pridateButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-       
+        if(podujatiaTable.getSelectedRow()==-1){
+          JOptionPane.showMessageDialog(this, "Nebol vybrany žiaden riadok!");
+           return;
+        }
+     
         List<KulturnePodujatie> vsetkyKulturnePodujatia = kulturnePodujatieDao.dajVsetky();
         String krajina = (String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 0);
         String Mesto = ((String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 1));
@@ -183,7 +167,7 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
             }
             
         }
-        refresh();
+       refresh();
         
     }//GEN-LAST:event_upravitButtonActionPerformed
 
@@ -216,7 +200,8 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
 
     private void podujatiaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_podujatiaTableMouseClicked
         if(evt.getClickCount()==2){
-            List<KulturnePodujatie> vsetky = kulturnePodujatieDao.dajVsetky();
+           ZobrazitPodujatieForm zobraz=new ZobrazitPodujatieForm(this, true, model.getPodujatie(podujatiaTable.getSelectedRow()));
+           zobraz.setVisible(true);
         }
     }//GEN-LAST:event_podujatiaTableMouseClicked
 
@@ -226,10 +211,10 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
            for (int k=0; k<4; k++){
                podujatiaTable.setValueAt(null, j, k);
            }
-       }
-        
-        List<KulturnePodujatie> podujatia = kulturnePodujatieDao.dajVsetky();
-        int i = 0;
+       } 
+      
+    
+     int i = 0;
         for (KulturnePodujatie podujatie: podujatia){
             if (i == 10){
                 break;
@@ -240,11 +225,15 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
             podujatiaTable.setValueAt(podujatie.getDatum(), i, 3);
             i++;
         }
+       
+       
+       
+       
       }
       
       public KulturnePodujatie najdiPodujatie (int cislo){
           
-          List<KulturnePodujatie> vsetkyKulturnePodujatia = kulturnePodujatieDao.dajVsetky();
+        List<KulturnePodujatie> vsetkyKulturnePodujatia = kulturnePodujatieDao.dajVsetky();
         String krajina = (String) podujatiaTable.getValueAt(cislo, 0);
         String Mesto = ((String) podujatiaTable.getValueAt(cislo, 1));
         String Nazov = ((String) podujatiaTable.getValueAt(cislo, 2));

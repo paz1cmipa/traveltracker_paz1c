@@ -5,14 +5,13 @@ import java.util.List;
 
 
 public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
-     private KulturnePodujatieDao podujatie = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+    private KulturnePodujatieDao podujatie = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
     private List<KulturnePodujatie> podujatia = podujatie.dajVsetky();
     VsetkyKultPodujatieModel model=new VsetkyKultPodujatieModel();
 
     public dajVsetkyPodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        dajVsetkyTable.setModel(model);
         
         int i = 0;
         for (KulturnePodujatie vylet: podujatia){
@@ -82,7 +81,7 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dajVsetkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dajVsetkyTableMouseClicked
-             if(evt.getClickCount() == 2){
+      if(evt.getClickCount() == 2){
         int row=dajVsetkyTable.getSelectedRow();
       
        KulturnePodujatie kulturnePodujatie=model.getPodujatie(row);

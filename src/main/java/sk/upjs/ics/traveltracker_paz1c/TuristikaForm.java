@@ -54,6 +54,11 @@ public class TuristikaForm extends javax.swing.JDialog {
                 "Krajina", "Cieľ", "Dátum"
             }
         ));
+        turyTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                turyTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(turyTable);
 
         stornoButton.setText("Storno");
@@ -155,7 +160,12 @@ public class TuristikaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-         List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
+        if(turyTable.getSelectedRow()==-1){
+          JOptionPane.showMessageDialog(this, "Nebol vybrany žiaden riadok!");
+           return;
+        }
+
+        List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
         String krajina = (String) turyTable.getValueAt(turyTable.getSelectedRow(), 0);
         String ciel = ((String) turyTable.getValueAt(turyTable.getSelectedRow(), 1));
         Date datum = ((Date) turyTable.getValueAt(turyTable.getSelectedRow(), 2));
@@ -194,6 +204,14 @@ public class TuristikaForm extends javax.swing.JDialog {
         vsetky.setVisible(true);
                 
     }//GEN-LAST:event_vsetkyButtonActionPerformed
+
+    private void turyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_turyTableMouseClicked
+         if(evt.getClickCount()==2){
+         ZobrazitTuristikaForm zobraz=new ZobrazitTuristikaForm(this, true, najdiTuru(turyTable.getSelectedRow()));
+         zobraz.setVisible(true);
+        
+        }
+    }//GEN-LAST:event_turyTableMouseClicked
 
     
         public void refresh(){

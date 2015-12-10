@@ -54,6 +54,11 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
                 "Krajina", "Mesto", "Odchod", "Príchod"
             }
         ));
+        vyletyTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vyletyTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(vyletyTable);
 
         stornoButton.setText("Storno");
@@ -146,6 +151,12 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
+
+       if(vyletyTable.getSelectedRow()==-1){
+          JOptionPane.showMessageDialog(this, "Nebol vybrany žiaden riadok!");
+           return;
+        }
+        
         List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
         String krajina = (String) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 0);
         String mesto = ((String) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 1));
@@ -190,6 +201,14 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
        dajVsetkyVyletForm vsetky = new dajVsetkyVyletForm(this, true);
        vsetky.setVisible(true);
     }//GEN-LAST:event_vsetkyButtonActionPerformed
+
+    private void vyletyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vyletyTableMouseClicked
+        if(evt.getClickCount()==2){
+         ZobrazitViacdnovyVyletForm zobraz=new ZobrazitViacdnovyVyletForm(this, true, najdiVylet(vyletyTable.getSelectedRow()));
+         zobraz.setVisible(true);
+        
+        }
+    }//GEN-LAST:event_vyletyTableMouseClicked
 
     
          public void refresh(){

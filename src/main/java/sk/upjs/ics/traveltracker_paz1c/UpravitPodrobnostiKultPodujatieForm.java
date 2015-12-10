@@ -185,7 +185,13 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
          } else {
             podujatie.setVstupne(Double.valueOf(vstupneTextField.getText()));
         }
-        DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+         
+         if(zacinaTextField.getText().trim().isEmpty()){
+         zacinaTextField.setText("00:00");
+       
+       
+        }
+        DateFormat formatter = new SimpleDateFormat("hh:mm");
        Date date = null;
          try {
              date=formatter.parse(zacinaTextField.getText());

@@ -18,48 +18,10 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
     }
     public ZobrazitPodujatieForm(javax.swing.JDialog parent , boolean modal,KulturnePodujatie kultPodujatie) {
          super(parent, modal);
-            initComponents();
-        kulturnePodujatie=kultPodujatie;
+         initComponents();
+         kulturnePodujatie=kultPodujatie;
+         refresh();
         
-        if(kulturnePodujatie.getKrajina()!=null){
-        ZobrazenakrajinaLabel.setText(kulturnePodujatie.getKrajina());
-        }
-        
-        if(kulturnePodujatie.getMesto()!=null){
-        ZobrazeneMestolabel.setText(kulturnePodujatie.getMesto());
-        }
-        
-        if(kulturnePodujatie.getNazov()!=null){
-        ZobrazenyNazovLabel.setText(kulturnePodujatie.getNazov());
-        }
-        
-        if(kulturnePodujatie.getDatum() !=null){
-        ZobrazenyDatumLabel.setText(kulturnePodujatie.getDatum().toString());
-        }
-
-        ZobrazeneHodnotenieLabel.setText(Integer.toString(kulturnePodujatie.getHodnotenie()));
-
-        if(kulturnePodujatie.getLokalizacia()!=null){
-        ZobrazeneMiestoLabel.setText(kulturnePodujatie.getLokalizacia());
-        }
-
-        ZobrazeneVstupneLabel.setText(Double.toString(kulturnePodujatie.getVstupne()));
-
-        if(kulturnePodujatie.getCasZaciatku() !=null){
-        ZobrazenyCasLabel.setText(kulturnePodujatie.getCasZaciatku().toString());
-        }
-        
-        if(kulturnePodujatie.getTyp()!=null){
-        ZobrazenyTypLabel.setText(kulturnePodujatie.getTyp());
-        }
-        
-        
-        if(kulturnePodujatie.getPoznamky()!=null){
-        ZobrazenePoznamkyLabel.setText(kulturnePodujatie.getPoznamky());
-        }
-        if(kulturnePodujatie.isNavstivene()){
-        NavstiveneCheckBox.setSelected(true);
-        }
         
      }
 
@@ -93,9 +55,10 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
         ZobrazenyTypLabel = new javax.swing.JLabel();
         PoznamkyLabel = new javax.swing.JLabel();
         ZobrazenePoznamkyLabel = new javax.swing.JLabel();
-        NavstiveneCheckBox = new javax.swing.JCheckBox();
         OkButton = new javax.swing.JButton();
         UpravitButton = new javax.swing.JButton();
+        NavstiveneLabel = new javax.swing.JLabel();
+        ZobrazNavstiveneLabel = new javax.swing.JLabel();
 
         ZobrazeneMiestoLabel.setText("nepoznačené");
 
@@ -141,8 +104,6 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
 
         ZobrazenePoznamkyLabel.setText("nepoznačené");
 
-        NavstiveneCheckBox.setText("Navštívené");
-
         OkButton.setText("OK");
         OkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +117,10 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
                 UpravitButtonActionPerformed(evt);
             }
         });
+
+        NavstiveneLabel.setText("Navštívené:");
+
+        ZobrazNavstiveneLabel.setText("nie");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,8 +150,10 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(NavstiveneCheckBox)
-                                .addGap(117, 117, 117)
+                                .addComponent(NavstiveneLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ZobrazNavstiveneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
                                 .addComponent(OkButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(UpravitButton))
@@ -259,13 +226,15 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
                             .addComponent(ZobrazenePoznamkyLabel))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(NavstiveneCheckBox))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(OkButton)
-                                    .addComponent(UpravitButton))))))
+                                    .addComponent(UpravitButton)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(NavstiveneLabel)
+                                    .addComponent(ZobrazNavstiveneLabel))))))
                 .addGap(19, 30, Short.MAX_VALUE))
         );
 
@@ -279,8 +248,50 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
     private void UpravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpravitButtonActionPerformed
         UpravitKultPodujatieForm kultura=new UpravitKultPodujatieForm(this, true,kulturnePodujatie);
         kultura.setVisible(true);
+        refresh();
     }//GEN-LAST:event_UpravitButtonActionPerformed
+  private void refresh() {
+      if(kulturnePodujatie.getKrajina()!=null){
+        ZobrazenakrajinaLabel.setText(kulturnePodujatie.getKrajina());
+        }
+        
+        if(kulturnePodujatie.getMesto()!=null){
+        ZobrazeneMestolabel.setText(kulturnePodujatie.getMesto());
+        }
+        
+        if(kulturnePodujatie.getNazov()!=null){
+        ZobrazenyNazovLabel.setText(kulturnePodujatie.getNazov());
+        }
+        
+        if(kulturnePodujatie.getDatum() !=null){
+        ZobrazenyDatumLabel.setText(kulturnePodujatie.getDatum().toString());
+        }
 
+        ZobrazeneHodnotenieLabel.setText(Integer.toString(kulturnePodujatie.getHodnotenie()));
+
+        if(kulturnePodujatie.getLokalizacia()!=null){
+        ZobrazeneMiestoLabel.setText(kulturnePodujatie.getLokalizacia());
+        }
+
+        ZobrazeneVstupneLabel.setText(Double.toString(kulturnePodujatie.getVstupne()));
+
+        if(kulturnePodujatie.getCasZaciatku() !=null){
+        ZobrazenyCasLabel.setText(kulturnePodujatie.getCasZaciatku().toString());
+        }
+        
+        if(kulturnePodujatie.getTyp()!=null){
+        ZobrazenyTypLabel.setText(kulturnePodujatie.getTyp());
+        }
+        
+        
+        if(kulturnePodujatie.getPoznamky()!=null){
+        ZobrazenePoznamkyLabel.setText(kulturnePodujatie.getPoznamky());
+        }
+        if(kulturnePodujatie.isNavstivene()){
+        ZobrazNavstiveneLabel.setText("áno");
+        }
+ 
+    }
     /**
      * @param args the command line arguments
      */
@@ -330,13 +341,14 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
     private javax.swing.JLabel KrajinaLabel;
     private javax.swing.JLabel MestoLabel;
     private javax.swing.JLabel MiestoLabel;
-    private javax.swing.JCheckBox NavstiveneCheckBox;
+    private javax.swing.JLabel NavstiveneLabel;
     private javax.swing.JLabel NazovLabel;
     private javax.swing.JButton OkButton;
     private javax.swing.JLabel PoznamkyLabel;
     private javax.swing.JLabel TypLabel;
     private javax.swing.JButton UpravitButton;
     private javax.swing.JLabel VstupneLabel;
+    private javax.swing.JLabel ZobrazNavstiveneLabel;
     private javax.swing.JLabel ZobrazenakrajinaLabel;
     private javax.swing.JLabel ZobrazeneHodnotenieLabel;
     private javax.swing.JLabel ZobrazeneMestolabel;
@@ -350,4 +362,6 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
     private javax.swing.JLabel ZobrazenyTypLabel;
     private javax.swing.JLabel casZaciatkuLabel;
     // End of variables declaration//GEN-END:variables
+
+  
 }

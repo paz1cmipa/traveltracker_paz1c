@@ -1,6 +1,7 @@
 
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -15,14 +16,23 @@ class VsetkyKultPodujatieModel extends AbstractTableModel {
     private static final int STLPEC_NAZOV = 2;
     private static final int STLPEC_MESTO = 1;
     private static final int STLPEC_KRAJINA = 0;
+    private static  int POCET_RIADKOV;
     
     public VsetkyKultPodujatieModel() {
         super();
+        POCET_RIADKOV=podujatia.size();
     }
-
+    
+     /* public VsetkyKultPodujatieModel(int pocetRiadkov) {
+        super();
+        POCET_RIADKOV=pocetRiadkov;
+    }*/
+    
+    
     @Override
     public int getRowCount() {
-       return podujatia.size();
+           return POCET_RIADKOV;
+        
     }
 
     @Override

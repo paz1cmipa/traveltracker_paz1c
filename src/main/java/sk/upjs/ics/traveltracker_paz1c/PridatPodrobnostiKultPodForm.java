@@ -97,7 +97,7 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
             }
         });
 
-        formatCasLabel.setText("(hh:mm:ss)");
+        formatCasLabel.setText("(hh:mm)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,12 +188,18 @@ public class PridatPodrobnostiKultPodForm extends javax.swing.JDialog {
          } else {
             kulturnePodujatie.setVstupne(Double.valueOf(vstupneTextField.getText()));
         }
+       
+       if(zacinaTextField.getText().trim().isEmpty()){
+         zacinaTextField.setText("00:00");
+       
+       
+        }
         //long cas = Long.parseLong(zacinaTextField.getText());
        // Time zaciatok = null;
        // zaciatok.setTime(cas);
        // 
        // String str = "08:03:10 pm";
-       DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+       DateFormat formatter = new SimpleDateFormat("hh:mm");
        Date date = null;
          try {
              date=formatter.parse(zacinaTextField.getText());

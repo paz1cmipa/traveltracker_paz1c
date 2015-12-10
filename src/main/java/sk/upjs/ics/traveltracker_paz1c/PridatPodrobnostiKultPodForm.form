@@ -182,7 +182,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="formatCasLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="(hh:mm:ss)"/>
+        <Property name="text" type="java.lang.String" value="(hh:mm)"/>
       </Properties>
     </Component>
   </SubComponents>

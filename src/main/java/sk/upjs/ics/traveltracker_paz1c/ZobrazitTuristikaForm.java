@@ -21,30 +21,7 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
        super(parent, modal);
         initComponents();
         this.tura=tura;
-        if(this.tura.getKrajina()!=null){
-         ZobrazKrajinalabel.setText(this.tura.getKrajina());
-       }
-        if(this.tura.getCiel()!=null){
-         ZobrazCielLabel.setText(this.tura.getCiel());
-        }
-        if(this.tura.getTyp()!=null){
-            ZobrazTypLabel.setText(this.tura.getTyp());
-        }
-        if(this.tura.getTrasa()!=null){
-          ZobrazTrasaLabel.setText(this.tura.getTrasa());
-         }
-        if(this.tura.getPoznamky()!=null){
-         ZobrazPoznámkylabel.setText(this.tura.getPoznamky());
-        
-        }
-        if(this.tura.getDatum()!=null){
-         ZobrazDatumLabel.setText(this.tura.getDatum().toString());
-        }
-        ZobrazHodnotenieLabel.setText(Integer.toString(this.tura.getHodnotenie()));
-        
-        if(this.tura.isPrejdene()){
-         PrejdeneCheckBox.isSelected();
-        }
+        refresh();
     }
 
     /**
@@ -70,9 +47,10 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
         ZobrazHodnotenieLabel = new javax.swing.JLabel();
         PoznámkyLabel = new javax.swing.JLabel();
         ZobrazPoznámkylabel = new javax.swing.JLabel();
-        PrejdeneCheckBox = new javax.swing.JCheckBox();
         okButton = new javax.swing.JButton();
         upravitButton = new javax.swing.JButton();
+        PrejdeneLabel = new javax.swing.JLabel();
+        ZobrazPrejdeneLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -104,8 +82,6 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
 
         ZobrazPoznámkylabel.setText("nepoznačené");
 
-        PrejdeneCheckBox.setText("Prejdené");
-
         okButton.setText("OK");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,13 +96,17 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
             }
         });
 
+        PrejdeneLabel.setText("Prejdené:");
+
+        ZobrazPrejdeneLabel.setText("nie");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(KrajinaLabel)
@@ -139,7 +119,10 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
                             .addComponent(ZobrazKrajinalabel)
                             .addComponent(ZobrazDatumLabel)
                             .addComponent(ZobrazTypLabel)))
-                    .addComponent(PrejdeneCheckBox))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PrejdeneLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ZobrazPrejdeneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -184,10 +167,13 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
                     .addComponent(TypLabel)
                     .addComponent(ZobrazTypLabel))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PrejdeneCheckBox)
-                    .addComponent(okButton)
-                    .addComponent(upravitButton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(okButton)
+                        .addComponent(upravitButton))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(PrejdeneLabel)
+                        .addComponent(ZobrazPrejdeneLabel)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -201,8 +187,34 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
         UpravitTuristikaForm upravit= new UpravitTuristikaForm(this, true, tura);
         upravit.setVisible(true);
+        refresh();
     }//GEN-LAST:event_upravitButtonActionPerformed
-
+    public void refresh(){
+          if(this.tura.getKrajina()!=null){
+         ZobrazKrajinalabel.setText(this.tura.getKrajina());
+       }
+        if(this.tura.getCiel()!=null){
+         ZobrazCielLabel.setText(this.tura.getCiel());
+        }
+        if(this.tura.getTyp()!=null){
+            ZobrazTypLabel.setText(this.tura.getTyp());
+        }
+        if(this.tura.getTrasa()!=null){
+          ZobrazTrasaLabel.setText(this.tura.getTrasa());
+         }
+        if(this.tura.getPoznamky()!=null){
+         ZobrazPoznámkylabel.setText(this.tura.getPoznamky());
+        
+        }
+        if(this.tura.getDatum()!=null){
+         ZobrazDatumLabel.setText(this.tura.getDatum().toString());
+        }
+        ZobrazHodnotenieLabel.setText(Integer.toString(this.tura.getHodnotenie()));
+        
+        if(this.tura.isPrejdene()){
+         ZobrazPrejdeneLabel.setText("áno");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -252,7 +264,7 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
     private javax.swing.JLabel HodnotenieLabel;
     private javax.swing.JLabel KrajinaLabel;
     private javax.swing.JLabel PoznámkyLabel;
-    private javax.swing.JCheckBox PrejdeneCheckBox;
+    private javax.swing.JLabel PrejdeneLabel;
     private javax.swing.JLabel TrasaLabel;
     private javax.swing.JLabel TypLabel;
     private javax.swing.JLabel ZobrazCielLabel;
@@ -260,6 +272,7 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
     private javax.swing.JLabel ZobrazHodnotenieLabel;
     private javax.swing.JLabel ZobrazKrajinalabel;
     private javax.swing.JLabel ZobrazPoznámkylabel;
+    private javax.swing.JLabel ZobrazPrejdeneLabel;
     private javax.swing.JLabel ZobrazTrasaLabel;
     private javax.swing.JLabel ZobrazTypLabel;
     private javax.swing.JButton okButton;

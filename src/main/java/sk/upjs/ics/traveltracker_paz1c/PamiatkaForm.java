@@ -57,6 +57,11 @@ public class PamiatkaForm extends javax.swing.JDialog {
                 "Krajina", "Mesto", "Pamiatka", "Dátum"
             }
         ));
+        pamiatkyTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pamiatkyTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(pamiatkyTable);
 
         stornoButton.setText("Storno");
@@ -156,6 +161,13 @@ public class PamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
+        if(pamiatkyTable.getSelectedRow()==-1){
+          JOptionPane.showMessageDialog(this, "Nebol vybrany 6iaden riadok!");
+           return;
+        }
+        
+
+
         List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
         String krajina = (String) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 0);
         String mesto = ((String) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 1));
@@ -195,6 +207,14 @@ public class PamiatkaForm extends javax.swing.JDialog {
         vsetky.setVisible(true);
     }//GEN-LAST:event_vsetkyButtonActionPerformed
 
+    private void pamiatkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pamiatkyTableMouseClicked
+        if(evt.getClickCount()==2){
+         ZobrazitPamiatkaForm zobraz=new ZobrazitPamiatkaForm(this, true, najdiPamiatku(pamiatkyTable.getSelectedRow()));
+         zobraz.setVisible(true);
+        
+        }
+    }//GEN-LAST:event_pamiatkyTableMouseClicked
+
     
     
        public Pamiatka najdiPamiatku (int cislo){
@@ -206,7 +226,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
         Date datum = ((Date) pamiatkyTable.getValueAt(cislo, 3));
         
         if(krajina == null){
-            JOptionPane.showMessageDialog(this, "Nebolo vybrané žiadne podujatie!");
+            JOptionPane.showMessageDialog(this, "Nebolo vybraná žiadna pamiatka!");
             return null;
         }
         
