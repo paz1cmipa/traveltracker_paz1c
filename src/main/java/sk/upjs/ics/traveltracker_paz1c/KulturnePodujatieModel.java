@@ -19,12 +19,19 @@ public class KulturnePodujatieModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
+        if(POCET_RIADKOV>podujatia.size()){
+          return podujatia.size();
+        }else{
+
        return POCET_RIADKOV;
+        }
     }
 
     @Override
-    public int getColumnCount() {
+    public int getColumnCount() {   
        return POCET_STLPCOV;
+        
+     
     }
 
     @Override

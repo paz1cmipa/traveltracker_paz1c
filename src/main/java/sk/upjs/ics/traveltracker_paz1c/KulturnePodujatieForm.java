@@ -144,7 +144,8 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
     private void pridateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridateButtonActionPerformed
        PridatKulturnePodujatieForm pridat = new PridatKulturnePodujatieForm(this, true);
        pridat.setVisible(true);
-       refresh();
+       //refresh();
+       model.fireTableDataChanged();
     }//GEN-LAST:event_pridateButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
@@ -152,22 +153,24 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
           JOptionPane.showMessageDialog(this, "Nebol vybrany žiaden riadok!");
            return;
         }
-     
-        List<KulturnePodujatie> vsetkyKulturnePodujatia = kulturnePodujatieDao.dajVsetky();
-        String krajina = (String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 0);
-        String Mesto = ((String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 1));
-        String Nazov = ((String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 2));
-        Date Datum =  (Date) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 3);
+   
+     //   List<KulturnePodujatie> vsetkyKulturnePodujatia = kulturnePodujatieDao.dajVsetky();
+     //   String krajina = (String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 0);
+     //   String Mesto = ((String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 1));
+     //   String Nazov = ((String) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 2));
+      //  Date Datum =  (Date) podujatiaTable.getValueAt(podujatiaTable.getSelectedRow(), 3);
         
-        for (KulturnePodujatie podujatie : vsetkyKulturnePodujatia){
-            if (krajina.equals(podujatie.getKrajina()) && Mesto.equals(podujatie.getMesto()) 
-                    && Nazov.equals(podujatie.getNazov()) && Datum.equals(podujatie.getDatum())){
-                UpravitKultPodujatieForm upravit = new UpravitKultPodujatieForm(this, true, podujatie);
-                upravit.setVisible(true);
-            }
+       // for (KulturnePodujatie podujatie : vsetkyKulturnePodujatia){
+         //   if (krajina.equals(podujatie.getKrajina()) && Mesto.equals(podujatie.getMesto()) 
+           //         && Nazov.equals(podujatie.getNazov()) && Datum.equals(podujatie.getDatum())){
+        UpravitKultPodujatieForm upravit = new UpravitKultPodujatieForm(this, true, model.getPodujatie(podujatiaTable.getSelectedRow()));
+        upravit.setVisible(true);
+        model.fireTableDataChanged();
+            //}
             
-        }
-       refresh();
+        //}
+       //refresh();
+     // model.fireTableCellUpdated(WIDTH, WIDTH);
         
     }//GEN-LAST:event_upravitButtonActionPerformed
 
@@ -176,16 +179,18 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
         
         if(cisloRiadku == -1){
             JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!");
+            return;
         }
         
-        KulturnePodujatie podujatie = najdiPodujatie(cisloRiadku);
+       // KulturnePodujatie podujatie = najdiPodujatie(cisloRiadku);
        
-       if (podujatie == null){
-           return; 
-       }
-        kulturnePodujatieDao.odstranit(podujatie);
-            
-        refresh();
+       //if (podujatie == null){
+           //return; 
+     //  }
+        kulturnePodujatieDao.odstranit(model.getPodujatie(cisloRiadku));
+      // model.fireTableRowsDeleted(cisloRiadku, cisloRiadku);
+        model.fireTableDataChanged();
+    // refresh();
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
