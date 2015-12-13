@@ -10,10 +10,9 @@ public class PridatPodrobnostiPamiatkaForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        hodnotenieComboBox.setEditable(true);
+        hodnotenieComboBox.setEditable(false);
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for(int i=1; i<6; i++){
+        for(int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
     }
@@ -22,10 +21,9 @@ public class PridatPodrobnostiPamiatkaForm extends javax.swing.JDialog {
          super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        hodnotenieComboBox.setEditable(true);
+        hodnotenieComboBox.setEditable(false);
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for(int i=1; i<6; i++){
+        for(int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
         this.pamiatka=pamiatka;

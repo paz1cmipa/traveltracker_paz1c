@@ -68,7 +68,7 @@ public class MySqlTuristikaDao implements TuristikaDao{
 
     @Override
     public List<Turistika> dajVsetky() {
-      String sql="Select * from turistika";     
+      String sql="Select * from turistika order by datum ASC";     
         BeanPropertyRowMapper<Turistika> mapper= BeanPropertyRowMapper.newInstance(Turistika.class);     
         return  jdbcTemplete.query(sql,mapper);
     }

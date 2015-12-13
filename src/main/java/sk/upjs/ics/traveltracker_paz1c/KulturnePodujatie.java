@@ -1,6 +1,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class KulturnePodujatie {
@@ -17,6 +18,7 @@ public class KulturnePodujatie {
     private int hodnotenie;
     private String poznamky;
     private boolean navstivene;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
     
         public Time getCasZaciatku() {
         return casZaciatku;
@@ -113,6 +115,11 @@ public class KulturnePodujatie {
 
     public void setPoznamky(String poznamky) {
         this.poznamky = poznamky;
+    }
+
+    @Override
+    public String toString() {
+        return   krajina + ", " + mesto + ", " + nazov + " (" + dateFormat.format(this.datum) + ")";
     }
     
 }

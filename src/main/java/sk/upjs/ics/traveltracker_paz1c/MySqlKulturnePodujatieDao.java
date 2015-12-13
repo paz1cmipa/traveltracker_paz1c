@@ -30,21 +30,6 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
      
     @Override
     public void pridat(KulturnePodujatie kulturnePodujatie) {
-      /* String sql="Insert into podujatie values(?,?,?,?,?,?)";
-      //  KeyHolder keyholder = new GeneratedKeyHolder();
-        jdbcTemplete.update(sql, null, 
-                kulturnePodujatie.getKrajina(),
-                kulturnePodujatie.getMesto(),
-                kulturnePodujatie.getTyp(),
-                kulturnePodujatie.getNazov(),
-                kulturnePodujatie.getDatum());
-       // int id= keyholder.getKey().intValue();
-      //  kulturnePodujatie.setId(id);
-        
-     //  String sql1="Insert into podujatiaInfo values(?,?,?,?,?,?,?)";
-      // jdbcTemplete.update(sql1,kulturnePodujatie.getId(),null,null,null,
-       // kulturnePodujatie.isNavstivene(),null,null);
-       //Pouzitie keyHolder ale nefunguje*/
        Map<String, Object> pridatHodnoty = new HashMap<String, Object>();
         pridatHodnoty.put("id", kulturnePodujatie.getId());
         pridatHodnoty.put("krajina", kulturnePodujatie.getKrajina());
@@ -94,7 +79,7 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
                 kulturnePodujatie.getNazov(),
                 kulturnePodujatie.getDatum(),
                 kulturnePodujatie.getId());
-        
+        upravitPodrobnosti(kulturnePodujatie);
         
  
         
@@ -116,7 +101,7 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao{
 
     @Override
     public List<KulturnePodujatie> dajVsetky() {
-        String sql="Select * from podujatie P join podujatiaInfo I on P.id=I.id";     
+        String sql="Select * from podujatie P join podujatiaInfo I on P.id=I.id order by datum ASC";     
         BeanPropertyRowMapper<KulturnePodujatie> mapper= BeanPropertyRowMapper.newInstance(KulturnePodujatie.class);     
         return  jdbcTemplete.query(sql,mapper);
     }

@@ -1,12 +1,14 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatPamiatkaForm extends javax.swing.JDialog {
+    private boolean boloZmenene = false;
    private Pamiatka pamiatka = new Pamiatka();
     private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
     boolean boliPOdrobnosti=false;
@@ -178,8 +180,7 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_krajinaComboBoxActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-       if(!boliPOdrobnosti){
-         if(pamiatkaTextField.getText().trim().isEmpty()){
+          if(pamiatkaTextField.getText().trim().isEmpty()){
              JOptionPane.showMessageDialog(this, "Zadanie pamiatky je povinné");
              return;
          }
@@ -193,13 +194,46 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
              return;
          }
+        if(!boliPOdrobnosti){
+     
        pamiatka.setPamiatka_zaujimavost(pamiatkaTextField.getText());
        pamiatka.setKrajina((String) krajinaComboBox.getSelectedItem());
        pamiatka.setMesto(mestoTextField.getText());
        pamiatka.setDatum(datumDatePicker.getDate());
        pamiatka.setNavstivene(navstiveneCheckBox.isSelected());
        
-       pamiatkaDao.pridat(pamiatka);}
+       pamiatkaDao.pridat(pamiatka);
+        }
+        
+        String nazov = pamiatkaTextField.getText();
+       String krajina = (String) krajinaComboBox.getSelectedItem();
+       String mesto = mestoTextField.getText();
+       Date datum = datumDatePicker.getDate();
+       boolean navstivene = navstiveneCheckBox.isSelected();
+              
+       if(!nazov.equals(pamiatka.getPamiatka_zaujimavost())){
+           pamiatka.setPamiatka_zaujimavost(nazov);
+           boloZmenene = true;
+       }
+         if(!krajina.equals(pamiatka.getKrajina())){
+           pamiatka.setKrajina(krajina);
+           boloZmenene = true;
+       }
+         if(!mesto.equals(pamiatka.getMesto())){
+           pamiatka.setMesto(mesto);
+           boloZmenene = true;
+       }
+        pamiatka.setNavstivene(navstivene);
+        if(!datum.equals(pamiatka.getDatum())){
+           pamiatka.setDatum(datum);
+           boloZmenene = true;
+       }
+        if (boloZmenene){
+            pamiatkaDao.Upravit(pamiatka);
+        }
+       
+       boloZmenene =false;
+        
        boliPOdrobnosti=false;
        setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed

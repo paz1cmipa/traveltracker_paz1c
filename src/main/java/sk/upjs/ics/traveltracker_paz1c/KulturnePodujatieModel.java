@@ -4,8 +4,11 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class KulturnePodujatieModel extends AbstractTableModel {
+    
+  
     
     private MySqlKulturnePodujatieDao podujatieDao = new MySqlKulturnePodujatieDao();
     private static final int POCET_RIADKOV = 10;

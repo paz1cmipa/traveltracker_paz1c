@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
+    private boolean boloZmenene=false;
     private boolean boliPodrobnost=false;
     private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
     private KulturnePodujatie kulturnePodujatie = new KulturnePodujatie();
@@ -155,7 +156,6 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-       if(!boliPodrobnost){
         if(nazovTextField.getText().trim().isEmpty()){
            JOptionPane.showMessageDialog(this, "Zadanie názvu je povinné");
            return;
@@ -170,9 +170,8 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
             return;
            }
-         
         
-         
+        if(!boliPodrobnost){
          
        kulturnePodujatie.setNazov(nazovTextField.getText());
        kulturnePodujatie.setKrajina((String) krajinaComboBox.getSelectedItem());
@@ -184,6 +183,39 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
        kulturnePodujatieDao.pridat(kulturnePodujatie);
        
        }
+       String nazov = nazovTextField.getText();
+       String krajina = (String) krajinaComboBox.getSelectedItem();
+       String mesto = mestoTextField.getText();
+       Date datum = datumDatePicker.getDate();
+       boolean navstivene = navstiveneCheckBox.isSelected();
+       String typ = typTextField.getText();
+       
+       if(!nazov.equals(kulturnePodujatie.getNazov())){
+           kulturnePodujatie.setNazov(nazov);
+           boloZmenene = true;
+       }
+         if(!krajina.equals(kulturnePodujatie.getKrajina())){
+           kulturnePodujatie.setKrajina(krajina);
+           boloZmenene = true;
+       }
+         if(!mesto.equals(kulturnePodujatie.getMesto())){
+           kulturnePodujatie.setMesto(mesto);
+           boloZmenene = true;
+       }
+         if(!typ.equals(kulturnePodujatie.getTyp())){
+           kulturnePodujatie.setTyp(typ);
+           boloZmenene = true;
+       }
+         kulturnePodujatie.setNavstivene(navstivene);
+        if(!datum.equals(kulturnePodujatie.getDatum())){
+           kulturnePodujatie.setDatum(datum);
+           boloZmenene = true;
+       }
+        if (boloZmenene){
+            kulturnePodujatieDao.Upravit(kulturnePodujatie);
+        }
+       
+       boloZmenene =false; 
        boliPodrobnost=false;
        this.setVisible(false);
       

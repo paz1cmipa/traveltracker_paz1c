@@ -1,6 +1,13 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.util.List;
+
 public class PrimarnyMainForm extends javax.swing.JFrame {
+    
+    private KulturnePodujatieDao podujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+    private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
+    private TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
+    private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
 
   
     public PrimarnyMainForm() {
@@ -10,6 +17,9 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
         pridatComboBox.addItem("Turistika");
         pridatComboBox.addItem("Viacdňový výlet");
         setLocationRelativeTo(null);
+        refresh();
+       
+                
     }
 
     /**
@@ -23,56 +33,101 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
 
         najblizsieUdalostiLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        najblizsieUdalostiList = new javax.swing.JList();
+        najblizsieKultPodujatiaList = new javax.swing.JList();
         travelTrackerLabel = new javax.swing.JLabel();
         pridatComboBox = new javax.swing.JComboBox();
+        kulturnePodujatiaLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        najblizsiePamiatkyList = new javax.swing.JList();
+        najblizsieTuryLabel = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        najblizsieTuryList = new javax.swing.JList();
+        viacdnoveVyletyLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        najblizsieVyletyList = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         najblizsieUdalostiLabel.setText("Najbližšie udalosti:");
 
-        jScrollPane1.setViewportView(najblizsieUdalostiList);
+        jScrollPane1.setViewportView(najblizsieKultPodujatiaList);
 
         travelTrackerLabel.setText("Travel Tracker");
 
-        pridatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pridať" }));
+        pridatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Výber" }));
         pridatComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pridatComboBoxActionPerformed(evt);
             }
         });
 
+        kulturnePodujatiaLabel.setText("Kultúrne podujatia:");
+
+        jLabel1.setText("Pamiatky / Zaujímavosti:");
+
+        jScrollPane2.setViewportView(najblizsiePamiatkyList);
+
+        najblizsieTuryLabel.setText("Túry:");
+
+        jScrollPane3.setViewportView(najblizsieTuryList);
+
+        viacdnoveVyletyLabel.setText("Viacdňové výlety:");
+
+        jScrollPane4.setViewportView(najblizsieVyletyList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(najblizsieUdalostiLabel)
-                                .addGap(54, 54, 54)
-                                .addComponent(pridatComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(travelTrackerLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(kulturnePodujatiaLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(najblizsieUdalostiLabel)
+                                    .addGap(54, 54, 54)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(pridatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(travelTrackerLabel)))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(najblizsieTuryLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(viacdnoveVyletyLabel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(travelTrackerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(najblizsieUdalostiLabel)
                     .addComponent(pridatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(kulturnePodujatiaLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(najblizsieTuryLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viacdnoveVyletyLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -99,8 +154,48 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
             viacdnovyVylet.setVisible(true);
           
         }
+        refresh();
     }//GEN-LAST:event_pridatComboBoxActionPerformed
 
+   public void refresh(){
+        List<KulturnePodujatie> vsetkyPodujatia = podujatieDao.dajVsetky();
+        if(!vsetkyPodujatia.isEmpty()){
+            if(vsetkyPodujatia.size()> 3){
+        najblizsieKultPodujatiaList.setListData(vsetkyPodujatia.subList(0,3).toArray());
+        }else{
+            najblizsieKultPodujatiaList.setListData(vsetkyPodujatia.toArray());
+        }
+    }
+        
+        List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
+        if(!vsetkyPamiatky.isEmpty()){
+            if(vsetkyPamiatky.size()>3){
+        najblizsiePamiatkyList.setListData(vsetkyPamiatky.subList(0,3).toArray());
+            }else{
+                najblizsiePamiatkyList.setListData(vsetkyPamiatky.toArray());
+            }
+        }
+        
+        List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
+        if(!vsetkyTury.isEmpty()){
+            if(vsetkyTury.size()>3){
+                najblizsieTuryList.setListData(vsetkyTury.subList(0,3).toArray());
+            }else{
+                najblizsieTuryList.setListData(vsetkyTury.toArray());
+            }
+        }
+        
+        List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
+        if(!vsetkyVylety.isEmpty()){
+            if(vsetkyVylety.size()>3){
+                najblizsieVyletyList.setListData(vsetkyVylety.subList(0,3).toArray());
+            }else{
+                najblizsieVyletyList.setListData(vsetkyVylety.toArray());
+            }
+        }
+       
+   }
+    
     /**
      * @param args the command line arguments
      */
@@ -138,10 +233,20 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel kulturnePodujatiaLabel;
+    private javax.swing.JList najblizsieKultPodujatiaList;
+    private javax.swing.JList najblizsiePamiatkyList;
+    private javax.swing.JLabel najblizsieTuryLabel;
+    private javax.swing.JList najblizsieTuryList;
     private javax.swing.JLabel najblizsieUdalostiLabel;
-    private javax.swing.JList najblizsieUdalostiList;
+    private javax.swing.JList najblizsieVyletyList;
     private javax.swing.JComboBox pridatComboBox;
     private javax.swing.JLabel travelTrackerLabel;
+    private javax.swing.JLabel viacdnoveVyletyLabel;
     // End of variables declaration//GEN-END:variables
 }

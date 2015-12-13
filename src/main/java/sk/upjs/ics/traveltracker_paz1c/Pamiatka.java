@@ -1,5 +1,6 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Pamiatka {
@@ -14,6 +15,7 @@ public class Pamiatka {
     private String podrobnosti;
     private int hodnotenie;
     private boolean navstivene;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
 
     public boolean isNavstivene() {
         return navstivene;
@@ -95,6 +97,12 @@ public class Pamiatka {
     public void setPodrobnosti(String podrobnosti) {
         this.podrobnosti = podrobnosti;
     }
+
+    @Override
+    public String toString() {
+        return krajina + ", " + mesto + ", " + pamiatka_zaujimavost + " (" + dateFormat.format(datum) + ")";
+    }
+    
     
     
 }

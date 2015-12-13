@@ -1,5 +1,6 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Turistika {
@@ -14,6 +15,7 @@ public class Turistika {
     private String poznamky;
     private int hodnotenie;
     private boolean prejdene; //navstivene
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
 
     public boolean isPrejdene() {
         return prejdene;
@@ -86,5 +88,12 @@ public class Turistika {
     public void setHodnotenie(int hodnotenie) {
         this.hodnotenie = hodnotenie;
     }
+
+    @Override
+    public String toString() {
+        return krajina + ", " + ciel + "(" + dateFormat.format(datum) + ")";
+    }
+    
+    
     
 }

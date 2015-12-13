@@ -1,5 +1,6 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 
@@ -16,6 +17,7 @@ public class ViacdnovyVylet {
     private String ubytovanie;
     private String typ;
     private boolean navstivene;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
 
     public int getId() {
         return id;
@@ -105,6 +107,11 @@ public class ViacdnovyVylet {
 
     public void setProgram(String program) {
         this.program = program;
+    }
+
+    @Override
+    public String toString() {
+        return krajina + ", " + mesto1 + " (" + dateFormat.format(datumOdchod) + " - " + dateFormat.format(datumPrichod)+ ")";
     }
 
     

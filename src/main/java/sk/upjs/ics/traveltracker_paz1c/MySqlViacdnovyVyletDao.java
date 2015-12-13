@@ -110,6 +110,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
                 viacdnovyVylet.getMesto1(),
                 viacdnovyVylet.getUbytovanie(),
                 viacdnovyVylet.getId());
+         UpravitPodrobnosti(viacdnovyVylet);
         
         
         
@@ -118,7 +119,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
     }
     @Override
     public List<ViacdnovyVylet> dajVsetky() {
-       String sql="Select * from viacDni V join viacDniInfo I on V.id=I.id";     
+       String sql="Select * from viacDni V join viacDniInfo I on V.id=I.id order by datumOdchod ASC";     
         BeanPropertyRowMapper<ViacdnovyVylet> mapper= BeanPropertyRowMapper.newInstance(ViacdnovyVylet.class);     
         return  jdbcTemplete.query(sql,mapper);
     }

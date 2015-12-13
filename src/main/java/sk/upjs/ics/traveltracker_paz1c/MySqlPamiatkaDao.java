@@ -77,6 +77,7 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
                 pamiatka.getPamiatka_zaujimavost(),
                 pamiatka.getDatum(),
                 pamiatka.getId());
+        UpravitPodrobnosti(pamiatka);
        
     }
     @Override
@@ -94,7 +95,7 @@ public class MySqlPamiatkaDao implements PamiatkaDao{
 
     @Override
     public List<Pamiatka> dajVsetky() {
-      String sql="Select * from pamiatka P join pamiatkaInfo I on P.id=I.id";     
+      String sql="Select * from pamiatka P join pamiatkaInfo I on P.id=I.id order by datum ASC";     
         BeanPropertyRowMapper<Pamiatka> mapper= BeanPropertyRowMapper.newInstance(Pamiatka.class);     
         return  jdbcTemplete.query(sql,mapper);
     }
