@@ -5,21 +5,26 @@
  */
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Robert Link
  */
 public class ZobrazitTuristikaForm extends javax.swing.JDialog {
    private Turistika tura = new Turistika();
+   private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
     
     
     public ZobrazitTuristikaForm(javax.swing.JDialog parent , boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
       public ZobrazitTuristikaForm(javax.swing.JDialog parent , boolean modal,Turistika tura) {
        super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         this.tura=tura;
         refresh();
     }
@@ -207,7 +212,7 @@ public class ZobrazitTuristikaForm extends javax.swing.JDialog {
         
         }
         if(this.tura.getDatum()!=null){
-         ZobrazDatumLabel.setText(this.tura.getDatum().toString());
+         ZobrazDatumLabel.setText(dateFormat.format(this.tura.getDatum()));
         }
         ZobrazHodnotenieLabel.setText(Integer.toString(this.tura.getHodnotenie()));
         

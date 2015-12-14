@@ -17,6 +17,7 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
     public UpravitTuristikaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     UpravitTuristikaForm(javax.swing.JDialog parent, boolean modal, Turistika tura) {
@@ -42,11 +43,11 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
         typComboBox.addItem(" ");
         typComboBox.addItem("Cyklo");
         typComboBox.addItem("Pešia");
+        typComboBox.addItem("Iné");
         
-        hodnotenieComboBox.setEditable(true);               
+        hodnotenieComboBox.setEditable(false);               
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for (int i=1; i<6; i++){
+        for (int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
         
@@ -215,7 +216,7 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-          if(cielTextField.getText().trim().isEmpty()){
+     if(cielTextField.getText().trim().isEmpty()){
            JOptionPane.showMessageDialog(this, "Zadanie ciela je povinné");
            return;
           }
@@ -225,6 +226,13 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
             return;
            }
+         
+         if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
+         
                  
        turistika.setCiel(cielTextField.getText());
        turistika.setKrajina((String)krajinaComboBox.getSelectedItem());

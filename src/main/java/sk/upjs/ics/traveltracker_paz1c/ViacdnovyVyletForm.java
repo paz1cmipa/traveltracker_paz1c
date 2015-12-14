@@ -14,6 +14,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         refresh();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -81,6 +82,11 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         });
 
         hladatButton.setText("Hľadať");
+        hladatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hladatButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,11 +195,25 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
 
     private void vyletyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vyletyTableMouseClicked
         if(evt.getClickCount()==2){
+          if(vyletyTable.getSelectedRow()==-1){
+              JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
+               return;
+             }
          ZobrazitViacdnovyVyletForm zobraz=new ZobrazitViacdnovyVyletForm(this, true, model.getVylet(vyletyTable.getSelectedRow()));
          zobraz.setVisible(true);
         
         }
     }//GEN-LAST:event_vyletyTableMouseClicked
+
+    private void hladatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hladatButtonActionPerformed
+      String hladane = hladatTextField.getText();
+      if(hladane.isEmpty()){
+          JOptionPane.showMessageDialog(this, "Nebolo zadané žiadne slovo!", "Chyba", JOptionPane.ERROR_MESSAGE);
+          return;
+      }
+        HladatViacdnovyVyletForm hladat = new HladatViacdnovyVyletForm(this, true, hladane);
+        hladat.setVisible(true);
+    }//GEN-LAST:event_hladatButtonActionPerformed
 
     
          public void refresh(){

@@ -1,32 +1,40 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
-public class HladatPamiatkaForm extends javax.swing.JDialog {
+/**
+ *
+ * @author Robert Link
+ */
+public class HladatViacdnovyVyletForm extends javax.swing.JDialog {
+    private ViacdnovyVyletDao viacDnovyVyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
+    private String hladaneSlovo;
     
-    private String hladanePodujatie;
-    private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
     
-    public HladatPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
+    public HladatViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
     }
-
-    HladatPamiatkaForm(javax.swing.JDialog parent, boolean modal, String hladane) {
+    
+    
+    public HladatViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal,String hladane) {
         super(parent, modal);
         initComponents();
-         hladanePodujatie = hladane;
-         setLocationRelativeTo(null);
-        List<Pamiatka> hladanePamiatky = pamiatkaDao.Hladat(hladanePodujatie);
-        if(hladanePamiatky.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Žiadna pamiatka sa nenašla :(");
+        hladaneSlovo = hladane;
+        setLocationRelativeTo(null);
+        List<ViacdnovyVylet> hladaneVylety = viacDnovyVyletDao.Hladat(hladaneSlovo);
+        if(hladaneVylety.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Žiaden vylet sa nenašiel :(");
             return;
         }
-        hladaneList.setListData(hladanePamiatky.toArray());
+        hladaneList.setListData(hladaneVylety.toArray());
     }
 
     /**
@@ -38,16 +46,16 @@ public class HladatPamiatkaForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        okButton = new javax.swing.JButton();
+        OKButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        hladaneList = new javax.swing.JList();
+        hladaneList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        okButton.setText("OK");
-        okButton.addActionListener(new java.awt.event.ActionListener() {
+        OKButton.setText("OK");
+        OKButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButtonActionPerformed(evt);
+                OKButtonActionPerformed(evt);
             }
         });
 
@@ -62,37 +70,36 @@ public class HladatPamiatkaForm extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(okButton)))
+                        .addComponent(OKButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(okButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(OKButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+    private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
         setVisible(false);
-    }//GEN-LAST:event_okButtonActionPerformed
+    }//GEN-LAST:event_OKButtonActionPerformed
 
     private void hladaneListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladaneListMouseClicked
-       if(evt.getClickCount()==2){
-           Pamiatka pamiatka = (Pamiatka) hladaneList.getSelectedValue();
-           ZobrazitPamiatkaForm zobraz = new ZobrazitPamiatkaForm(this, true, pamiatka);
+          if(evt.getClickCount()==2){
+           ViacdnovyVylet vylet = (ViacdnovyVylet) hladaneList.getSelectedValue();
+           ZobrazitViacdnovyVyletForm zobraz = new ZobrazitViacdnovyVyletForm(this, true, vylet);
            zobraz.setVisible(true);
        }
     }//GEN-LAST:event_hladaneListMouseClicked
@@ -114,20 +121,20 @@ public class HladatPamiatkaForm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HladatPamiatkaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HladatViacdnovyVyletForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HladatPamiatkaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HladatViacdnovyVyletForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HladatPamiatkaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HladatViacdnovyVyletForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HladatPamiatkaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HladatViacdnovyVyletForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                HladatPamiatkaForm dialog = new HladatPamiatkaForm(new javax.swing.JDialog(), true);
+                HladatViacdnovyVyletForm dialog = new HladatViacdnovyVyletForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -140,8 +147,8 @@ public class HladatPamiatkaForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList hladaneList;
+    private javax.swing.JButton OKButton;
+    private javax.swing.JList<String> hladaneList;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

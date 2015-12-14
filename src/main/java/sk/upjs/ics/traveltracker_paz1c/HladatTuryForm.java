@@ -8,35 +8,36 @@ package sk.upjs.ics.traveltracker_paz1c;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Robert Link
  */
-public class dajVsetkyPamiatkyForm extends javax.swing.JDialog{
+public class HladatTuryForm extends javax.swing.JDialog {
+  private String HladaneSlovo;
+  private TuristikaDao turistikaDao=  TuristikaDaoFactory.INSTANCE.getTuristikaDao();
 
-    private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
-    private List<Pamiatka> pamiatky = pamiatkaDao.dajVsetky();
-    VsetkyPamiatkyModel model= new VsetkyPamiatkyModel();
- 
-    
-    public dajVsetkyPamiatkyForm(javax.swing.JDialog parent, boolean modal) {
-        super (parent, modal);
+    public HladatTuryForm(javax.swing.JDialog parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-       
-       dajVsetkyTable.setModel(model);
-        int i = 0;
-        for (Pamiatka pamiatka: pamiatky){
-        
-            dajVsetkyTable.setValueAt(pamiatka.getKrajina(), i, 0);
-            dajVsetkyTable.setValueAt(pamiatka.getMesto(), i, 1);
-            dajVsetkyTable.setValueAt(pamiatka.getPamiatka_zaujimavost(), i, 2);
-            dajVsetkyTable.setValueAt(pamiatka.getDatum(), i, 3);
-         i++;
-        }
     }
 
+    
+    public HladatTuryForm(javax.swing.JDialog parent, boolean modal,String hladane) {
+        super(parent, modal);
+        initComponents();
+        HladaneSlovo=hladane;
+        setLocationRelativeTo(null);
+        List<Turistika> hladaneTury=turistikaDao.Hladat(HladaneSlovo);
+        if(hladaneTury.isEmpty()){
+        JOptionPane.showMessageDialog(this, "Žiadna túra sa nenašla :(");
+            return;
+        
+        }
+        
+        hladatList.setListData(hladaneTury.toArray());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,23 +48,22 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JDialog{
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        dajVsetkyTable = new javax.swing.JTable();
-        okButton = new javax.swing.JButton();
+        hladatList = new javax.swing.JList<>();
+        OKButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        dajVsetkyTable.setModel(this.model);
-        dajVsetkyTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        hladatList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dajVsetkyTableMouseClicked(evt);
+                hladatListMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(dajVsetkyTable);
+        jScrollPane1.setViewportView(hladatList);
 
-        okButton.setText("OK");
-        okButton.addActionListener(new java.awt.event.ActionListener() {
+        OKButton.setText("OK");
+        OKButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButtonActionPerformed(evt);
+                OKButtonActionPerformed(evt);
             }
         });
 
@@ -72,42 +72,39 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JDialog{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(okButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(okButton)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(OKButton)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dajVsetkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dajVsetkyTableMouseClicked
-        if(evt.getClickCount()==2){
-        int cisloRiadka=dajVsetkyTable.getSelectedRow();
-        if(cisloRiadka==-1){
-           JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
-           return;
-        }
-        Pamiatka pamiatka=model.getPamiatka(cisloRiadka);
-        
-       ZobrazitPamiatkaForm zobraz= new ZobrazitPamiatkaForm(this,true,pamiatka);
-       zobraz.setVisible(true);
-        }
-    }//GEN-LAST:event_dajVsetkyTableMouseClicked
-
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+    private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
         setVisible(false);
-    }//GEN-LAST:event_okButtonActionPerformed
+    }//GEN-LAST:event_OKButtonActionPerformed
+
+    private void hladatListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladatListMouseClicked
+        if(evt.getClickCount()==2){
+        Turistika tura = (Turistika) hladatList.getSelectedValue();
+        ZobrazitTuristikaForm zobraz=new ZobrazitTuristikaForm(this, true,tura);
+        zobraz.setVisible(true);
+        
+        }
+    }//GEN-LAST:event_hladatListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -126,20 +123,20 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JDialog{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dajVsetkyPamiatkyForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HladatTuryForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dajVsetkyPamiatkyForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HladatTuryForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dajVsetkyPamiatkyForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HladatTuryForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dajVsetkyPamiatkyForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HladatTuryForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dajVsetkyPamiatkyForm dialog = new dajVsetkyPamiatkyForm(new javax.swing.JDialog(),true);
+                HladatTuryForm dialog = new HladatTuryForm(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -152,8 +149,8 @@ public class dajVsetkyPamiatkyForm extends javax.swing.JDialog{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable dajVsetkyTable;
+    private javax.swing.JButton OKButton;
+    private javax.swing.JList<String> hladatList;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

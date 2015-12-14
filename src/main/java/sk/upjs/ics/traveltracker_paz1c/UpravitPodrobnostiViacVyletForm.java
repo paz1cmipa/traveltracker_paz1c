@@ -9,6 +9,7 @@ public class UpravitPodrobnostiViacVyletForm extends javax.swing.JDialog {
     public UpravitPodrobnostiViacVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     UpravitPodrobnostiViacVyletForm(javax.swing.JDialog parent, boolean modal, ViacdnovyVylet vylet) {
@@ -18,10 +19,9 @@ public class UpravitPodrobnostiViacVyletForm extends javax.swing.JDialog {
       
        setLocationRelativeTo(null);
        
-        hodnotenieComboBox.setEditable(true);               
+        hodnotenieComboBox.setEditable(false);               
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for (int i=1; i<6; i++){
+        for (int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
         

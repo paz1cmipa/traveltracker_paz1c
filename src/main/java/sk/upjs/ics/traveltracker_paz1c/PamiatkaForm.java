@@ -199,6 +199,10 @@ public class PamiatkaForm extends javax.swing.JDialog {
 
     private void pamiatkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pamiatkyTableMouseClicked
         if(evt.getClickCount()==2){
+           if(pamiatkyTable.getSelectedRow()==-1){
+              JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
+               return;
+             }
          ZobrazitPamiatkaForm zobraz=new ZobrazitPamiatkaForm(this, true, model.getPamiatka(pamiatkyTable.getSelectedRow()));
          zobraz.setVisible(true);
         

@@ -5,6 +5,8 @@
  */
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Robert Link
@@ -12,15 +14,17 @@ package sk.upjs.ics.traveltracker_paz1c;
 public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
  
     private ViacdnovyVylet viacdnovyVylet = new ViacdnovyVylet();
-  
+   private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
     public ZobrazitViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     public ZobrazitViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal,ViacdnovyVylet vylet) {
        super(parent, modal);
        initComponents();
+       setLocationRelativeTo(null);
        viacdnovyVylet=vylet;
        refresh();
      
@@ -251,11 +255,11 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
         
         }
         if(this.viacdnovyVylet.getDatumPrichod()!=null){
-         ZobrazPrichodlabel.setText(this.viacdnovyVylet.getDatumPrichod().toString());
+         ZobrazPrichodlabel.setText(dateFormat.format(this.viacdnovyVylet.getDatumPrichod()));
         }
         
         if(this.viacdnovyVylet.getDatumOdchod()!=null){
-         ZobrazodchodLabel.setText(this.viacdnovyVylet.getDatumOdchod().toString());
+         ZobrazodchodLabel.setText(dateFormat.format(this.viacdnovyVylet.getDatumOdchod()));
         }
         ZobrazHodnotenieLabel.setText(Integer.toString(this.viacdnovyVylet.getHodnotenie()));
         

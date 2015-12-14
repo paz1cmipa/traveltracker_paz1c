@@ -185,7 +185,7 @@ public class UpravitPamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_podrobnostiButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-         if(pamiatkaTextField.getText().trim().isEmpty()){
+           if(pamiatkaTextField.getText().trim().isEmpty()){
              JOptionPane.showMessageDialog(this, "Zadanie pamiatky je povinné");
              return;
          }
@@ -198,6 +198,11 @@ public class UpravitPamiatkaForm extends javax.swing.JDialog {
          if(datumDatePicker.getDate()== null){
              JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
              return;
+         }
+         if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
          }
         
         

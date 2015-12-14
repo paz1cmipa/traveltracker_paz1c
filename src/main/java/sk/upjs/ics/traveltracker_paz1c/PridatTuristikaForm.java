@@ -25,10 +25,9 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
             krajina = zoznamKrajin.get(i);
             krajinaComboBox.addItem(krajina);
         }
-        hodnotenieComboBox.setEditable(true);
+        hodnotenieComboBox.setEditable(false);
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for(int i=1; i<6; i++){
+        for(int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
         typComboBox.setEditable(true);
@@ -36,6 +35,7 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
         typComboBox.addItem(" ");
         typComboBox.addItem("Cyklo");
         typComboBox.addItem("Pešia");
+        typComboBox.addItem("Iné");
     }
 
    
@@ -74,6 +74,12 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
         typLabel.setText("Typ:");
 
         hodnotenieLabel.setText("Hodnotenie:");
+
+        hodnotenieComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hodnotenieComboBoxActionPerformed(evt);
+            }
+        });
 
         prejdeneCheckBox.setText("Prejdené");
 
@@ -205,6 +211,14 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
             return;
            }
          
+         if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
+         
+         
+         
         tura.setCiel(cielTextField.getText());
         tura.setKrajina((String)krajinaComboBox.getSelectedItem());
         tura.setDatum(datumDatePicker.getDate());
@@ -218,6 +232,10 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
         setVisible(false);   
        
     }//GEN-LAST:event_okButtonActionPerformed
+
+    private void hodnotenieComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hodnotenieComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hodnotenieComboBoxActionPerformed
 
     /**
      * @param args the command line arguments

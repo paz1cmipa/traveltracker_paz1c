@@ -9,11 +9,11 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
     public PridatPodrobnostiViacdVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        hodnotenieComboBox.setEditable(true);
+        setLocationRelativeTo(null);
+        hodnotenieComboBox.setEditable(false);
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
         AutoCompleteDecorator.decorate(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for(int i=1; i<6; i++){
+        for(int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
     }
@@ -21,11 +21,11 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
     PridatPodrobnostiViacdVyletForm(javax.swing.JDialog parent, boolean modal, ViacdnovyVylet vylet) {
         super(parent, modal);
         initComponents();
-        hodnotenieComboBox.setEditable(true);
+        setLocationRelativeTo(null);
+        hodnotenieComboBox.setEditable(false);
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
         AutoCompleteDecorator.decorate(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for(int i=1; i<6; i++){
+        for(int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
         this.vylet=vylet;

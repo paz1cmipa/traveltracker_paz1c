@@ -2,6 +2,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
@@ -12,6 +13,7 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
     public dajVsetkyPodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         
         int i = 0;
         for (KulturnePodujatie vylet: podujatia){
@@ -83,6 +85,10 @@ public class dajVsetkyPodujatieForm extends javax.swing.JDialog {
     private void dajVsetkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dajVsetkyTableMouseClicked
       if(evt.getClickCount() == 2){
         int row=dajVsetkyTable.getSelectedRow();
+            if(row==-1){
+              JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
+               return;
+             }
       
        KulturnePodujatie kulturnePodujatie=model.getPodujatie(row);
        ZobrazitPodujatieForm zobraz= new ZobrazitPodujatieForm(this, true,kulturnePodujatie);

@@ -6,6 +6,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
 /**
@@ -20,6 +21,7 @@ public class dajVsetkyVyletForm extends javax.swing.JDialog {
     public dajVsetkyVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         dajVsetkyTable.setModel(model);
         int i = 0;
         for (ViacdnovyVylet vylet: vylety){
@@ -92,6 +94,10 @@ public class dajVsetkyVyletForm extends javax.swing.JDialog {
     private void dajVsetkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dajVsetkyTableMouseClicked
         if(evt.getClickCount()==2){
         int cisloRiadka=dajVsetkyTable.getSelectedRow();
+            if(cisloRiadka==-1){
+              JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
+               return;
+             }
         ViacdnovyVylet vylet=model.getVylet(cisloRiadka);
         ZobrazitViacdnovyVyletForm zobraz= new ZobrazitViacdnovyVyletForm(this,true,vylet);
         zobraz.setVisible(true);

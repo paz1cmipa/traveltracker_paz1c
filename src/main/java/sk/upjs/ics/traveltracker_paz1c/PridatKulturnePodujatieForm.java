@@ -170,6 +170,11 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
             return;
            }
+         if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
         
         if(!boliPodrobnost){
          
@@ -236,6 +241,13 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
             return;
            }
+         
+         
+         if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
        kulturnePodujatie.setNazov(nazovTextField.getText());
        kulturnePodujatie.setKrajina((String) krajinaComboBox.getSelectedItem());
        kulturnePodujatie.setMesto(mestoTextField.getText());

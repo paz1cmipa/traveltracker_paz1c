@@ -1,6 +1,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
@@ -10,6 +11,7 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
     private ViacdnovyVylet vylet = new ViacdnovyVylet();
     private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
     private boolean boliPodrobnosti=false;
+    private boolean boloZmenene=false;
     public PridatViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -29,7 +31,10 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
         typComboBox.addActionListener(typComboBox);
         AutoCompleteDecorator.decorate(typComboBox);
         typComboBox.addItem(" ");
-        //pridat typy dovoleniek
+        typComboBox.addItem("Dovolenka");
+        typComboBox.addItem("Poznávací zájazd");
+        typComboBox.addItem("Služobná cesta");
+        typComboBox.addItem("Iné");
     }
 
    
@@ -192,8 +197,9 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-       if(!boliPodrobnosti){
-           
+        Date datumPrichodu=prichodDatePicker.getDate();
+        Date datumOdchodu=odchodDatePicker.getDate();
+                 
            
          if(mestoTextField.getText().trim().isEmpty()){
            JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
@@ -201,16 +207,31 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
           }
      
      
-         if(odchodDatePicker.getDate()==null){
+         if(datumOdchodu==null){
             JOptionPane.showMessageDialog(this, "Výber dátumu odchodu je povinný");
             return;
            }
          
-         if(prichodDatePicker.getDate()==null){
+         if(datumPrichodu==null){
             JOptionPane.showMessageDialog(this, "Výber dátumu prichodu je povinný");
             return;
            }
          
+         if(datumPrichodu.before(datumOdchodu)){
+         
+          JOptionPane.showMessageDialog(this, "Dátum odchodu na dovolenku musí byť pred dátumom príchodu z dovolenky");
+            return;
+         }
+         
+          if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
+        
+        
+        if(!boliPodrobnosti){
+    
         vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());
@@ -221,27 +242,87 @@ public class PridatViacdnovyVyletForm extends javax.swing.JDialog {
         
         vyletDao.pridat(vylet);
        }
+        
+                
+      
+       String krajina = (String) krajinaComboBox.getSelectedItem();
+       String mesto = mestoTextField.getText();
+       Date datumOdchod = odchodDatePicker.getDate();
+       Date datumPrichod = prichodDatePicker.getDate();
+       String ubytovanie = ubytovanieTextField.getText();
+       String Typ = (String)typComboBox.getSelectedItem();
+       boolean navstivene = navstivenieCheckBox.isSelected();
+              
+       if(!ubytovanie.equals(vylet.getUbytovanie())){
+           vylet.setUbytovanie(ubytovanie);
+           boloZmenene = true;
+       }
+         if(!krajina.equals(vylet.getKrajina())){
+           vylet.setKrajina(krajina);
+           boloZmenene = true;
+       }
+         
+      if(!Typ.equals(vylet.getTyp())){
+           vylet.setTyp(Typ);
+           boloZmenene = true;
+       }
+         if(!mesto.equals(vylet.getMesto1())){
+           vylet.setMesto1(mesto);
+           boloZmenene = true;
+       }
+        vylet.setNavstivene(navstivene);
+        if(!datumOdchod.equals(vylet.getDatumOdchod())){
+           vylet.setDatumOdchod(datumOdchod);
+           boloZmenene = true;
+       }
+       if(!datumPrichod.equals(vylet.getDatumPrichod())){
+           vylet.setDatumPrichod(datumPrichod);
+           boloZmenene = true;
+       }
+        if (boloZmenene){
+            vyletDao.Upravit(vylet);
+        }
+       
+       boloZmenene =false;
+        
+        
        boliPodrobnosti=true;
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void podrobnostiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podrobnostiButtonActionPerformed
-          if(mestoTextField.getText().trim().isEmpty()){
+           Date datumPrichodu=prichodDatePicker.getDate();
+        Date datumOdchodu=odchodDatePicker.getDate();
+                 
+           
+         if(mestoTextField.getText().trim().isEmpty()){
            JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
            return;
           }
      
      
-         if(odchodDatePicker.getDate()==null){
+         if(datumOdchodu==null){
             JOptionPane.showMessageDialog(this, "Výber dátumu odchodu je povinný");
             return;
            }
          
-         if(prichodDatePicker.getDate()==null){
+         if(datumPrichodu==null){
             JOptionPane.showMessageDialog(this, "Výber dátumu prichodu je povinný");
             return;
            }
-
+         
+         if(datumPrichodu.before(datumOdchodu)){
+         
+          JOptionPane.showMessageDialog(this, "Dátum odchodu na dovolenku musí byť pred dátumom príchodu z dovolenky");
+            return;
+         }
+         
+          if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
+        
         vylet.setKrajina((String) krajinaComboBox.getSelectedItem());
         vylet.setDatumOdchod(odchodDatePicker.getDate());
         vylet.setDatumPrichod(prichodDatePicker.getDate());

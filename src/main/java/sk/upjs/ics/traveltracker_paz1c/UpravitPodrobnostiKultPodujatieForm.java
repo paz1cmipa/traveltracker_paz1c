@@ -17,6 +17,7 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
     public UpravitPodrobnostiKultPodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     UpravitPodrobnostiKultPodujatieForm(javax.swing.JDialog parent, boolean modal, KulturnePodujatie kulturnePodujatie) {
@@ -24,10 +25,9 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
         initComponents();  
         this.podujatie=kulturnePodujatie;
          setLocationRelativeTo(null);
-        hodnotenieComboBox.setEditable(true);               
+        hodnotenieComboBox.setEditable(false);               
         hodnotenieComboBox.addActionListener(hodnotenieComboBox);
-        hodnotenieComboBox.addItem(" ");
-        for (int i=1; i<6; i++){
+        for (int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
         

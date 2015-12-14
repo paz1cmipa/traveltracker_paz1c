@@ -5,20 +5,24 @@
  */
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Robert Link
  */
 public class ZobrazitPodujatieForm extends javax.swing.JDialog {
    private KulturnePodujatie kulturnePodujatie= new KulturnePodujatie();
-    
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
     public ZobrazitPodujatieForm(javax.swing.JDialog parent , boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
     public ZobrazitPodujatieForm(javax.swing.JDialog parent , boolean modal,KulturnePodujatie kultPodujatie) {
          super(parent, modal);
          initComponents();
+         setLocationRelativeTo(null);
          kulturnePodujatie=kultPodujatie;
          refresh();
         
@@ -264,7 +268,7 @@ public class ZobrazitPodujatieForm extends javax.swing.JDialog {
         }
         
         if(kulturnePodujatie.getDatum() !=null){
-        ZobrazenyDatumLabel.setText(kulturnePodujatie.getDatum().toString());
+        ZobrazenyDatumLabel.setText(dateFormat.format(kulturnePodujatie.getDatum()));
         }
 
         ZobrazeneHodnotenieLabel.setText(Integer.toString(kulturnePodujatie.getHodnotenie()));

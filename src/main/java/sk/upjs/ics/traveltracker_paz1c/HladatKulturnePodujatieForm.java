@@ -15,11 +15,13 @@ public class HladatKulturnePodujatieForm extends javax.swing.JDialog {
     public HladatKulturnePodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     HladatKulturnePodujatieForm(javax.swing.JDialog parent, boolean modal, String hladane) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         hladanePodujatie = hladane;
         List<KulturnePodujatie> hladanePodujatia = podujatieDao.Hladat(hladanePodujatie);
         if(hladanePodujatia.isEmpty()){

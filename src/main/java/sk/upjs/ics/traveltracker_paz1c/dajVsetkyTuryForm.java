@@ -6,6 +6,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +19,7 @@ public class dajVsetkyTuryForm extends javax.swing.JDialog{
     public dajVsetkyTuryForm(javax.swing.JDialog parent, boolean modal) {
         super (parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
            dajVsetkyTable.setModel(model);
         int i = 0;
         for (Turistika tura: Tury){
@@ -86,6 +88,10 @@ public class dajVsetkyTuryForm extends javax.swing.JDialog{
     private void dajVsetkyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dajVsetkyTableMouseClicked
         if(evt.getClickCount()==2){
         int cisloRiadka=dajVsetkyTable.getSelectedRow();
+            if(cisloRiadka==-1){
+              JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
+               return;
+             }
         Turistika tura=model.getTura(cisloRiadka);
         ZobrazitTuristikaForm zobraz= new ZobrazitTuristikaForm(this,true,tura);
          zobraz.setVisible(true);

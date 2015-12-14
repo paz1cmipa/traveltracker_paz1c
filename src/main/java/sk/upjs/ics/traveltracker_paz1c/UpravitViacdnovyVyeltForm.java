@@ -2,6 +2,7 @@
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
@@ -17,11 +18,13 @@ public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
     public UpravitViacdnovyVyeltForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     UpravitViacdnovyVyeltForm(javax.swing.JDialog parent, boolean modal, ViacdnovyVylet viacdnovyVylet) {
       super(parent, modal);
       initComponents();
+      setLocationRelativeTo(null);
       vylet = viacdnovyVylet;
       
       krajinaComboBox.setEditable(true);
@@ -39,7 +42,10 @@ public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
         typComboBox.addActionListener(typComboBox);
         AutoCompleteDecorator.decorate(typComboBox);
         typComboBox.addItem(" ");
-        //pridat typy dovoleniek
+        typComboBox.addItem("Dovolenka");
+        typComboBox.addItem("Poznávací zájazd");
+        typComboBox.addItem("Služobná cesta");
+        typComboBox.addItem("Iné");
         
         krajinaComboBox.setSelectedItem(vylet.getKrajina());
         odchodDatePicker.setDate(vylet.getDatumOdchod());
@@ -218,21 +224,35 @@ public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
     }//GEN-LAST:event_podrobnostiButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-              if(mestoTextField.getText().trim().isEmpty()){
+        Date datumPrichodu=prichodDatePicker.getDate();
+        Date datumOdchodu=odchodDatePicker.getDate();  
+         if(mestoTextField.getText().trim().isEmpty()){
            JOptionPane.showMessageDialog(this, "Zadanie mesta je povinné");
            return;
           }
      
      
-         if(odchodDatePicker.getDate()==null){
+         if(datumOdchodu==null){
             JOptionPane.showMessageDialog(this, "Výber dátumu odchodu je povinný");
             return;
            }
          
-         if(prichodDatePicker.getDate()==null){
+         if(datumPrichodu==null){
             JOptionPane.showMessageDialog(this, "Výber dátumu prichodu je povinný");
             return;
            }
+         
+         if(datumPrichodu.before(datumOdchodu)){
+         
+          JOptionPane.showMessageDialog(this, "Dátum odchodu na dovolenku musí byť pred dátumom príchodu z dovolenky");
+            return;
+         }
+         
+          if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
         
         
         

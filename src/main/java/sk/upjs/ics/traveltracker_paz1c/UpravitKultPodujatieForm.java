@@ -191,7 +191,7 @@ public class UpravitKultPodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_StornoButtonActionPerformed
 
     private void UpravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpravitButtonActionPerformed
-         if(NazovTextField.getText().trim().isEmpty()){
+        if(NazovTextField.getText().trim().isEmpty()){
            JOptionPane.showMessageDialog(this, "Zadanie názvu je povinné");
            return;
           }
@@ -205,8 +205,11 @@ public class UpravitKultPodujatieForm extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
             return;
            }
-        
-        
+         if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
         
        kulturnePodujatie.setNazov(NazovTextField.getText());
        kulturnePodujatie.setKrajina((String)krajinaComboBox.getSelectedItem());

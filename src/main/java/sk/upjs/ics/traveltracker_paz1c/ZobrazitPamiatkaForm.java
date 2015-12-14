@@ -5,6 +5,8 @@
  */
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Robert Link
@@ -12,15 +14,18 @@ package sk.upjs.ics.traveltracker_paz1c;
 public class ZobrazitPamiatkaForm extends javax.swing.JDialog {
 
      private Pamiatka pamiatka = new Pamiatka();
+     private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
      
     public ZobrazitPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
     
          public ZobrazitPamiatkaForm(javax.swing.JDialog parent, boolean modal,Pamiatka pamiatka) {
          super(parent, modal);
          initComponents();  
+         setLocationRelativeTo(null);
          this.pamiatka=pamiatka;
          refresh();
  
@@ -238,7 +243,7 @@ public class ZobrazitPamiatkaForm extends javax.swing.JDialog {
         }
         
         if(pamiatka.getDatum() !=null){
-        ZobrazDatumlabel.setText(pamiatka.getDatum().toString());
+        ZobrazDatumlabel.setText(dateFormat.format(pamiatka.getDatum()));
         }
 
         ZobrazHodnotenieLabel.setText(Integer.toString(pamiatka.getHodnotenie()));

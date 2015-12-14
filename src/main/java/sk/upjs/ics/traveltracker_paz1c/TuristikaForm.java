@@ -14,6 +14,7 @@ public class TuristikaForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         refresh();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -81,6 +82,11 @@ public class TuristikaForm extends javax.swing.JDialog {
         });
 
         hladatButton.setText("Hľadať");
+        hladatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hladatButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,11 +199,25 @@ public class TuristikaForm extends javax.swing.JDialog {
 
     private void turyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_turyTableMouseClicked
          if(evt.getClickCount()==2){
+             if(turyTable.getSelectedRow()==-1){
+              JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
+               return;
+             }
          ZobrazitTuristikaForm zobraz=new ZobrazitTuristikaForm(this, true, model.getTura(turyTable.getSelectedRow()));
          zobraz.setVisible(true);
         
         }
     }//GEN-LAST:event_turyTableMouseClicked
+
+    private void hladatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hladatButtonActionPerformed
+      String hladane = hladatTextField.getText();
+      if(hladane.trim().isEmpty()){
+          JOptionPane.showMessageDialog(this, "Nebolo zadané žiadne slovo!", "Chyba", JOptionPane.ERROR_MESSAGE);
+          return;
+      }
+        HladatTuryForm hladat = new HladatTuryForm(this, true, hladane);
+        hladat.setVisible(true);
+    }//GEN-LAST:event_hladatButtonActionPerformed
 
     
         public void refresh(){

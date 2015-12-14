@@ -194,6 +194,11 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
              return;
          }
+         if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
         if(!boliPOdrobnosti){
      
        pamiatka.setPamiatka_zaujimavost(pamiatkaTextField.getText());
@@ -254,6 +259,11 @@ public class PridatPamiatkaForm extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(this, "Výber dátumu je povinný");
              return;
          } 
+        if(krajinaComboBox.getSelectedItem().toString().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Výber krajiny je povinný");
+            return;
+         
+         }
         
        pamiatka.setPamiatka_zaujimavost(pamiatkaTextField.getText());
        pamiatka.setKrajina((String) krajinaComboBox.getSelectedItem());

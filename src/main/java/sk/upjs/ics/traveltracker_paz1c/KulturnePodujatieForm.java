@@ -193,6 +193,10 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
 
     private void podujatiaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_podujatiaTableMouseClicked
         if(evt.getClickCount()==2){
+          if(podujatiaTable.getSelectedRow()==-1){
+              JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
+               return;
+             }
            ZobrazitPodujatieForm zobraz=new ZobrazitPodujatieForm(this, true, model.getPodujatie(podujatiaTable.getSelectedRow()));
            zobraz.setVisible(true);
         }
