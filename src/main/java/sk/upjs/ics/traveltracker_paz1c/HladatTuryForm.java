@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Robert Link
- */
 public class HladatTuryForm extends javax.swing.JDialog {
   private String HladaneSlovo;
   private TuristikaDao turistikaDao=  TuristikaDaoFactory.INSTANCE.getTuristikaDao();
@@ -26,7 +18,7 @@ public class HladatTuryForm extends javax.swing.JDialog {
     public HladatTuryForm(javax.swing.JDialog parent, boolean modal,String hladane) {
         super(parent, modal);
         initComponents();
-        HladaneSlovo=hladane;
+        HladaneSlovo = hladane;
         setLocationRelativeTo(null);
         List<Turistika> hladaneTury=turistikaDao.Hladat(HladaneSlovo);
         if(hladaneTury.isEmpty()){
@@ -35,7 +27,7 @@ public class HladatTuryForm extends javax.swing.JDialog {
         
         }
         
-        hladatList.setListData(hladaneTury.toArray());
+        hladaneList.setListData(hladaneTury.toArray());
         
     }
     /**
@@ -47,18 +39,11 @@ public class HladatTuryForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        hladatList = new javax.swing.JList<>();
         OKButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        hladaneList = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        hladatList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hladatListMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(hladatList);
 
         OKButton.setText("OK");
         OKButton.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +52,13 @@ public class HladatTuryForm extends javax.swing.JDialog {
             }
         });
 
+        hladaneList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hladaneListMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(hladaneList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,18 +66,18 @@ public class HladatTuryForm extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 299, Short.MAX_VALUE)
+                        .addComponent(OKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OKButton)
                 .addContainerGap())
         );
@@ -97,14 +89,13 @@ public class HladatTuryForm extends javax.swing.JDialog {
         setVisible(false);
     }//GEN-LAST:event_OKButtonActionPerformed
 
-    private void hladatListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladatListMouseClicked
-        if(evt.getClickCount()==2){
-        Turistika tura = (Turistika) hladatList.getSelectedValue();
-        ZobrazitTuristikaForm zobraz=new ZobrazitTuristikaForm(this, true,tura);
-        zobraz.setVisible(true);
-        
-        }
-    }//GEN-LAST:event_hladatListMouseClicked
+    private void hladaneListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladaneListMouseClicked
+          if(evt.getClickCount()==2){
+           Turistika tura = (Turistika) hladaneList.getSelectedValue();
+           ZobrazitTuristikaForm zobraz = new ZobrazitTuristikaForm(this, true, tura);
+           zobraz.setVisible(true);
+       }
+    }//GEN-LAST:event_hladaneListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -150,7 +141,7 @@ public class HladatTuryForm extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton OKButton;
-    private javax.swing.JList<String> hladatList;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList hladaneList;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

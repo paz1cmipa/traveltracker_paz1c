@@ -47,8 +47,8 @@ public class HladatViacdnovyVyletForm extends javax.swing.JDialog {
     private void initComponents() {
 
         OKButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        hladaneList = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        hladaneList = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,7 +64,7 @@ public class HladatViacdnovyVyletForm extends javax.swing.JDialog {
                 hladaneListMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(hladaneList);
+        jScrollPane2.setViewportView(hladaneList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,17 +73,17 @@ public class HladatViacdnovyVyletForm extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(OKButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 329, Short.MAX_VALUE)
+                        .addComponent(OKButton))
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OKButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -97,7 +97,7 @@ public class HladatViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_OKButtonActionPerformed
 
     private void hladaneListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladaneListMouseClicked
-          if(evt.getClickCount()==2){
+         if(evt.getClickCount()==2){
            ViacdnovyVylet vylet = (ViacdnovyVylet) hladaneList.getSelectedValue();
            ZobrazitViacdnovyVyletForm zobraz = new ZobrazitViacdnovyVyletForm(this, true, vylet);
            zobraz.setVisible(true);
@@ -148,7 +148,7 @@ public class HladatViacdnovyVyletForm extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton OKButton;
-    private javax.swing.JList<String> hladaneList;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList hladaneList;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
