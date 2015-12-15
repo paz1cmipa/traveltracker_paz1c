@@ -76,9 +76,9 @@ public class MySqlKulturnePodujatieDaoTest {
     @org.junit.Test
     public void testDajVsetky() {
         System.out.println("dajVsetky");
-        List<KulturnePodujatie> expResult = null;
+        instance.odstranit(kulturnePodujatie);
         List<KulturnePodujatie> result = instance.dajVsetky();
-        assertEquals(expResult, result); 
+        assertEquals(3, result); 
         
        
     }
