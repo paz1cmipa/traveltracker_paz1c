@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
     
+    
    private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
    private KulturnePodujatie podujatie=new KulturnePodujatie();
     public UpravitPodrobnostiKultPodujatieForm(javax.swing.JDialog parent, boolean modal) {
@@ -31,8 +32,10 @@ public class UpravitPodrobnostiKultPodujatieForm extends javax.swing.JDialog {
             hodnotenieComboBox.addItem(i);
         }
         
+        Time cas = podujatie.getCasZaciatku();
+        
         vstupneTextField.setText(Double.toString(podujatie.getVstupne()));
-        //zacinaTextField.setText - doriesit cas
+        zacinaTextField.setText(cas.toString());
         miestoTextField.setText(podujatie.getLokalizacia());
         poznamkyTextField.setText(podujatie.getPoznamky());
         hodnotenieComboBox.setSelectedItem(podujatie.getHodnotenie());
