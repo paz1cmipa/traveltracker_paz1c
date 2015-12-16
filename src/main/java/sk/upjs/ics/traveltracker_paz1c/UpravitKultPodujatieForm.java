@@ -1,6 +1,7 @@
 
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -17,6 +18,7 @@ public class UpravitKultPodujatieForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
          setLocationRelativeTo(null);
+      
     }
   public UpravitKultPodujatieForm(javax.swing.JDialog parent, boolean modal,KulturnePodujatie podujatie) {
         super(parent, modal);
@@ -133,13 +135,15 @@ public class UpravitKultPodujatieForm extends javax.swing.JDialog {
                                             .addComponent(TypLabel)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(NavstiveneCheckBox)
-                                        .addGap(16, 16, 16))
-                                    .addComponent(UpravitButton))
+                                        .addGap(16, 16, 16)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TypTextField)
-                                    .addComponent(DatumDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                                    .addComponent(StornoButton))))))
+                                    .addComponent(DatumDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(UpravitButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(StornoButton)))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

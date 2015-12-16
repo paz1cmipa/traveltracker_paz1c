@@ -1,6 +1,7 @@
 
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,7 @@ public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        setPreferredSize(new Dimension(700, 300));
     }
 
     UpravitViacdnovyVyeltForm(javax.swing.JDialog parent, boolean modal, ViacdnovyVylet viacdnovyVylet) {
@@ -26,6 +28,7 @@ public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
       initComponents();
       setLocationRelativeTo(null);
       vylet = viacdnovyVylet;
+      setMinimumSize(new Dimension(600, 300));
       
       krajinaComboBox.setEditable(true);
         krajinaComboBox.addActionListener(krajinaComboBox);

@@ -1,6 +1,7 @@
 
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -18,12 +19,14 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+      
     }
 
     UpravitTuristikaForm(javax.swing.JDialog parent, boolean modal, Turistika tura) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+      
         turistika = tura;
         
         
