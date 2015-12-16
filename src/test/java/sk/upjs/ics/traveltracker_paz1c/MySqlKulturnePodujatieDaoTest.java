@@ -51,6 +51,7 @@ public class MySqlKulturnePodujatieDaoTest {
         instance.pridat(kulturnePodujatie);
         List<KulturnePodujatie> vsetkyPodujatiaPo = instance.dajVsetky();
         assertEquals(vsetkyPodujatiaPred.size()+1, vsetkyPodujatiaPo.size());
+        instance.odstranit(kulturnePodujatie);
         
     }
 
@@ -76,9 +77,8 @@ public class MySqlKulturnePodujatieDaoTest {
     @org.junit.Test
     public void testDajVsetky() {
         System.out.println("dajVsetky");
-        instance.odstranit(kulturnePodujatie);
         List<KulturnePodujatie> result = instance.dajVsetky();
-        assertEquals(3, result); 
+        assertEquals(3, result.size()); 
         
        
     }

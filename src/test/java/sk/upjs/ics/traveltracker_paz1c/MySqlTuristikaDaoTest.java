@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class MySqlTuristikaDaoTest {
     
-    Turistika tura = null;
+    Turistika tura = new Turistika();
         MySqlTuristikaDao instance = new MySqlTuristikaDao();
     
     public MySqlTuristikaDaoTest() {
@@ -51,6 +51,7 @@ public class MySqlTuristikaDaoTest {
         instance.pridat(tura);
          List<Turistika> vsetkyTuryPo = instance.dajVsetky();
          assertEquals(vsetkyTuryPred.size()+1, vsetkyTuryPo.size());
+         instance.odstranit(tura);
        
     }
 
@@ -60,10 +61,11 @@ public class MySqlTuristikaDaoTest {
     @Test
     public void testOdstranit() {
         System.out.println("odstranit");
+        instance.pridat(tura);
         List<Turistika> vsetkyTuryPred = instance.dajVsetky();
         instance.odstranit(tura);
-         List<Turistika> vsetkyTuryPo = instance.dajVsetky();
-         assertEquals(vsetkyTuryPred.size()-1, vsetkyTuryPo.size());
+        List<Turistika> vsetkyTuryPo = instance.dajVsetky();
+        assertEquals(vsetkyTuryPred.size()-1, vsetkyTuryPo.size());
     }
 
 
@@ -74,9 +76,9 @@ public class MySqlTuristikaDaoTest {
     @Test
     public void testDajVsetky() {
         System.out.println("dajVsetky");
-        instance.odstranit(tura);
+        
         List<Turistika> result = instance.dajVsetky();
-        assertEquals(3, result);
+        assertEquals(3, result.size());
        
     }
 

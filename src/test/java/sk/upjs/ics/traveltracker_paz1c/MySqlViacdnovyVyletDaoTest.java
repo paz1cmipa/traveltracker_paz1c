@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class MySqlViacdnovyVyletDaoTest {
     
-     ViacdnovyVylet viacdnovyVylet = null;
+     ViacdnovyVylet viacdnovyVylet = new ViacdnovyVylet();
         MySqlViacdnovyVyletDao instance = new MySqlViacdnovyVyletDao();
     
     public MySqlViacdnovyVyletDaoTest() {
@@ -52,6 +52,7 @@ public class MySqlViacdnovyVyletDaoTest {
         instance.pridat(viacdnovyVylet);
         List<ViacdnovyVylet> vsetkyVyletyPo = instance.dajVsetky();
         assertEquals(vsetkyVyletyPred.size()+1, vsetkyVyletyPo.size());
+        instance.odstranit(viacdnovyVylet);
       
     }
 
@@ -63,6 +64,7 @@ public class MySqlViacdnovyVyletDaoTest {
     @Test
     public void testOdstranit() {
         System.out.println("odstranit");
+        instance.pridat(viacdnovyVylet);
         List<ViacdnovyVylet> vsetkyVyletyPred = instance.dajVsetky(); 
         instance.odstranit(viacdnovyVylet);
         List<ViacdnovyVylet> vsetkyVyletyPo = instance.dajVsetky();
@@ -77,25 +79,12 @@ public class MySqlViacdnovyVyletDaoTest {
     @Test
     public void testDajVsetky() {
         System.out.println("dajVsetky");
-        instance.odstranit(viacdnovyVylet);
+        
         List<ViacdnovyVylet> result = instance.dajVsetky();
-        assertEquals(3, result);
+        assertEquals(3, result.size());
         
     }
 
-    /**
-     * Test of Hladat method, of class MySqlViacdnovyVyletDao.
-     */
-    @Test
-    public void testHladat() {
-        System.out.println("Hladat");
-        String s = "";
-        MySqlViacdnovyVyletDao instance = new MySqlViacdnovyVyletDao();
-        List<ViacdnovyVylet> expResult = null;
-        List<ViacdnovyVylet> result = instance.Hladat(s);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
     
 }

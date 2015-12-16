@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class MySqlPamiatkaDaoTest {
     
-    Pamiatka pamiatka = null;
+    Pamiatka pamiatka = new Pamiatka();
         MySqlPamiatkaDao instance = new MySqlPamiatkaDao();
     
     public MySqlPamiatkaDaoTest() {
@@ -49,6 +49,7 @@ public class MySqlPamiatkaDaoTest {
         instance.pridat(pamiatka);
          List<Pamiatka> vsetkyPamiatkyPo = instance.dajVsetky();
          assertEquals(vsetkyPamiatkyPred.size()+1, vsetkyPamiatkyPo.size());
+         instance.odstranit(pamiatka);
         
     }
 
@@ -76,9 +77,8 @@ public class MySqlPamiatkaDaoTest {
     @Test
     public void testDajVsetky() {
         System.out.println("dajVsetky");
-        instance.odstranit(pamiatka);
         List<Pamiatka> result = instance.dajVsetky();
-        assertEquals(3, result);
+        assertEquals(3, result.size());
         
     }
 
