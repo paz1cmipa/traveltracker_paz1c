@@ -139,7 +139,7 @@ public class PridatPodrobnostiViacdVyletForm extends javax.swing.JDialog {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
    
-        vylet.setProgram(ProgramTextArea.toString());//zmena lebo do listu sa nedalo pisat ppri spusteni //vytiahnut cely zoznam a dat to do Stringu;
+        vylet.setProgram(ProgramTextArea.getText());//zmena lebo do listu sa nedalo pisat ppri spusteni //vytiahnut cely zoznam a dat to do Stringu;
                                                   // jednotlive body oddelit urcenym delimiterom;
         vylet.setPoznamky(poznamkyTextField.getText());
         vylet.setHodnotenie((int)hodnotenieComboBox.getSelectedItem());
