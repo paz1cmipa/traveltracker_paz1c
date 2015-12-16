@@ -161,20 +161,12 @@ public class TuristikaForm extends javax.swing.JDialog {
            return;
         }
 
-      /*  List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
-        String krajina = (String) turyTable.getValueAt(turyTable.getSelectedRow(), 0);
-        String ciel = ((String) turyTable.getValueAt(turyTable.getSelectedRow(), 1));
-        Date datum = ((Date) turyTable.getValueAt(turyTable.getSelectedRow(), 2));
-        
-        
-        for (Turistika tura : vsetkyTury){
-            if (krajina.equals(tura.getKrajina()) && ciel.equals(tura.getCiel()) 
-                    && datum.equals(tura.getDatum())){*/
+     
                 UpravitTuristikaForm upravit = new UpravitTuristikaForm(this, true, model.getTura(turyTable.getSelectedRow()));
                 upravit.setVisible(true);
-            //}
+           
             
-        //}
+       
         model.refresh();
     }//GEN-LAST:event_upravitButtonActionPerformed
 
@@ -187,14 +179,9 @@ public class TuristikaForm extends javax.swing.JDialog {
         
         }
         
-        //Turistika tura = najdiTuru(cisloRiadku);
-       
-       //if (tura == null){
-           //return; 
-      //}
-        //turistikaDao.odstranit(tura);
+      
         model.odstranTuru(cisloRiadku);
-        //refresh();
+        
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
@@ -248,29 +235,7 @@ public class TuristikaForm extends javax.swing.JDialog {
         }
       }
       
-     /*public Turistika najdiTuru (int cislo){
-          
-          List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
-        String krajina = (String) turyTable.getValueAt(cislo, 0);
-        String Ciel = ((String) turyTable.getValueAt(cislo, 1));
-        Date Datum = ((Date) turyTable.getValueAt(cislo, 2));
-
-        
-        if(krajina == null){
-            JOptionPane.showMessageDialog(this, "Nebola vybraná žiadna túra!");
-            return null;
-        }
-        
-        Turistika najdenaTura = null;
-         for (Turistika tura : vsetkyTury){
-            if (krajina.equals(tura.getKrajina()) && Ciel.equals(tura.getCiel()) 
-                    &&  Datum.equals(tura.getDatum())){
-                najdenaTura = tura;
-            } // datum NULL v podmienke padne na NUll Pointer Exception!!!
-            
-        }
-          return najdenaTura;
-      }*/
+    
     
     /**
      * @param args the command line arguments

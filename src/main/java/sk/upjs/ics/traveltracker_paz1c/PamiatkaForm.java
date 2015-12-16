@@ -157,20 +157,12 @@ public class PamiatkaForm extends javax.swing.JDialog {
         
 
 
-       /* List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
-        String krajina = (String) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 0);
-        String mesto = ((String) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 1));
-        String pamiatkaNazov = ((String) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 2));
-        Date datum = ((Date) pamiatkyTable.getValueAt(pamiatkyTable.getSelectedRow(), 3));
-        
-          for (Pamiatka pamiatka : vsetkyPamiatky){
-            if (krajina.equals(pamiatka.getKrajina()) && mesto.equals(pamiatka.getMesto()) 
-                    && pamiatkaNazov.equals(pamiatka.getPamiatka_zaujimavost()) && datum.equals(pamiatka.getDatum())){*/
+     
                 UpravitPamiatkaForm upravit = new UpravitPamiatkaForm(this, true, model.getPamiatka(pamiatkyTable.getSelectedRow()));
                 upravit.setVisible(true);
-           // }
+           
             
-       // }
+     
        model.refresh();
     }//GEN-LAST:event_upravitButtonActionPerformed
 
@@ -182,14 +174,9 @@ public class PamiatkaForm extends javax.swing.JDialog {
             return;
         }
         
-        //Pamiatka pamiatka = najdiPamiatku(cisloRiadku);
-       
-      // if (pamiatka == null){
-          // return; 
-       //}
-       // pamiatkaDao.odstranit(pamiatka);
+      
         model.odstranPamiatka(cisloRiadku);
-        //refresh();
+       
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
@@ -222,30 +209,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
 
     
     
-      /* public Pamiatka najdiPamiatku (int cislo){
-          
-        List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
-        String krajina = (String) pamiatkyTable.getValueAt(cislo, 0);
-        String mesto = ((String) pamiatkyTable.getValueAt(cislo, 1));
-        String nazov = ((String) pamiatkyTable.getValueAt(cislo, 2));
-        Date datum = ((Date) pamiatkyTable.getValueAt(cislo, 3));
-        
-        if(krajina == null){
-            JOptionPane.showMessageDialog(this, "Nebolo vybraná žiadna pamiatka!");
-            return null;
-        }
-        
-             Pamiatka najdenaPamiatka = null;
-         for (Pamiatka pamiatka : vsetkyPamiatky){
-            if (krajina.equals(pamiatka.getKrajina()) && mesto.equals(pamiatka.getMesto()) 
-                    && nazov.equals(pamiatka.getPamiatka_zaujimavost()) && datum.equals(pamiatka.getDatum())){
-                najdenaPamiatka = pamiatka;
-            } // datum NULL v podmienke padne na NUll Pointer Exception!!!
-            
-        }
-          return najdenaPamiatka;
-      }*/
-    
+      
     
       public void refresh(){
        

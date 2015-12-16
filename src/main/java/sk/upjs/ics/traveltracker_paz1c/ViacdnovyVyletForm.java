@@ -146,21 +146,12 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
           JOptionPane.showMessageDialog(this, "Nebol vybrany žiaden riadok!");
            return;
         }
-        
-        /*List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
-        String krajina = (String) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 0);
-        String mesto = ((String) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 1));
-        Date odchod = ((Date) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 2));
-        Date prichod = ((Date) vyletyTable.getValueAt(vyletyTable.getSelectedRow(), 3));
-        
-        for (ViacdnovyVylet vylet : vsetkyVylety){
-            if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto1()) 
-                    && odchod.equals(vylet.getDatumOdchod()) && prichod.equals(vylet.getDatumPrichod())){*/
+       
                 UpravitViacdnovyVyeltForm upravit = new UpravitViacdnovyVyeltForm(this, true, model.getVylet(vyletyTable.getSelectedRow()));
                 upravit.setVisible(true);
-            //}
+           
             
-       // }
+    
         model.refresh();
     }//GEN-LAST:event_upravitButtonActionPerformed
 
@@ -172,14 +163,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
             return;
         }
         model.odstranVylet(cisloRiadku);
-        //ViacdnovyVylet vylet = najdiVylet(cisloRiadku);
-       
-       //if (vylet == null){
-        //   return; 
-       //}
-       // vyletDao.odstranit(vylet);
-            
-        //refresh();
+        
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
@@ -238,30 +222,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
         }
       }
       
-     /* public ViacdnovyVylet najdiVylet (int cislo){
-          
-        List<ViacdnovyVylet> vsetkyVylety = vyletDao.dajVsetky();
-        String krajina = (String) vyletyTable.getValueAt(cislo, 0);
-        String mesto = ((String) vyletyTable.getValueAt(cislo, 1));
-        Date odchod = ((Date) vyletyTable.getValueAt(cislo, 2));
-        Date prichod = ((Date) vyletyTable.getValueAt(cislo, 3));
-        
-        if(krajina == null){
-            JOptionPane.showMessageDialog(this, "Nebol vybraný žiaden výlet!");
-            return null;
-        }
-        
-        ViacdnovyVylet najdenyVylet = null;
-         for (ViacdnovyVylet vylet : vsetkyVylety){
-            if (krajina.equals(vylet.getKrajina()) && mesto.equals(vylet.getMesto1()) 
-                    && odchod.equals(vylet.getDatumOdchod()) && prichod.equals(vylet.getDatumPrichod())){
-                najdenyVylet = vylet;
-            } // datum NULL v podmienke padne na NUll Pointer Exception!!!
-            
-        }
-          return najdenyVylet;
-      }*/
-    
+     
     
     /**
      * @param args the command line arguments
