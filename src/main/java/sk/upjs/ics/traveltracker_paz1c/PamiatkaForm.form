@@ -131,7 +131,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="stornoButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Storno"/>
+        <Property name="text" type="java.lang.String" value="OK"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stornoButtonActionPerformed"/>

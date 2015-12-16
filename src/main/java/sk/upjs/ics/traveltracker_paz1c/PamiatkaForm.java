@@ -49,7 +49,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(pamiatkyTable);
 
-        stornoButton.setText("Storno");
+        stornoButton.setText("OK");
         stornoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stornoButtonActionPerformed(evt);
@@ -151,7 +151,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
         if(pamiatkyTable.getSelectedRow()==-1){
-          JOptionPane.showMessageDialog(this, "Nebol vybrany 6iaden riadok!");
+          JOptionPane.showMessageDialog(this, "Nebol vybrany žiaden riadok!");
            return;
         }
         

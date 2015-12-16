@@ -157,6 +157,7 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
           
         }
         refresh();
+        pridatComboBox.setSelectedIndex(0);
     }//GEN-LAST:event_pridatComboBoxActionPerformed
 
    public void refresh(){
