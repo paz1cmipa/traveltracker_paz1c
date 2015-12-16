@@ -31,9 +31,9 @@
                   <Component id="jScrollPane1" alignment="1" min="-2" pref="480" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" alignment="1" min="-2" pref="480" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="najblizsieUdalostiLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="kulturnePodujatiaLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="najblizsieUdalostiLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="pridatComboBox" min="-2" pref="221" max="-2" attributes="0"/>
@@ -89,6 +89,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="najblizsieUdalostiLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Najbli&#x17e;&#x161;ie udalosti:"/>
       </Properties>
     </Component>
@@ -110,6 +113,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="travelTrackerLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Travel Tracker"/>
       </Properties>
     </Component>

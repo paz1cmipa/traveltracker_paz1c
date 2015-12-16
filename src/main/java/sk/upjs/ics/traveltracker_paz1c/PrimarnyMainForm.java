@@ -49,10 +49,12 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        najblizsieUdalostiLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         najblizsieUdalostiLabel.setText("Najbližšie udalosti:");
 
         jScrollPane1.setViewportView(najblizsieKultPodujatiaList);
 
+        travelTrackerLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         travelTrackerLabel.setText("Travel Tracker");
 
         pridatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Výber" }));
@@ -88,9 +90,9 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(najblizsieUdalostiLabel)
-                            .addComponent(kulturnePodujatiaLabel))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kulturnePodujatiaLabel)
+                            .addComponent(najblizsieUdalostiLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pridatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
