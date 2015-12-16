@@ -152,6 +152,10 @@ public class PridatKulturnePodujatieForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
+        if(boliPodrobnost){
+            kulturnePodujatieDao.odstranit(kulturnePodujatie);
+            boliPodrobnost=false;
+        }
         this.setVisible(false);
     }//GEN-LAST:event_stornoButtonActionPerformed
 
