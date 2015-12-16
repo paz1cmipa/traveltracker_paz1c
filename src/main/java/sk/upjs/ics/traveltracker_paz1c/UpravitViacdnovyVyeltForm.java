@@ -38,7 +38,7 @@ public class UpravitViacdnovyVyeltForm extends javax.swing.JDialog {
             krajinaComboBox.addItem(krajina);
         }
         
-        typComboBox.setEditable(true);
+        typComboBox.setEditable(false);
         typComboBox.addActionListener(typComboBox);
         AutoCompleteDecorator.decorate(typComboBox);
         typComboBox.addItem(" ");

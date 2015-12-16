@@ -1,10 +1,13 @@
 
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public class KulturnePodujatieForm extends javax.swing.JDialog {
+    
+   
 
    private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
    private KulturnePodujatieModel model= new KulturnePodujatieModel();

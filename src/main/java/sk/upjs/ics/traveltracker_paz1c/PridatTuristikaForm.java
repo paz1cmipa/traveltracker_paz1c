@@ -30,7 +30,7 @@ public class PridatTuristikaForm extends javax.swing.JDialog {
         for(int i=0; i<6; i++){
             hodnotenieComboBox.addItem(i);
         }
-        typComboBox.setEditable(true);
+        typComboBox.setEditable(false);
         AutoCompleteDecorator.decorate(typComboBox);
         typComboBox.addItem(" ");
         typComboBox.addItem("Cyklo");

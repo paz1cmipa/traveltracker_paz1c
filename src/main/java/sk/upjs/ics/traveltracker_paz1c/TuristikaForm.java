@@ -1,13 +1,15 @@
 
 package sk.upjs.ics.traveltracker_paz1c;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 
 public class TuristikaForm extends javax.swing.JDialog {
-
+    
+   
     private TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
     private TuristikaModel model= new TuristikaModel();
     public TuristikaForm(java.awt.Frame parent, boolean modal) {
@@ -234,13 +236,14 @@ public class TuristikaForm extends javax.swing.JDialog {
         
         List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
         int i = 0;
-        for (Turistika podujatie: vsetkyTury){
+        for (Turistika tura: vsetkyTury){
             if (i == 10){
                 break;
             }
-            turyTable.setValueAt(podujatie.getKrajina(), i, 0);
-            turyTable.setValueAt(podujatie.getCiel(), i, 1);
-            turyTable.setValueAt(podujatie.getDatum(), i,2);
+            
+            turyTable.setValueAt(tura.getKrajina(), i, 0);
+            turyTable.setValueAt(tura.getCiel(), i, 1);
+            turyTable.setValueAt(tura.getDatum(), i,2);
             i++;
         }
       }

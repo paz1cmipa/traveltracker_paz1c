@@ -38,7 +38,7 @@ public class UpravitTuristikaForm extends javax.swing.JDialog {
             krajinaComboBox.addItem(krajina);
         }
         
-        typComboBox.setEditable(true);
+        typComboBox.setEditable(false);
         AutoCompleteDecorator.decorate(typComboBox);
         typComboBox.addItem(" ");
         typComboBox.addItem("Cyklo");
