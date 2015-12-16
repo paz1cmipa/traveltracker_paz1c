@@ -1,17 +1,14 @@
-
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
-
 public class HladatKulturnePodujatieForm extends javax.swing.JDialog {
-    
+
     private String hladanePodujatie;
     private KulturnePodujatieDao podujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
 
-   
     public HladatKulturnePodujatieForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -24,7 +21,7 @@ public class HladatKulturnePodujatieForm extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         hladanePodujatie = hladane;
         List<KulturnePodujatie> hladanePodujatia = podujatieDao.Hladat(hladanePodujatie);
-        if(hladanePodujatia.isEmpty()){
+        if (hladanePodujatia.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Žiadne podujatie sa nenašlo :(");
             return;
         }
@@ -85,15 +82,15 @@ public class HladatKulturnePodujatieForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-       this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void hladaneListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladaneListMouseClicked
-       if(evt.getClickCount()==2){
-           KulturnePodujatie podujatie = (KulturnePodujatie) hladaneList.getSelectedValue();
-           ZobrazitPodujatieForm zobraz = new ZobrazitPodujatieForm(this, true, podujatie);
-           zobraz.setVisible(true);
-       }
+        if (evt.getClickCount() == 2) {
+            KulturnePodujatie podujatie = (KulturnePodujatie) hladaneList.getSelectedValue();
+            ZobrazitPodujatieForm zobraz = new ZobrazitPodujatieForm(this, true, podujatie);
+            zobraz.setVisible(true);
+        }
     }//GEN-LAST:event_hladaneListMouseClicked
 
     /**

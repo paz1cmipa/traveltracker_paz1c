@@ -1,12 +1,12 @@
-
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public class HladatTuryForm extends javax.swing.JDialog {
-  private String HladaneSlovo;
-  private TuristikaDao turistikaDao=  TuristikaDaoFactory.INSTANCE.getTuristikaDao();
+
+    private String HladaneSlovo;
+    private TuristikaDao turistikaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
 
     public HladatTuryForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
@@ -14,22 +14,22 @@ public class HladatTuryForm extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
 
-    
-    public HladatTuryForm(javax.swing.JDialog parent, boolean modal,String hladane) {
+    public HladatTuryForm(javax.swing.JDialog parent, boolean modal, String hladane) {
         super(parent, modal);
         initComponents();
         HladaneSlovo = hladane;
         setLocationRelativeTo(null);
-        List<Turistika> hladaneTury=turistikaDao.Hladat(HladaneSlovo);
-        if(hladaneTury.isEmpty()){
-        JOptionPane.showMessageDialog(this, "Žiadna túra sa nenašla :(");
+        List<Turistika> hladaneTury = turistikaDao.Hladat(HladaneSlovo);
+        if (hladaneTury.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Žiadna túra sa nenašla :(");
             return;
-        
+
         }
-        
+
         hladaneList.setListData(hladaneTury.toArray());
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,11 +90,11 @@ public class HladatTuryForm extends javax.swing.JDialog {
     }//GEN-LAST:event_OKButtonActionPerformed
 
     private void hladaneListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladaneListMouseClicked
-          if(evt.getClickCount()==2){
-           Turistika tura = (Turistika) hladaneList.getSelectedValue();
-           ZobrazitTuristikaForm zobraz = new ZobrazitTuristikaForm(this, true, tura);
-           zobraz.setVisible(true);
-       }
+        if (evt.getClickCount() == 2) {
+            Turistika tura = (Turistika) hladaneList.getSelectedValue();
+            ZobrazitTuristikaForm zobraz = new ZobrazitTuristikaForm(this, true, tura);
+            zobraz.setVisible(true);
+        }
     }//GEN-LAST:event_hladaneListMouseClicked
 
     /**

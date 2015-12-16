@@ -1,4 +1,3 @@
-
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.text.SimpleDateFormat;
@@ -6,13 +5,11 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class KulturnePodujatieForm extends javax.swing.JDialog {
-    
-   
 
-   private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
-   private KulturnePodujatieModel model= new KulturnePodujatieModel();
-   private List<KulturnePodujatie> podujatia=kulturnePodujatieDao.dajVsetky();
-     
+    private KulturnePodujatieDao kulturnePodujatieDao = KulturnePodujatieDaoFactory.INSTANCE.getKulturnePodujatieDao();
+    private KulturnePodujatieModel model = new KulturnePodujatieModel();
+    private List<KulturnePodujatie> podujatia = kulturnePodujatieDao.dajVsetky();
+
     public KulturnePodujatieForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -140,14 +137,14 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void podujatiaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_podujatiaTableMouseClicked
-       if(evt.getClickCount()==2){
-          if(podujatiaTable.getSelectedRow()==-1){
-              JOptionPane.showMessageDialog(this,"Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
-               return;
-             }
-           ZobrazitPodujatieForm zobraz=new ZobrazitPodujatieForm(this, true, model.getPodujatie(podujatiaTable.getSelectedRow()));
-           zobraz.setVisible(true);
-        }   
+        if (evt.getClickCount() == 2) {
+            if (podujatiaTable.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!", "Chyba", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            ZobrazitPodujatieForm zobraz = new ZobrazitPodujatieForm(this, true, model.getPodujatie(podujatiaTable.getSelectedRow()));
+            zobraz.setVisible(true);
+        }
     }//GEN-LAST:event_podujatiaTableMouseClicked
 
     private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
@@ -155,16 +152,16 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_stornoButtonActionPerformed
 
     private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
-       PridatKulturnePodujatieForm pridat = new PridatKulturnePodujatieForm(this, true);
-       pridat.setVisible(true);
-       //refresh();
-       model.refresh();
+        PridatKulturnePodujatieForm pridat = new PridatKulturnePodujatieForm(this, true);
+        pridat.setVisible(true);
+        //refresh();
+        model.refresh();
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void upravitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitButtonActionPerformed
-          if(podujatiaTable.getSelectedRow()==-1){
-          JOptionPane.showMessageDialog(this, "Nebol vybrany žiaden riadok!");
-           return;
+        if (podujatiaTable.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Nebol vybrany žiaden riadok!");
+            return;
         }
         UpravitKultPodujatieForm upravit = new UpravitKultPodujatieForm(this, true, model.getPodujatie(podujatiaTable.getSelectedRow()));
         upravit.setVisible(true);
@@ -172,44 +169,43 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_upravitButtonActionPerformed
 
     private void odstranitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitButtonActionPerformed
-       int cisloRiadku = podujatiaTable.getSelectedRow();
-        
-        if(cisloRiadku == -1){
+        int cisloRiadku = podujatiaTable.getSelectedRow();
+
+        if (cisloRiadku == -1) {
             JOptionPane.showMessageDialog(this, "Nie je vybraný žiaden riadok!");
             return;
         }
-        
-     model.odstranPodujatie(cisloRiadku);
+
+        model.odstranPodujatie(cisloRiadku);
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
         dajVsetkyPodujatieForm zobraz = new dajVsetkyPodujatieForm(this, true);
-        zobraz.setVisible(true); 
+        zobraz.setVisible(true);
     }//GEN-LAST:event_vsetkyButtonActionPerformed
 
     private void hladatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hladatButtonActionPerformed
-      String hladane = hladatTextField.getText();
-      if(hladane.isEmpty()){
-          JOptionPane.showMessageDialog(this, "Nebolo zadané žiadne slovo!", "Chyba", JOptionPane.ERROR_MESSAGE);
-          return;
-      }
+        String hladane = hladatTextField.getText();
+        if (hladane.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nebolo zadané žiadne slovo!", "Chyba", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         System.out.println(hladane);
         HladatKulturnePodujatieForm hladat = new HladatKulturnePodujatieForm(this, true, hladane);
         hladat.setVisible(true);
     }//GEN-LAST:event_hladatButtonActionPerformed
 
-          public void refresh(){
-       
-       for(int j=0; j<10; j++){
-           for (int k=0; k<4; k++){
-               podujatiaTable.setValueAt(null, j, k);
-           }
-       } 
-      
-    
-     int i = 0;
-        for (KulturnePodujatie podujatie: podujatia){
-            if (i == 10){
+    public void refresh() {
+
+        for (int j = 0; j < 10; j++) {
+            for (int k = 0; k < 4; k++) {
+                podujatiaTable.setValueAt(null, j, k);
+            }
+        }
+
+        int i = 0;
+        for (KulturnePodujatie podujatie : podujatia) {
+            if (i == 10) {
                 break;
             }
             podujatiaTable.setValueAt(podujatie.getKrajina(), i, 0);
@@ -218,13 +214,9 @@ public class KulturnePodujatieForm extends javax.swing.JDialog {
             podujatiaTable.setValueAt(podujatie.getDatum(), i, 3);
             i++;
         }
-       
-       
-       
-       
-      }
-    
-    
+
+    }
+
     /**
      * @param args the command line arguments
      */

@@ -13,24 +13,23 @@ import javax.swing.JOptionPane;
  * @author Robert Link
  */
 public class HladatViacdnovyVyletForm extends javax.swing.JDialog {
+
     private ViacdnovyVyletDao viacDnovyVyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
     private String hladaneSlovo;
-    
-    
+
     public HladatViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
     }
-    
-    
-    public HladatViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal,String hladane) {
+
+    public HladatViacdnovyVyletForm(javax.swing.JDialog parent, boolean modal, String hladane) {
         super(parent, modal);
         initComponents();
         hladaneSlovo = hladane;
         setLocationRelativeTo(null);
         List<ViacdnovyVylet> hladaneVylety = viacDnovyVyletDao.Hladat(hladaneSlovo);
-        if(hladaneVylety.isEmpty()){
+        if (hladaneVylety.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Žiaden vylet sa nenašiel :(");
             return;
         }
@@ -97,11 +96,11 @@ public class HladatViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_OKButtonActionPerformed
 
     private void hladaneListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladaneListMouseClicked
-         if(evt.getClickCount()==2){
-           ViacdnovyVylet vylet = (ViacdnovyVylet) hladaneList.getSelectedValue();
-           ZobrazitViacdnovyVyletForm zobraz = new ZobrazitViacdnovyVyletForm(this, true, vylet);
-           zobraz.setVisible(true);
-       }
+        if (evt.getClickCount() == 2) {
+            ViacdnovyVylet vylet = (ViacdnovyVylet) hladaneList.getSelectedValue();
+            ZobrazitViacdnovyVyletForm zobraz = new ZobrazitViacdnovyVyletForm(this, true, vylet);
+            zobraz.setVisible(true);
+        }
     }//GEN-LAST:event_hladaneListMouseClicked
 
     /**

@@ -1,15 +1,13 @@
-
 package sk.upjs.ics.traveltracker_paz1c;
 
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class HladatPamiatkaForm extends javax.swing.JDialog {
-    
+
     private String hladanePodujatie;
     private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
-    
+
     public HladatPamiatkaForm(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -19,10 +17,10 @@ public class HladatPamiatkaForm extends javax.swing.JDialog {
     HladatPamiatkaForm(javax.swing.JDialog parent, boolean modal, String hladane) {
         super(parent, modal);
         initComponents();
-         hladanePodujatie = hladane;
-         setLocationRelativeTo(null);
+        hladanePodujatie = hladane;
+        setLocationRelativeTo(null);
         List<Pamiatka> hladanePamiatky = pamiatkaDao.Hladat(hladanePodujatie);
-        if(hladanePamiatky.isEmpty()){
+        if (hladanePamiatky.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Žiadna pamiatka sa nenašla :(");
             return;
         }
@@ -90,11 +88,11 @@ public class HladatPamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void hladaneListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hladaneListMouseClicked
-       if(evt.getClickCount()==2){
-           Pamiatka pamiatka = (Pamiatka) hladaneList.getSelectedValue();
-           ZobrazitPamiatkaForm zobraz = new ZobrazitPamiatkaForm(this, true, pamiatka);
-           zobraz.setVisible(true);
-       }
+        if (evt.getClickCount() == 2) {
+            Pamiatka pamiatka = (Pamiatka) hladaneList.getSelectedValue();
+            ZobrazitPamiatkaForm zobraz = new ZobrazitPamiatkaForm(this, true, pamiatka);
+            zobraz.setVisible(true);
+        }
     }//GEN-LAST:event_hladaneListMouseClicked
 
     /**

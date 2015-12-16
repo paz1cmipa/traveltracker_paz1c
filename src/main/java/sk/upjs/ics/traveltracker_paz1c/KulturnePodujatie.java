@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class KulturnePodujatie {
-    
+
     private int id;
     private String krajina;
     private String mesto;
@@ -19,8 +19,8 @@ public class KulturnePodujatie {
     private String poznamky;
     private boolean navstivene;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("d.M.yyyy");
-    
-        public Time getCasZaciatku() {
+
+    public Time getCasZaciatku() {
         return casZaciatku;
     }
 
@@ -92,7 +92,6 @@ public class KulturnePodujatie {
         this.vstupne = vstupne;
     }
 
-
     public String getTyp() {
         return typ;
     }
@@ -119,7 +118,7 @@ public class KulturnePodujatie {
 
     @Override
     public String toString() {
-        return   krajina + ", " + mesto + ", " + nazov + " (" + dateFormat.format(this.datum) + ")";
+        return krajina + ", " + mesto + ", " + nazov + " (" + dateFormat.format(this.datum) + ")";
     }
-    
+
 }
