@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class PamiatkaModel extends AbstractTableModel{
     private PamiatkaDao pamiatkaDao = PamiatkaDaoFactory.INSTANCE.getPamiatkaDao();
-    private List<Pamiatka> pamiatky= pamiatkaDao.dajVsetky();
+    private List<Pamiatka> pamiatky= pamiatkaDao.dajVsetkySLimit();
     private static final String[] NAZVY_STLPCOV= {"Krajina","Mesto","Pamiatka","Datum"};
     private static final int POCET_STLPCOV = 4;
     private static final int STLPEC_DATUM = 3;
@@ -68,7 +68,7 @@ public class PamiatkaModel extends AbstractTableModel{
 
     public void refresh(){
     pamiatky.clear();
-    pamiatky=pamiatkaDao.dajVsetky();
+    pamiatky=pamiatkaDao.dajVsetkySLimit();
     
         
     fireTableDataChanged();

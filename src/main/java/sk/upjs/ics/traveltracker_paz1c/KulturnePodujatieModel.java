@@ -15,7 +15,7 @@ public class KulturnePodujatieModel extends AbstractTableModel {
     private static final int STLPEC_NAZOV = 2;
     private static final int STLPEC_DATUM = 3;
     private static final String[] NAZVY_STLPCOV = {"Krajina", "Mesto", "Názov", "Dátum"};
-    List<KulturnePodujatie> podujatia = podujatieDao.dajVsetky();
+    List<KulturnePodujatie> podujatia = podujatieDao.dajVsetkySLimit();
 
     @Override
     public int getRowCount() {
@@ -69,7 +69,7 @@ public class KulturnePodujatieModel extends AbstractTableModel {
 
     public void refresh() {
         podujatia.clear();
-        podujatia = podujatieDao.dajVsetky();
+        podujatia = podujatieDao.dajVsetkySLimit();
 
         fireTableDataChanged();
 

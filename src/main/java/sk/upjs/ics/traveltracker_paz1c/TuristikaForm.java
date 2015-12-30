@@ -185,7 +185,7 @@ public class TuristikaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
-        dajVsetkyTuryForm vsetky = new dajVsetkyTuryForm(this, true);
+        DajVsetkyTuryForm vsetky = new DajVsetkyTuryForm(this, true);
         vsetky.setVisible(true);
                 
     }//GEN-LAST:event_vsetkyButtonActionPerformed

@@ -9,5 +9,7 @@ public interface TuristikaDao {
     public void Upravit (Turistika tura);
     public List<Turistika> dajVsetky();
     public List<Turistika> Hladat(String s);
+
+    public List<Turistika> dajVsetkySLimit();
     
 }

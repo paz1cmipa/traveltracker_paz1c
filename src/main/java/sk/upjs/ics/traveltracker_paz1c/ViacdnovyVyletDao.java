@@ -11,5 +11,6 @@ public interface ViacdnovyVyletDao {
     public void UpravitPodrobnosti (ViacdnovyVylet viacdnovyVylet);
     public List<ViacdnovyVylet> dajVsetky();
     public List<ViacdnovyVylet> Hladat(String s);
+    public List<ViacdnovyVylet> dajVsetkySLimit();
     
 }

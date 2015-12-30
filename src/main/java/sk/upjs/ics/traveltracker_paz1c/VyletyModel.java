@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 public class VyletyModel extends AbstractTableModel {
 
    private ViacdnovyVyletDao vyletDao = ViacdnovyVyletDaoFactory.INSTANCE.getViacdnovyVyletDao();
-    private List<ViacdnovyVylet> vylety= vyletDao.dajVsetky();
+    private List<ViacdnovyVylet> vylety= vyletDao.dajVsetkySLimit();
     private static final String[] NAZVY_STLPCOV={"Krajina","Mesto","Odchod","Príchod"};
     private static final int STLPEC_ODCHOD = 3;
     private static final int STLPEC_PRICHOD = 2;
@@ -70,7 +70,7 @@ public class VyletyModel extends AbstractTableModel {
 
     public void refresh(){
     vylety.clear();
-    vylety=vyletDao.dajVsetky();
+    vylety=vyletDao.dajVsetkySLimit();
     
         
     fireTableDataChanged();

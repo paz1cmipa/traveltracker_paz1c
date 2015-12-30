@@ -18,4 +18,6 @@ public interface KulturnePodujatieDao {
 
     public List<KulturnePodujatie> Hladat(String s);
 
+    public List<KulturnePodujatie> dajVsetkySLimit();
+
 }

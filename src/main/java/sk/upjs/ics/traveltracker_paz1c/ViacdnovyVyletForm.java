@@ -173,7 +173,7 @@ public class ViacdnovyVyletForm extends javax.swing.JDialog {
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
-       dajVsetkyVyletForm vsetky = new dajVsetkyVyletForm(this, true);
+       DajVsetkyVyletForm vsetky = new DajVsetkyVyletForm(this, true);
        vsetky.setVisible(true);
     }//GEN-LAST:event_vsetkyButtonActionPerformed
 

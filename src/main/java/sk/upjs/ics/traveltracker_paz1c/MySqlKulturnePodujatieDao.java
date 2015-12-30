@@ -106,7 +106,7 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao {
 
     @Override
     public List<KulturnePodujatie> Hladat(String s) {
-        List<KulturnePodujatie> vysledok = new ArrayList<>();
+       /* List<KulturnePodujatie> vysledok = new ArrayList<>();
         List<KulturnePodujatie> zaznam = dajVsetky();
         for (KulturnePodujatie podujatie : zaznam) {
             if (podujatie.getKrajina().equals(s)) {
@@ -128,8 +128,21 @@ public class MySqlKulturnePodujatieDao implements KulturnePodujatieDao {
 
         }
 
-        return vysledok;
+        return vysledok;*/
+        
+        
+        String sql="select * from podujatie where krajina like '%"+s+"%' or mesto like  '%"+s+"%' or typ like  '%"+s+"%' or Nazov like  '%"+s+"%'";
+        BeanPropertyRowMapper<KulturnePodujatie> mapper = BeanPropertyRowMapper.newInstance(KulturnePodujatie.class);
+        return jdbcTemplete.query(sql,mapper);
     }
+    
+    
+     public List<KulturnePodujatie> dajVsetkySLimit() {
+        String sql= "Select * from podujatie P join podujatiaInfo I on P.id=I.id where navstivene=0 and datum > now()  order by datum ASC limit 10";
+        BeanPropertyRowMapper<KulturnePodujatie> mapper = BeanPropertyRowMapper.newInstance(KulturnePodujatie.class);
+        return jdbcTemplete.query(sql,mapper);
+     
+     }
 
     @Override
     public void pridatPodrobnosti(KulturnePodujatie kulturnePodujatie) {

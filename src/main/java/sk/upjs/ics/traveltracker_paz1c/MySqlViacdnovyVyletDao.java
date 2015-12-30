@@ -126,7 +126,7 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
 
     @Override
     public List<ViacdnovyVylet> Hladat(String s) {
-        List<ViacdnovyVylet> vysledok= new ArrayList<>();
+       /* List<ViacdnovyVylet> vysledok= new ArrayList<>();
         List<ViacdnovyVylet> zaznam= dajVsetky();
         for(ViacdnovyVylet vylet:zaznam){
           if(vylet.getKrajina().equals(s)){
@@ -152,7 +152,18 @@ public class MySqlViacdnovyVyletDao implements ViacdnovyVyletDao{
         
         }
         
-        return vysledok;
+        return vysledok;*/
+       
+        String sql="select * from viacDni where krajina like '%"+s+"%' or mesto1 like  '%"+s+"%' or ubytovanie like  '%"+s+"%' or typ like  '%"+s+"%'";
+        BeanPropertyRowMapper<ViacdnovyVylet> mapper = BeanPropertyRowMapper.newInstance(ViacdnovyVylet.class);
+        return jdbcTemplete.query(sql,mapper);
+    }
+
+    @Override
+    public List<ViacdnovyVylet> dajVsetkySLimit() {
+        String sql="Select * from viacDni V join viacDniInfo I on V.id=I.id where navstivene=0 and datumOdchod > now()  order by datumOdchod ASC limit 10";     
+        BeanPropertyRowMapper<ViacdnovyVylet> mapper= BeanPropertyRowMapper.newInstance(ViacdnovyVylet.class);     
+        return  jdbcTemplete.query(sql,mapper);
     }
 
 }

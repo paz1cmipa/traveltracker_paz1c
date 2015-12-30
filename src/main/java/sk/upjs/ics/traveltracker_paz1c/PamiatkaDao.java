@@ -11,5 +11,7 @@ public interface PamiatkaDao {
     public void UpravitPodrobnosti (Pamiatka pamiatka);
     public List<Pamiatka> dajVsetky();
     public List<Pamiatka> Hladat(String s);
+
+    public List<Pamiatka> dajVsetkySLimit();
     
 }

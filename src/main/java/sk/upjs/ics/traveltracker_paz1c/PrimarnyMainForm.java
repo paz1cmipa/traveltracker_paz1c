@@ -163,7 +163,7 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pridatComboBoxActionPerformed
 
    public void refresh(){
-        List<KulturnePodujatie> vsetkyPodujatia = podujatieDao.dajVsetky();
+        List<KulturnePodujatie> vsetkyPodujatia = podujatieDao.dajVsetkySLimit();
         if(!vsetkyPodujatia.isEmpty()){
             if(vsetkyPodujatia.size()> 3){
         najblizsieKultPodujatiaList.setListData(vsetkyPodujatia.subList(0,3).toArray());
@@ -172,7 +172,7 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
         }
     }
         
-        List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetky();
+        List<Pamiatka> vsetkyPamiatky = pamiatkaDao.dajVsetkySLimit();
         if(!vsetkyPamiatky.isEmpty()){
             if(vsetkyPamiatky.size()>3){
         najblizsiePamiatkyList.setListData(vsetkyPamiatky.subList(0,3).toArray());
@@ -181,7 +181,7 @@ public class PrimarnyMainForm extends javax.swing.JFrame {
             }
         }
         
-        List<Turistika> vsetkyTury = turistikaDao.dajVsetky();
+        List<Turistika> vsetkyTury = turistikaDao.dajVsetkySLimit();
         if(!vsetkyTury.isEmpty()){
             if(vsetkyTury.size()>3){
                 najblizsieTuryList.setListData(vsetkyTury.subList(0,3).toArray());

@@ -104,7 +104,7 @@ public class MySqlPamiatkaDao implements PamiatkaDao {
 
     @Override
     public List<Pamiatka> Hladat(String s) {
-        List<Pamiatka> vysledok = new ArrayList<>();
+       /* List<Pamiatka> vysledok = new ArrayList<>();
         List<Pamiatka> zaznam = dajVsetky();
         for (Pamiatka pamiatka : zaznam) {
             if (pamiatka.getKrajina().equals(s)) {
@@ -121,8 +121,19 @@ public class MySqlPamiatkaDao implements PamiatkaDao {
             }
 
         }
-        return vysledok;
+        return vysledok;*/
+                
+        String sql="select * from pamiatka where krajina like '%"+s+"%' or mesto like  '%"+s+"%' or pamiatka_zaujimavost like  '%"+s+"%'";
+        BeanPropertyRowMapper<Pamiatka> mapper = BeanPropertyRowMapper.newInstance(Pamiatka.class);
+        return jdbcTemplete.query(sql,mapper);
     }
+        
+     public List<Pamiatka> dajVsetkySLimit() {
+        String sql= "Select * from pamiatka P join pamiatkaInfo I on P.id=I.id where navstivene=0 and datum > now()  order by datum ASC limit 10";
+        BeanPropertyRowMapper<Pamiatka> mapper = BeanPropertyRowMapper.newInstance(Pamiatka.class);
+        return jdbcTemplete.query(sql,mapper);
+     
+     }
 
     @Override
     public void pridatPodrobnosti(Pamiatka pamiatka) {

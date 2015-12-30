@@ -180,7 +180,7 @@ public class PamiatkaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     private void vsetkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetkyButtonActionPerformed
-        dajVsetkyPamiatkyForm vsetky = new dajVsetkyPamiatkyForm(this, true);
+        DajVsetkyPamiatkyForm vsetky = new DajVsetkyPamiatkyForm(this, true);
         vsetky.setVisible(true);
     }//GEN-LAST:event_vsetkyButtonActionPerformed
 

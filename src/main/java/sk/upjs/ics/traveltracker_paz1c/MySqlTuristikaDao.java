@@ -75,7 +75,7 @@ public class MySqlTuristikaDao implements TuristikaDao{
 
     @Override
     public List<Turistika> Hladat(String s) {
-         List<Turistika> vysledok= new ArrayList<>();
+        /* List<Turistika> vysledok= new ArrayList<>();
          List<Turistika> zaznam= dajVsetky();
          for(Turistika tura: zaznam){
              
@@ -102,7 +102,20 @@ public class MySqlTuristikaDao implements TuristikaDao{
          
          }
          
-         return vysledok;
+         return vysledok;*/
+        
+        
+        
+        String sql="select * from turistika where krajina like '%"+s+"%' or trasa like  '%"+s+"%' or ciel like  '%"+s+"%' or typ like  '%"+s+"%'";
+        BeanPropertyRowMapper<Turistika> mapper = BeanPropertyRowMapper.newInstance(Turistika.class);
+        return jdbcTemplete.query(sql,mapper);
     }
+        
+     public List<Turistika> dajVsetkySLimit() {
+        String sql= "Select * from turistika where prejdene=0 and datum > now()  order by datum ASC limit 10";
+        BeanPropertyRowMapper<Turistika> mapper = BeanPropertyRowMapper.newInstance(Turistika.class);
+        return jdbcTemplete.query(sql,mapper);
+     
+     }
     
 }

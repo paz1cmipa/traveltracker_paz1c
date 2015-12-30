@@ -242,14 +242,16 @@ public class ZobrazitViacdnovyVyletForm extends javax.swing.JDialog {
         if(this.viacdnovyVylet.getTyp()!=null){
             ZobrazTypLabel.setText(this.viacdnovyVylet.getTyp());
         }
+         System.out.println(viacdnovyVylet.getUbytovanie());
         if(this.viacdnovyVylet.getUbytovanie()!=null){
           ZobrazUbytovnieLabel.setText(this.viacdnovyVylet.getUbytovanie());
          }
+         System.out.println(viacdnovyVylet.getPoznamky());
         if(this.viacdnovyVylet.getPoznamky()!=null){
          ZobrazPoznamkyLabel.setText(this.viacdnovyVylet.getPoznamky());
         
         }
-        
+        System.out.println(viacdnovyVylet.getProgram());
           if(this.viacdnovyVylet.getProgram()!=null){
          ZobrazProgramLabel.setText(this.viacdnovyVylet.getProgram());
         

@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TuristikaModel extends AbstractTableModel{
    private TuristikaDao turaDao = TuristikaDaoFactory.INSTANCE.getTuristikaDao();
-    private List<Turistika> tury= turaDao.dajVsetky();
+    private List<Turistika> tury= turaDao.dajVsetkySLimit();
     private static final String[] NAZVY_STLPCOV={"Krajina","Ciel","Datum"};
     private static final int STLPEC_DATUM = 2;
     private static final int STLPEC_CIEL = 1;
@@ -66,7 +66,7 @@ public class TuristikaModel extends AbstractTableModel{
 
     public void refresh(){
     tury.clear();
-    tury=turaDao.dajVsetky();
+    tury=turaDao.dajVsetkySLimit();
     
         
     fireTableDataChanged();
